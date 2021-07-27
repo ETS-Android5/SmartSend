@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "182679639571",
+    "project_id": "smartsend-792e3",
+    "storage_bucket": "smartsend-792e3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:182679639571:android:6dfcfb2e74afe51d5a11e6",
+        "android_client_info": {
+          "package_name": "com.example.smartsend.smartsendapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "182679639571-gg65q4dmvvvt24c3qcqebpaees8vprc1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.smartsend.smartsendapp",
+            "certificate_hash": "e85771add95d01cf97419ad17a615eb05ce29444"
+          }
+        },
+        {
+          "client_id": "182679639571-mg3pubs3jiirojvbonn73ntjrjd0938g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBUiecg0U9MpA9SNXI-UoPSUpvZV8tXYTg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "182679639571-mg3pubs3jiirojvbonn73ntjrjd0938g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

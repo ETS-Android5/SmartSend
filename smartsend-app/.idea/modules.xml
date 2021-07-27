@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/AndroidApp.iml" filepath="$PROJECT_DIR$/.idea/modules/AndroidApp.iml" group="AndroidApp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/AndroidApp-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/AndroidApp-app.iml" group="AndroidApp/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/libs/AndroidApp.app-libs.iml" filepath="$PROJECT_DIR$/.idea/modules/app/libs/AndroidApp.app-libs.iml" group="AndroidApp/app/libs" />
+<<<<<<< Updated upstream
+      <module fileurl="file://$PROJECT_DIR$/SmartSendApp.iml" filepath="$PROJECT_DIR$/SmartSendApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/libs/volley/com.mcxiaoke.volley-volley.iml" filepath="$PROJECT_DIR$/.idea/modules/app/libs/volley/com.mcxiaoke.volley-volley.iml" group="AndroidApp/app/libs/volley" />
+      <module fileurl="file://$PROJECT_DIR$/app/libs/libs.iml" filepath="$PROJECT_DIR$/app/libs/libs.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/SmartSend-AndroidApp.iml" filepath="$PROJECT_DIR$/.idea/modules/SmartSend-AndroidApp.iml" group="AndroidApp" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/SmartSend-AndroidApp-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/SmartSend-AndroidApp-app.iml" group="AndroidApp/app" />
+      <module fileurl="file://$PROJECT_DIR$/SmartSendApp.iml" filepath="$PROJECT_DIR$/SmartSendApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/libs/app-libs.iml" filepath="$PROJECT_DIR$/.idea/modules/app/libs/app-libs.iml" group="AndroidApp/app/libs" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/libs/volley/com.mcxiaoke.volley-volley.iml" filepath="$PROJECT_DIR$/.idea/modules/app/libs/volley/com.mcxiaoke.volley-volley.iml" group="AndroidApp/app/libs/volley" />
+      <module fileurl="file://$PROJECT_DIR$/app/libs/libs.iml" filepath="$PROJECT_DIR$/app/libs/libs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/libs/volley/libs-volley.iml" filepath="$PROJECT_DIR$/.idea/modules/app/libs/volley/libs-volley.iml" group="AndroidApp/app/libs/volley" />
+>>>>>>> Stashed changes
+      <module fileurl="file://$PROJECT_DIR$/app/libs/volley/volley.iml" filepath="$PROJECT_DIR$/app/libs/volley/volley.iml" />
+    </modules>
+  </component>
+</project>
