@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@drawable/bg_login"
-    tools:context="com.example.smartsend.smartsendapp.LoginActivity">
+    tools:context="com.example.smartsend.smartsendapp.activities.LoginActivity">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -90,33 +90,34 @@
 
         </RadioGroup>
 
-
-
         <Button
             android:id="@+id/btnLoginSubmit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SIGN IN"
-            android:textSize="16dp"
+            android:text="@string/sign_in"
+            android:textSize="16sp"
             android:textColor="#ffffff"
             android:background="#4CA1FE"
             android:layout_below="@+id/rbgLoginUserType"
             android:layout_marginTop="20dp"/>
 
-        <TextView
-            android:id="@+id/tvForgotPassword"
+        <Button
+            android:id="@+id/btnForgotPassword"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Forgot Password"
-            android:textSize="12dp"
+            android:text="@string/forgot_password"
+            android:textSize="12sp"
             android:textColor="#AFAEAE"
+            android:background="@android:color/transparent"
             android:layout_marginTop="10dp"
             android:layout_marginRight="30dp"
             android:layout_below="@+id/btnLoginSubmit"
-            android:layout_alignRight="@+id/btnLoginSubmit"/>
+            android:layout_alignRight="@+id/btnLoginSubmit"
+            android:layout_marginEnd="30dp"
+            android:layout_alignEnd="@+id/btnLoginSubmit" />
 
     </RelativeLayout>
 
     </ScrollView>
 
-</android.support.design.widget.CoordinatorLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

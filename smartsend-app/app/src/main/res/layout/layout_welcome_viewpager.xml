@@ -9,17 +9,17 @@
         android:id="@+id/splash_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This is sample"
-        android:textSize="15.40dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:text="SmartSend"
+        android:textSize="15.40dp" />
 
     <TextView
         android:id="@+id/splash_heading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="This Line for Slider"
-        android:textSize="20.75dp"
-        android:gravity="center"/>
+        android:gravity="center"
+        android:text="Distribution Service Made Easy"
+        android:textSize="20.75dp" />
 
     <ImageView
         android:id="@+id/splash_image"

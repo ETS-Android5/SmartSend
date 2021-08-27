@@ -10,6 +10,10 @@ const HeroSection = () => {
         setHover(!hover)
     }
 
+    const sendMail = () => {
+        window.location.assign("mailto:il.smartsend@gmail.com?subject=Inquery About SmartSend Services&body=Hello! I would like to get more information about SmartSend services.");
+    }
+
     return (
         <HeroContainer>
             <HeroBg>
@@ -21,8 +25,8 @@ const HeroSection = () => {
                 Join us today and start enjoying the benefits of SmartSend services.
                 </HeroP>
                 <HeroBtnWrapper>
-                    <Button to="signup" onMouseEnter={onHover} onMouseLeave={onHover} primary='true' dark='true' >
-                        Get Started { hover ? <ArrowForward/> : <ArrowRight/>}
+                    <Button onClick={sendMail} onMouseEnter={onHover} onMouseLeave={onHover} primary='true' dark='true' >
+                        More Info { hover ? <ArrowForward/> : <ArrowRight/>}
                     </Button>
                 </HeroBtnWrapper>
             </HeroContent>

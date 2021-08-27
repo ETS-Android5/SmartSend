@@ -44,13 +44,13 @@ const NavBar = ({ toggle }) => {
                             <NavLinks to="business" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Business</NavLinks>
                         </NavItem>
                         <NavItem>
-                            <NavLinks to="contact" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Contact</NavLinks>
+                            <NavLinks to="services" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Services</NavLinks>
                         </NavItem>
                         <NavItem>
                             <NavLinks to="registeration" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Join Us</NavLinks>
                         </NavItem>
                         <NavBtn>
-                            <NavBtnLink to="/signin" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Sign In</NavBtnLink>
+                            <NavBtnLink to="/signin" smooth={true} duration={500} spy={true} exact='true' offset={-80}>Business Sign In</NavBtnLink>
                         </NavBtn>
                     </NavMenu>
                 </NavBarContainer>

@@ -1,13 +1,14 @@
 {
   "project_info": {
     "project_number": "182679639571",
+    "firebase_url": "https://smartsend-792e3-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "smartsend-792e3",
     "storage_bucket": "smartsend-792e3.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:182679639571:android:6dfcfb2e74afe51d5a11e6",
+        "mobilesdk_app_id": "1:182679639571:android:aaa90f7d5f4770a75a11e6",
         "android_client_info": {
           "package_name": "com.example.smartsend.smartsendapp"
         }

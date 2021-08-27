@@ -17,9 +17,9 @@
 package com.viewpagerindicator;
 
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import androidx.core.view.PagerAdapter;
+import androidx.core.view.ViewPager;
+import androidx.core.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;

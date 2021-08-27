@@ -13,7 +13,7 @@ export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  box-shadow: 0px 0px 2.5px rgba(15, 15, 15, 0.19);
+  /* box-shadow: 0px 0px 2.5px rgba(15, 15, 15, 0.19); */
 `;
 
 export const MutedLink = styled.a`
@@ -71,4 +71,10 @@ export const SubmitButton = styled.button`
   &:hover {
     filter: brightness(1.03);
   }
+`;
+
+export const Alert = styled.div`
+  background-color: #990000;
+  background-image: linear-gradient(147deg, #990000 0%, #ff0000 74%);
+  color: white;
 `;

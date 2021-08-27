@@ -1,7 +1,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context="com.example.smartsend.smartsendapp.WelcomeActivity">
+    tools:context="com.example.smartsend.smartsendapp.activities.WelcomeActivity">
 
     <item
         android:id="@+id/action_settings"
@@ -10,12 +10,15 @@
         app:showAsAction="never"/>
 
     <item android:id="@+id/actionProfile"
-        android:icon="@drawable/icon_menu_profile"/>
+        android:icon="@drawable/icon_menu_profile"
+        android:title="TODO" />
 
     <item android:id="@+id/actionOutlet"
-        android:icon="@drawable/icon_menu_outlet"/>
+        android:icon="@drawable/icon_menu_outlet"
+        android:title="TODO" />
 
     <item android:id="@+id/actionPlaceOrder"
-        android:icon="@drawable/icon_menu_place_order"/>
+        android:icon="@drawable/icon_menu_place_order"
+        android:title="TODO" />
 
 </menu>
