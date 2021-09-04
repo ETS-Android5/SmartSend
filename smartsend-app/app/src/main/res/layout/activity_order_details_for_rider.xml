@@ -10,19 +10,19 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="#ffffff">
+        android:background="@drawable/bg_login"
+        android:orientation="vertical">
 
 
         <LinearLayout
             android:id="@+id/lyTitleBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="#ffffff"
-            android:gravity="center"
             android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp">
+            android:layout_marginRight="10dp"
+            android:background="@android:color/transparent"
+            android:gravity="center"
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/tvTitleOrderNumber"
@@ -53,16 +53,16 @@
             <RelativeLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="right"
                 android:layout_gravity="center"
-                android:layout_marginRight="0dp">
+                android:layout_marginRight="0dp"
+                android:gravity="right">
 
                 <ImageView
                     android:id="@+id/ivTitleLogo"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/logo_title"
-                    android:foregroundGravity="center"/>
+                    android:foregroundGravity="center" />
 
             </RelativeLayout>
 
@@ -71,19 +71,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
             android:background="#34495E"
             android:gravity="center"
+            android:orientation="horizontal"
             android:padding="10dp">
 
             <TextView
                 android:id="@+id/tvPlaceOrderTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:padding="5dp"
                 android:text="NEW ORDER"
                 android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:padding="5dp"/>
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -95,269 +95,276 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:gravity="center"
+                android:orientation="vertical">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="PICKUP"
-                    android:textColor="#262425"
-                    android:textStyle="bold"
-                    android:textSize="10pt"
-                    android:layout_marginBottom="30dp"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:minWidth="350dp"
-                    android:weightSum="11">
-
-                    <TextView
-                        android:layout_width="140dp"
-                        android:layout_height="wrap_content"
-                        android:text="Date and Time"
-                        android:textColor="#34495C"
-                        android:textSize="9pt"
-                        android:layout_weight="4" />
-
-                    <TextView
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="9pt"
-                        android:text=":"
-                        android:layout_weight="1"/>
-
-                    <TextView
-                        android:id="@+id/tvPickupDateTime"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="9pt"
-                        android:layout_weight="6"
-                        android:text="00/00/00 00:00 PM"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:minWidth="350dp"
-                    android:weightSum="11">
-
-                    <TextView
-                        android:layout_width="140dp"
-                        android:layout_height="wrap_content"
-                        android:text="Name"
-                        android:textColor="#34495C"
-                        android:textSize="9pt"
-                        android:layout_weight="4"/>
-
-                    <TextView
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="9pt"
-                        android:text=":"
-                        android:layout_weight="1"/>
-
-                    <TextView
-                        android:id="@+id/tvPickupName"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="9pt"
-                        android:layout_weight="6"
-                        android:text="No Name"/>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:minWidth="350dp"
-                    android:weightSum="11">
-
-                    <TextView
-                        android:layout_width="140dp"
-                        android:layout_height="wrap_content"
-                        android:text="Address"
-                        android:textColor="#34495C"
-                        android:textSize="9pt"
-                        android:layout_weight="4"/>
-
-                    <TextView
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="9pt"
-                        android:text=":"
-                        android:layout_weight="1"/>
-
-                    <TextView
-                        android:id="@+id/tvPickupAddress"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="9pt"
-                        android:layout_weight="6"
-                        android:text="No Address"/>
-
-                </LinearLayout>
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
                     android:gravity="center"
-                    android:layout_marginTop="50dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="DELIVERY"
-                    android:textColor="#262425"
-                    android:textStyle="bold"
-                    android:textSize="10pt"
-                    android:layout_marginBottom="30dp"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:minWidth="350dp"
-                    android:weightSum="11">
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="140dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Date and Time"
-                        android:textColor="#34495C"
-                        android:textSize="9pt"
-                        android:layout_weight="4"/>
+                        android:layout_marginBottom="30dp"
+                        android:text="@string/pickup"
+                        android:textColor="#fff"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="30dp"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="9pt"
-                        android:text=":"
-                        android:layout_weight="1"/>
+                        android:minWidth="350dp"
+                        android:orientation="horizontal"
+                        android:weightSum="11">
 
-                    <TextView
-                        android:id="@+id/tvDeliveryDateTime"
-                        android:layout_width="180dp"
+                        <TextView
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:text="Date and Time"
+                            android:textColor="#34495C"
+                            android:textSize="9pt" />
+
+                        <TextView
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=":"
+                            android:textSize="9pt" />
+
+                        <TextView
+                            android:id="@+id/tvPickupDateTime"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="6"
+                            android:text="00/00/00 00:00 PM"
+                            android:textColor="#fff"
+                            android:textSize="9pt" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textSize="9pt"
-                        android:layout_weight="6"
-                        android:text="00/00/00 00:00 PM"/>
+                        android:minWidth="350dp"
+                        android:orientation="horizontal"
+                        android:textColor="#fff"
+                        android:weightSum="11">
 
-                </LinearLayout>
+                        <TextView
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:text="Name"
+                            android:textColor="#34495C"
+                            android:textSize="9pt" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:minWidth="350dp"
-                    android:weightSum="11">
+                        <TextView
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=":"
+                            android:textSize="9pt" />
 
-                    <TextView
-                        android:layout_width="140dp"
+                        <TextView
+                            android:id="@+id/tvPickupName"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="6"
+                            android:text="No Name"
+                            android:textColor="#fff"
+                            android:textSize="9pt" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Name"
-                        android:textColor="#34495C"
-                        android:textSize="9pt"
-                        android:layout_weight="4"/>
+                        android:minWidth="350dp"
+                        android:orientation="horizontal"
+                        android:weightSum="11">
 
-                    <TextView
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="9pt"
-                        android:text=":"
-                        android:layout_weight="1"/>
+                        <TextView
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:text="Address"
+                            android:textColor="#34495C"
+                            android:textSize="9pt" />
 
-                    <TextView
-                        android:id="@+id/tvDeliveryName"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="9pt"
-                        android:layout_weight="6"
-                        android:text="No Name"/>
+                        <TextView
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=":"
+                            android:textSize="9pt" />
 
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/tvPickupAddress"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="6"
+                            android:text="No Address"
+                            android:textColor="#fff"
+                            android:textSize="9pt" />
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:minWidth="350dp"
-                    android:weightSum="11">
-
-                    <TextView
-                        android:layout_width="140dp"
-                        android:layout_height="wrap_content"
-                        android:text="Address"
-                        android:textColor="#34495C"
-                        android:textSize="9pt"
-                        android:layout_weight="4"/>
-
-                    <TextView
-                        android:layout_width="30dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="9pt"
-                        android:text=":"
-                        android:layout_weight="1"/>
-
-                    <TextView
-                        android:id="@+id/tvDeliveryAddress"
-                        android:layout_width="180dp"
-                        android:layout_height="wrap_content"
-                        android:textSize="9pt"
-                        android:layout_weight="6"
-                        android:text="No Address"/>
-
-                </LinearLayout>
+                    </LinearLayout>
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:layout_marginTop="50dp"
                     android:gravity="center"
-                    android:layout_marginTop="50dp">
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="30dp"
+                        android:text="@string/delivery"
+                        android:textColor="#fff"
+                        android:textSize="10pt"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="350dp"
+                        android:orientation="horizontal"
+                        android:weightSum="11">
+
+                        <TextView
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:text="Date and Time"
+                            android:textColor="#34495C"
+                            android:textSize="9pt" />
+
+                        <TextView
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=":"
+                            android:textSize="9pt" />
+
+                        <TextView
+                            android:id="@+id/tvDeliveryDateTime"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="6"
+                            android:text="00/00/00 00:00 PM"
+                            android:textColor="#fff"
+                            android:textSize="9pt" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="350dp"
+                        android:orientation="horizontal"
+                        android:weightSum="11">
+
+                        <TextView
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:text="Name"
+                            android:textColor="#34495C"
+                            android:textSize="9pt" />
+
+                        <TextView
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=":"
+                            android:textSize="9pt" />
+
+                        <TextView
+                            android:id="@+id/tvDeliveryName"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="6"
+                            android:text="No Name"
+                            android:textColor="#fff"
+                            android:textSize="9pt" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:minWidth="350dp"
+                        android:orientation="horizontal"
+                        android:weightSum="11">
+
+                        <TextView
+                            android:layout_width="140dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4"
+                            android:text="Address"
+                            android:textColor="#34495C"
+                            android:textSize="9pt" />
+
+                        <TextView
+                            android:layout_width="30dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=":"
+                            android:textSize="9pt" />
+
+                        <TextView
+                            android:id="@+id/tvDeliveryAddress"
+                            android:layout_width="180dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="6"
+                            android:text="No Address"
+                            android:textColor="#fff"
+                            android:textSize="9pt" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="50dp"
+                    android:gravity="center"
+                    android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/btnRejectOrder"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="30dp"
+                        android:background="#46617C"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="3dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="3dp"
                         android:text="REJECT"
                         android:textColor="#ffffff"
-                        android:textStyle="bold"
-                        android:background="#46617C"
-                        android:layout_marginRight="30dp"
-                        android:paddingTop="3dp"
-                        android:paddingBottom="3dp"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"/>
+                        android:textStyle="bold" />
 
                     <Button
                         android:id="@+id/btnAcceptOrder"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:background="#46617C"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="3dp"
+                        android:paddingRight="20dp"
+                        android:paddingBottom="3dp"
                         android:text="ACCEPT"
                         android:textColor="#ffffff"
-                        android:textStyle="bold"
-                        android:background="#46617C"
-                        android:paddingTop="3dp"
-                        android:paddingBottom="3dp"
-                        android:paddingLeft="20dp"
-                        android:paddingRight="20dp"/>
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -368,10 +375,10 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar_bottom"
-            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:background="?attr/colorPrimary"
+            android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize" />
 
     </LinearLayout>

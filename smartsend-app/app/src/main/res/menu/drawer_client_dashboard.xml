@@ -13,14 +13,14 @@
             android:title="@string/menu_title_place_order" />
 
         <item
-            android:id="@+id/nav_rider_order_history"
+            android:id="@+id/nav_client_order_history"
             android:icon="@drawable/ic_order_history"
             android:title="@string/menu_title_order_history" />
 
         <item
-            android:id="@+id/nav_outlets"
-            android:icon="@drawable/icon_menu_outlet"
-            android:title="@string/menu_title_outlets" />
+            android:id="@+id/nav_my_account"
+            android:icon="@drawable/ic_account_settings"
+            android:title="@string/menu_title_my_account"/>
 
         <item
             android:id="@+id/nav_client_signout"

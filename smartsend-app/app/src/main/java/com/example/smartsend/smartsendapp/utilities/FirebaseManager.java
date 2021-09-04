@@ -2,6 +2,7 @@ package com.example.smartsend.smartsendapp.utilities;
 
 import android.content.Context;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.smartsend.smartsendapp.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -61,11 +62,10 @@ public class FirebaseManager {
     }
 
     public void signOut(Context ctx) {
-        FirebaseAuth auth = FirebaseManager.getInstance().getAuth();
         UserLocalStore localStore = UserLocalStore.getInstance(ctx);
-        
+
         localStore.clearClientData();
-        auth.signOut();
+        mAuth.signOut();
     }
 
     public DatabaseReference getFirebaseDatabaseRef() {
@@ -92,18 +92,21 @@ public class FirebaseManager {
         this.currentUser = currentUser;
     }
 
-    public String getServerUrl(){
-        return  this.serverUrl;
+    public String getServerUrl() {
+        return this.serverUrl;
     }
 
-    public static String getServerUrl(Context context){
-        return  context.getString(R.string.server_url);
+    public static String getServerUrl(Context context) {
+        return context.getString(R.string.server_url);
     }
 
-    public void resetPassword(String userEmail) {
+    public void resetPassword(Context ctx, String userEmail) {
         mAuth.sendPasswordResetEmail(userEmail).addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
-                Log.d(TAG, "Email sent.");
+                Toast.makeText(ctx, "Password reset link sent to your email.", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(ctx, "Error: " + (task.getException().getMessage() != null ? task.getException().getMessage() :
+                        "Invalid email entered."), Toast.LENGTH_SHORT).show();
             }
         });
     }

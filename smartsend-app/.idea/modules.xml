@@ -2,14 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/SmartSendApp.iml" filepath="$PROJECT_DIR$/SmartSendApp.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/androidx attempt.iml" filepath="$PROJECT_DIR$/.idea/modules/androidx attempt.iml" group="androidx attempt" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/androidx attempt-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/androidx attempt-app.iml" group="androidx attempt/app" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/libs/app-libs.iml" filepath="$PROJECT_DIR$/.idea/modules/app/libs/app-libs.iml" group="androidx attempt/app/libs" />
-      <module fileurl="file://$PROJECT_DIR$/app/libs/libs.iml" filepath="$PROJECT_DIR$/app/libs/libs.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/libs/volley/libs-volley.iml" filepath="$PROJECT_DIR$/.idea/modules/app/libs/volley/libs-volley.iml" group="androidx attempt/app/libs/volley" />
-      <module fileurl="file://$PROJECT_DIR$/app/libs/volley/volley.iml" filepath="$PROJECT_DIR$/app/libs/volley/volley.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="smartsend-app/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/libs/libs.iml" filepath="$PROJECT_DIR$/.idea/modules/app/libs/libs.iml" group="smartsend-app/app/libs" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/smartsend-app.iml" filepath="$PROJECT_DIR$/.idea/smartsend-app.iml" group="smartsend-app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/libs/volley/volley.iml" filepath="$PROJECT_DIR$/.idea/modules/app/libs/volley/volley.iml" group="smartsend-app/app/libs/volley" />
     </modules>
   </component>
 </project>

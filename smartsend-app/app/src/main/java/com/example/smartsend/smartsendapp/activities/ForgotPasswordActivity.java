@@ -10,13 +10,15 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.smartsend.smartsendapp.R;
 import com.example.smartsend.smartsendapp.utilities.ConnectivityDetector;
 import com.example.smartsend.smartsendapp.utilities.FirebaseManager;
+import com.google.firebase.auth.FirebaseAuthException;
 
 public class ForgotPasswordActivity extends AppCompatActivity {
-    private Button btnResetSubmit;
+    private Button btnResetSubmit, btnBackArrow;
     private String userEmail;
     private ConnectivityDetector connectivityDetector;
     private TextView etUserEmail;
@@ -31,6 +33,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         btnResetSubmit = findViewById(R.id.btnResetSubmit);
+        btnBackArrow = findViewById(R.id.btnArrowBack);
         etUserEmail = findViewById(R.id.etResetUserEmail);
         firebaseManager = FirebaseManager.getInstance();
 
@@ -50,13 +53,20 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                 Toast.makeText(ForgotPasswordActivity.this, "Enter email", Toast.LENGTH_SHORT).show();
             }else{
 
-                connectivityDetector = new ConnectivityDetector(getBaseContext());
-                if(connectivityDetector.checkConnectivityStatus()){
-                    firebaseManager.resetPassword(userEmail);
-                }else{
-                    connectivityDetector.showAlertDialog(ForgotPasswordActivity.this, "Password Reset Failed","No internet connection");
+                try {
+                    connectivityDetector = new ConnectivityDetector(getBaseContext());
+                    if(connectivityDetector.checkConnectivityStatus()){
+                        firebaseManager.resetPassword(this, userEmail);
+                    }else{
+                        connectivityDetector.showAlertDialog(ForgotPasswordActivity.this, "Password Reset Failed","No internet connection");
+                    }
+                } catch (Exception ex) {
+                    Toast.makeText(ForgotPasswordActivity.this, ex.getMessage(), Toast.LENGTH_SHORT).show();
                 }
+
             } //End of else
         });
+
+        btnBackArrow.setOnClickListener(v -> finish());
     }
 }

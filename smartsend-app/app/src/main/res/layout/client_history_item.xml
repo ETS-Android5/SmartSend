@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="2dp"
+    android:layout_marginBottom="2dp" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="4dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_history_item">
+
+        <ImageView
+            android:id="@+id/pickUpAddressImage"
+            android:layout_marginTop="25dp"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_pin_black"/>
+
+        <TextView
+            android:id="@+id/orderNumber"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@id/pickUpAddressImage"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:textSize="10sp"
+            android:text=""
+            android:textStyle="bold"
+            android:layout_toEndOf="@id/pickUpAddressImage" />
+
+        <TextView
+            android:id="@+id/pickUpAddress"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/orderNumber"
+            android:layout_toRightOf="@id/pickUpAddressImage"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:textSize="13sp"
+            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            android:layout_toEndOf="@id/pickUpAddressImage" />
+
+        <TextView
+            android:id="@+id/pickUpTimestamp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/pickUpAddress"
+            android:textSize="9sp"
+            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/quantum_grey"
+            android:layout_toEndOf="@id/pickUpAddressImage"
+            android:layout_toRightOf="@id/pickUpAddressImage" />
+
+        <ImageView
+            android:id="@+id/dropOffAddressImage"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_below="@id/pickUpAddressImage"
+            android:layout_gravity="center"
+            android:layout_marginTop="25dp"
+            android:src="@drawable/ic_flag_black" />
+
+        <TextView
+            android:id="@+id/dropOffAddress"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_toRightOf="@id/dropOffAddressImage"
+            android:layout_marginTop="10dp"
+            android:layout_below="@id/pickUpTimestamp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:textSize="13sp"
+            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            android:layout_toEndOf="@id/dropOffAddressImage" />
+
+        <TextView
+            android:id="@+id/dropOffTimestamp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_below="@id/dropOffAddress"
+            android:textSize="9sp"
+            android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+            android:layout_marginLeft="10dp"
+            android:layout_marginStart="10dp"
+            android:textColor="@color/quantum_grey"
+            android:layout_toEndOf="@id/dropOffAddressImage"
+            android:layout_toRightOf="@id/dropOffAddressImage" />
+
+        <ImageButton
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/ic_additional_arrow"
+            android:background="#fff"
+            android:layout_marginTop="35dp"
+            android:layout_marginEnd="15dp"
+            android:layout_marginRight="15dp" />
+    </RelativeLayout>
+</androidx.cardview.widget.CardView>

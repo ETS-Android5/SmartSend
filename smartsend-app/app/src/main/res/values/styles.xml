@@ -11,6 +11,25 @@
         <item name="colorControlHighlight">#AFAEAE</item>
     </style>
 
+    <style name="MyToolbarStyle" parent="Theme.AppCompat.Light">
+        <!-- Used to for the title of the Toolbar -->
+        <item name="android:textColorPrimary">#000</item>
+        <!-- Used to for the title of the Toolbar when parent is Theme.AppCompat.Light -->
+        <item name="android:textColorPrimaryInverse">#fff</item>
+        <!-- Used to color the text of the action menu icons -->
+        <item name="android:textColorSecondary">#000</item>
+        <!-- Used to color the overflow menu icon -->
+        <item name="actionMenuTextColor">#000</item>
+        <!-- Color of the Toolbar -->
+        <item name="android:background">#fff</item>
+    </style>
+
+    <style name="AppCompatAlertDialogStyle" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="colorAccent">#000</item>
+        <item name="android:textColorPrimary">#fff</item>
+        <item name="android:background">#fcba03</item>
+    </style>
+
     <style name="AppTheme.NoActionBar" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="windowActionBar">true</item>
         <item name="windowNoTitle">true</item>

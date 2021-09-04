@@ -1,135 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_login"
+    android:orientation="vertical">
 
-    <ScrollView
+    <TextView
+        android:id="@+id/tvProfileWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="150dp"
+        android:textColor="#fff"
+        android:textSize="8.77pt" />
+
+    <TextView
+        android:id="@+id/tvProfileName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProfileWelcome"
+        android:layout_marginTop="7dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center_horizontal"
+        android:text="Name"
+        android:textAlignment="center"
+        android:textColor="#fff"
+        android:textSize="12.02pt" />
+
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvProfileWelcome"
+        android:layout_marginTop="75dp"
+        android:orientation="horizontal">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            android:background="@drawable/bg_profile"
-            android:paddingTop="10dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="center">
-
-            <TextView
-                android:id="@+id/tvProfileWelcome"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Welcome"
-                android:textColor="#fff"
-                android:textSize="8.77pt" />
-
-            <TextView
-                android:id="@+id/tvProfileName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textAlignment="center"
-                android:text="Name"
-                android:textColor="#fff"
-                android:textSize="12.02pt"
-                android:layout_marginTop="7dp"
-                android:layout_below="@+id/tvProfileWelcome"
-                android:gravity="center_horizontal" />
-
-            <TextView
-                android:id="@+id/tvProfileLogin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="You logged in at"
-                android:textColor="#fff"
-                android:textSize="6pt"
-                android:layout_marginTop="10dp"
-                android:layout_below="@+id/tvProfileName" />
-
-            <DigitalClock
-                android:id="@+id/btnProfileLoginTime"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:textColor="#ffffff"
-                android:layout_marginTop="10dp"
-                android:background="@drawable/bg_profile_item"
-                android:layout_below="@+id/tvProfileLogin"
-                android:gravity="center"
-                android:textSize="20sp"/>
-
-<!--            <TextView-->
-<!--                android:id="@+id/btnProfileLoginTime"-->
-<!--                android:layout_width="70dp"-->
-<!--                android:layout_height="70dp"-->
-<!--                android:text="10:00 \n AM"-->
-<!--                android:textColor="#ffffff"-->
-<!--                android:layout_marginTop="10dp"-->
-<!--                android:background="@drawable/bg_profile_item"-->
-<!--                android:layout_below="@+id/tvProfileLogin"-->
-<!--                android:gravity="center"/>-->
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/tvProfileDuty"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:text="Location of duty"
                 android:textColor="#fff"
-                android:textSize="7.5pt"
-                android:layout_marginTop="15dp"
-                android:layout_below="@+id/btnProfileLoginTime" />
+                android:textSize="7.5pt" />
 
             <TextView
                 android:id="@+id/btnProfileDuty"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_profile_item"
+                android:gravity="center"
                 android:text=""
                 android:textColor="#ffffff"
-                android:textSize="6pt"
+                android:textSize="6pt" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/tvProfileLogin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="You logged in at"
+                android:textColor="#fff"
+                android:textSize="7.5pt" />
+
+            <DigitalClock
+                android:id="@+id/btnProfileLoginTime"
+                android:layout_gravity="center"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_profile_item"
-                android:layout_below="@+id/tvProfileDuty"
-                android:gravity="center"/>
+                android:gravity="center"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
 
             <TextView
                 android:id="@+id/tvProfileOrder"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
                 android:text="Orders"
                 android:textColor="#fff"
-                android:textSize="7.5pt"
-                android:layout_marginTop="15dp"
-                android:gravity="center"
-                android:layout_below="@+id/btnProfileDuty"
-                />
+                android:textSize="7.5pt" />
 
             <TextView
+                android:layout_gravity="center"
                 android:id="@+id/btnProfileOrder"
                 android:layout_width="70dp"
                 android:layout_height="70dp"
-                android:text="10 \nDelivered"
-                android:textColor="#ffffff"
-                android:textSize="6pt"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/bg_profile_item"
-                android:layout_below="@+id/tvProfileOrder"
-                android:gravity="center"/>
-
-            <Button
-                android:id="@+id/btnPlaceOrder"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="PLACE ORDER"
+                android:gravity="center"
+                android:text="10 \nDelivered"
                 android:textColor="#ffffff"
-                android:textStyle="bold"
-                android:layout_below="@id/btnProfileOrder"
-                android:background="@drawable/btn_place_order_style"
-                android:paddingLeft="40dp"
-                android:paddingRight="40dp"
-                android:layout_marginTop="20dp" />
-
+                android:textSize="6pt" />
         </LinearLayout>
+    </LinearLayout>
 
-    </ScrollView>
 
-</LinearLayout>
+</RelativeLayout>

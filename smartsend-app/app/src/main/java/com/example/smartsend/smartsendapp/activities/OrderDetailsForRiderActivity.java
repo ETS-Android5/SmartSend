@@ -23,7 +23,7 @@ import com.example.smartsend.smartsendapp.R;
 import com.example.smartsend.smartsendapp.utilities.UserLocalStore;
 import com.example.smartsend.smartsendapp.utilities.ConnectivityDetector;
 import com.example.smartsend.smartsendapp.utilities.CustomRequest;
-import com.example.smartsend.smartsendapp.utilities.Rider;
+import com.example.smartsend.smartsendapp.utilities.app.Rider;
 
 import org.json.JSONException;
 import org.json.JSONObject;

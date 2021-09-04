@@ -1,7 +1,6 @@
 package com.example.smartsend.smartsendapp.fragments;
 
 import android.app.Fragment;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Bundle;
 //import android.support.annotation.Nullable;
@@ -16,9 +15,9 @@ import androidx.annotation.Nullable;
 
 import com.example.smartsend.smartsendapp.R;
 import com.example.smartsend.smartsendapp.utilities.UserLocalStore;
-import com.example.smartsend.smartsendapp.utilities.Client;
+import com.example.smartsend.smartsendapp.utilities.app.Client;
 import com.example.smartsend.smartsendapp.utilities.ConnectivityDetector;
-import com.example.smartsend.smartsendapp.utilities.GCMController;
+import com.example.smartsend.smartsendapp.utilities.gcm.GCMController;
 import com.example.smartsend.smartsendapp.utilities.FirebaseManager;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 
@@ -33,7 +32,7 @@ public class ClientDashboardFragment extends Fragment {
     private String projectNumber;
     private String deviceRegIdForGCM = null;
     private Context ctx;
-    private ProgressDialog pDialog;
+    private CustomDialog pDialog;
     private ConnectivityDetector connectivityDetector;
     private UserLocalStore sessionManager;
     private Client loggedInClient;
@@ -50,7 +49,6 @@ public class ClientDashboardFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-
         View clientDashboardFragment = inflater.inflate(R.layout.layout_client_dashboard_fragment, container, false);
         ctx = getActivity();
 
@@ -69,7 +67,7 @@ public class ClientDashboardFragment extends Fragment {
         tvProfileName.setText(loggedInClient.getCompanyName());
 
         // Progress dialog
-        pDialog = new ProgressDialog(getActivity());
+        pDialog = new CustomDialog(getActivity());
 
         //Connectivity detector
         connectivityDetector = new ConnectivityDetector(getActivity());
@@ -89,8 +87,7 @@ public class ClientDashboardFragment extends Fragment {
             PlaceOrderFragment placeOrderFragment =  new PlaceOrderFragment();
             getFragmentManager().beginTransaction().replace(R.id.flMain, placeOrderFragment).addToBackStack(null).commit();
         });
-
-        return  clientDashboardFragment;
+        return clientDashboardFragment;
     }
 
     //Show Diaslog

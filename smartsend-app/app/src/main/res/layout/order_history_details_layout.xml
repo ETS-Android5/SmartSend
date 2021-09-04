@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/OrderHistoryCard"
+    android:background="@drawable/bg_order_history_details_card"
+    android:paddingTop="15dp"
+    android:paddingLeft="15dp"
+    android:paddingRight="15dp"
+    android:paddingBottom="0dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    app:behavior_peekHeight="0dp">
+
+    <ImageView
+        android:id="@+id/backButtonArrow"
+        android:src="@drawable/ic_exit_black"
+        android:layout_height="15dp"
+        android:layout_width="15dp"
+        android:clickable="true"
+        android:onClick="closeHistoryDetails"
+        android:focusable="true" />
+
+    <TextView
+        android:id="@+id/pickUpAddressLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/backButtonArrow"
+        android:layout_marginTop="30dp"
+        android:text="From"
+        android:textColor="#949494"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pickUpAddressLabel"
+        android:layout_marginTop="5dp"
+        android:textSize="12sp"
+        android:text="From"
+        android:textColor="#000"/>
+
+    <TextView
+        android:id="@+id/dropOffAddressLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/pickUpAddressLabel"
+        android:layout_marginTop="30dp"
+        android:text="To"
+        android:textColor="#949494"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dropOffAddressLabel"
+        android:layout_marginTop="5dp"
+        android:textSize="12sp"
+        android:text="To"
+        android:textColor="#000"/>
+
+    <TextView
+        android:id="@+id/orderStatusLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/dropOffAddressLabel"
+        android:layout_marginTop="30dp"
+        android:text="Order Status"
+        android:textColor="#949494"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/orderStatusLabel"
+        android:layout_marginTop="5dp"
+        android:textSize="12sp"
+        android:text="Order status"
+        android:textColor="#000"/>
+
+    <TextView
+        android:id="@+id/orderIDLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/orderStatusLabel"
+        android:layout_below="@id/dropOffAddressLabel"
+        android:layout_marginLeft="150dp"
+        android:layout_marginTop="30dp"
+        android:text="Order ID"
+        android:textColor="#949494"
+        android:layout_marginStart="150dp"
+        android:layout_toEndOf="@+id/orderStatusLabel" />
+
+    <TextView
+        android:id="@+id/tvOrderID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/orderIDLabel"
+        android:layout_toRightOf="@+id/orderStatusLabel"
+        android:layout_marginLeft="150dp"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="5dp"
+        android:textSize="12sp"
+        android:text="Order ID"
+        android:textColor="#000"/>
+
+    <LinearLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnCancelOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancel Order"
+            android:textColor="#fc0b03"
+            android:background="#fff"
+            android:onClick="cancelOrder"/>
+
+        <Button
+            android:id="@+id/btnEditOrder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColor="#2FA35A"
+            android:background="#fff"
+            android:text="Edit Order"
+            android:onClick="editOrder"/>
+
+    </LinearLayout>
+</RelativeLayout>

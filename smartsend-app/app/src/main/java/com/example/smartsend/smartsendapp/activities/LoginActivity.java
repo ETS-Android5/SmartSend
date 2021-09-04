@@ -1,7 +1,6 @@
 package com.example.smartsend.smartsendapp.activities;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
@@ -22,10 +21,11 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.smartsend.smartsendapp.R;
-import com.example.smartsend.smartsendapp.utilities.Client;
+import com.example.smartsend.smartsendapp.utilities.app.Client;
 import com.example.smartsend.smartsendapp.utilities.ConnectivityDetector;
+import com.example.smartsend.smartsendapp.fragments.CustomDialog;
 import com.example.smartsend.smartsendapp.utilities.FirebaseManager;
-import com.example.smartsend.smartsendapp.utilities.Rider;
+import com.example.smartsend.smartsendapp.utilities.app.Rider;
 import com.example.smartsend.smartsendapp.utilities.UserLocalStore;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -48,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
     private ImageView ivLogo;
     private Drawable resizedImage;
     private Button btnLoginSubmit, btnForgotPassword;
-    private ProgressDialog pDialog;
+    private CustomDialog pDialog;
     private String userEmail, userPassword;
     private int checkedUserId;
     private ConnectivityDetector connectivityDetector;
@@ -83,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
         btnForgotPassword = findViewById(R.id.btnForgotPassword);
 
         // Progress dialog
-        pDialog = new ProgressDialog(LoginActivity.this);
+        pDialog = new CustomDialog(LoginActivity.this);
 
 
 //        sessionManager.clearData();
@@ -113,7 +113,7 @@ public class LoginActivity extends AppCompatActivity {
             return false;
         });
 
-        //Submit login form
+
         // End of onClick
         btnLoginSubmit.setOnClickListener(v -> {
             userEmail = etUserEmail.getText().toString().trim();
@@ -150,7 +150,6 @@ public class LoginActivity extends AppCompatActivity {
         btnForgotPassword.setOnClickListener(v -> {
             goForgotPasswordActivity();
         });
-
     } //End of onCreate
 
 
@@ -208,7 +207,7 @@ public class LoginActivity extends AppCompatActivity {
                     firebaseManager.setCurrentUser(currentUser);
                     DatabaseReference ref = firebaseManager.getFirebaseDatabase().getReference().child("riders").child(currentUser.getUid());
                     Rider loggedInRider = new Rider();
-                    
+
                     ref.get().addOnCompleteListener(refTask -> {
                         if (refTask.isSuccessful()) {
                             HashMap<String, String> riderData = ((HashMap<String, String>) refTask.getResult().getValue());
@@ -339,10 +338,8 @@ public class LoginActivity extends AppCompatActivity {
         Intent intent = new Intent(LoginActivity.this,
                 ForgotPasswordActivity.class);
         startActivity(intent);
-        finish();
     }
 
-    //Go Rider dashboard  Activityb
     public void goRiderDashboardActivity(){
         Intent intent = new Intent(LoginActivity.this,
                 RiderDashboardActivity.class);
@@ -350,7 +347,6 @@ public class LoginActivity extends AppCompatActivity {
         finish();
     }
 
-    //Go Rider dashboard  Activityb
     public void goClientDashboardActivity(){
         Intent intent = new Intent(LoginActivity.this,
                 ClientDashboardActivity.class);
@@ -361,8 +357,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-//        FirebaseDatabase.getInstance().setLogLevel(Logger.Level.DEBUG);
-//        FirebaseApp.initializeApp(this);
         mAuth.addAuthStateListener(mAuthListener);
     }
 

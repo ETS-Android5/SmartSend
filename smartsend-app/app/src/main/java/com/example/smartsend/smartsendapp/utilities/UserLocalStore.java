@@ -3,6 +3,9 @@ package com.example.smartsend.smartsendapp.utilities;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.example.smartsend.smartsendapp.utilities.app.Client;
+import com.example.smartsend.smartsendapp.utilities.app.Rider;
+
 /**
  * Created by AGM TAZIM on 12/29/2015.
  */

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities.ClientMapActivity">
+
+    </androidx.fragment.app.FragmentContainerView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/btnBackArrow"
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:background="@drawable/ic_arrow_back_black"
+            app:layout_constraintEnd_toStartOf="@+id/BackArrowVerticalGuideline"
+            app:layout_constraintTop_toTopOf="@+id/BackArrowHorizontalGuidline"
+            android:onClick="closeActivity"/>
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/BackArrowVerticalGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.1" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/BackArrowHorizontalGuidline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.02" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/CardViewGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.15" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/PlaceFragmentGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.13" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/AddressInputVerticalGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.9" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/AddressInputHorizontalGuideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.07" />
+
+        <androidx.cardview.widget.CardView
+            android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+            app:layout_constraintBottom_toTopOf="@+id/PlaceFragmentGuideline"
+            app:layout_constraintEnd_toStartOf="@+id/AddressInputVerticalGuideline"
+            app:layout_constraintStart_toStartOf="@+id/BackArrowVerticalGuideline"
+            app:layout_constraintTop_toTopOf="@+id/AddressInputHorizontalGuideline"
+            android:background="@drawable/bg_addressinput"
+            android:layout_width="0dp"
+            android:layout_height="0dp">
+            <fragment android:id="@+id/autocomplete_fragment"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:name="com.google.android.libraries.places.widget.AutocompleteSupportFragment"
+                />
+        </androidx.cardview.widget.CardView>
+        <include
+            layout="@layout/order_card_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/CardViewGuideline" />
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/CardViewGuideline"
+            android:layout_height="0dp"
+            android:layout_width="match_parent">
+            <include layout="@layout/additional_details_layout"/>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/CardViewGuideline"
+            android:layout_height="0dp"
+            android:layout_width="match_parent">
+            <include layout="@layout/pickup_contact_details_layout"/>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/CardViewGuideline"
+            android:layout_height="0dp"
+            android:layout_width="match_parent">
+            <include layout="@layout/dropoff_contact_details_layout"/>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/CardViewGuideline"
+            android:layout_height="0dp"
+            android:layout_width="match_parent">
+            <include layout="@layout/courier_note_details_layout"/>
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</RelativeLayout>

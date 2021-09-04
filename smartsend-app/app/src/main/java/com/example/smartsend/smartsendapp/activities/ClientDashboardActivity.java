@@ -20,7 +20,6 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -31,11 +30,10 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.smartsend.smartsendapp.fragments.ClientDashboardFragment;
 import com.example.smartsend.smartsendapp.utilities.ConnectivityDetector;
-import com.example.smartsend.smartsendapp.fragments.PlaceOrderFragment;
 import com.example.smartsend.smartsendapp.R;
 import com.example.smartsend.smartsendapp.utilities.UserLocalStore;
-import com.example.smartsend.smartsendapp.utilities.Client;
-import com.example.smartsend.smartsendapp.utilities.GCMController;
+import com.example.smartsend.smartsendapp.utilities.app.Client;
+import com.example.smartsend.smartsendapp.utilities.gcm.GCMController;
 import com.example.smartsend.smartsendapp.utilities.FirebaseManager;
 import com.google.android.material.navigation.NavigationView;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
@@ -57,16 +55,16 @@ public class ClientDashboardActivity extends AppCompatActivity implements Naviga
     private UserLocalStore sessionManager;
     private Client loggedInClient;
     private String serverUrl;
-    private Toolbar toolbar;
     private NavigationView navigationView;
     private ImageView profilePicture;
     private TextView tvName;
+    private TextView tvEmail;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_client_dash_board);
+        setContentView(R.layout.activity_client_dashboard);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         sessionManager = UserLocalStore.getInstance(this);
@@ -80,7 +78,7 @@ public class ClientDashboardActivity extends AppCompatActivity implements Naviga
         //Setting drawer
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+                this, drawer, null, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
@@ -88,11 +86,12 @@ public class ClientDashboardActivity extends AppCompatActivity implements Naviga
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().performIdentifierAction(R.id.nav_client_dashboard, 0);
 
-        //Set image and name to navigation drawer header
         View navHeader = getLayoutInflater().inflate(R.layout.nav_header_main, navigationView);
         profilePicture = navHeader.findViewById(R.id.ivprofilePicture);
         tvName = navHeader.findViewById(R.id.tvName);
         tvName.setText(loggedInClient.getCompanyName());
+        tvEmail = (TextView) navHeader.findViewById(R.id.tvEmail);
+        tvEmail.setText(loggedInClient.getEmail());
 
         //Background Task for registering
         new AsyncTask() {
@@ -139,36 +138,45 @@ public class ClientDashboardActivity extends AppCompatActivity implements Naviga
 
     } //End of onCreate
 
-
-    //When click on drawer item
-    //Navigation drawer
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_client_dashboard) {
-            // Handle the  action
-            ClientDashboardFragment clientDashboardFragment =  new ClientDashboardFragment();
-            getFragmentManager().beginTransaction().replace(R.id.flMain, clientDashboardFragment).addToBackStack(null).commit();
-        } else if (id == R.id.nav_place_order){
-            PlaceOrderFragment placeOrderFragment =  new PlaceOrderFragment();
-            getFragmentManager().beginTransaction().replace(R.id.flMain, placeOrderFragment).addToBackStack(null).commit();
-        } else if (id == R.id.nav_client_signout){
-            FirebaseManager firebaseManager = FirebaseManager.getInstance();
+        switch (id) {
+            case R.id.nav_client_dashboard: {
+                ClientDashboardFragment clientDashboardFragment =  new ClientDashboardFragment();
+                getFragmentManager().beginTransaction().replace(R.id.flMain, clientDashboardFragment).addToBackStack(null).commit();
+                break;
+            }
+            case R.id.nav_place_order: {
+                goClientMapActivity();
+                break;
+            }
+            case R.id.nav_client_order_history: {
+                goClientOrderHistoryActivity();
+                break;
+            }
+            case R.id.nav_my_account: {
+                goUserProfileActivity();
+                break;
+            }
+            case R.id.nav_client_signout: {
+                FirebaseManager firebaseManager = FirebaseManager.getInstance();
 
-            firebaseManager.signOut(ctx);
-            Intent intent = new Intent(this,
-                    LoginActivity.class);
-            startActivity(intent);
-            finish();
+                firebaseManager.signOut(ctx);
+                Intent intent = new Intent(this,
+                        LoginActivity.class);
+                startActivity(intent);
+                finish();
+                break;
+            }
         }
-
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
+
         return true;
     }
-
 
     //Register Device for GCM  service
     public void registerClientDevice(){
@@ -227,6 +235,24 @@ public class ClientDashboardActivity extends AppCompatActivity implements Naviga
     //Hide Dialog
     private void hideDialog() {
         pDialog.dismiss();
+    }
+
+    public void goClientMapActivity(){
+        Intent intent = new Intent(ClientDashboardActivity.this,
+                ClientMapActivity.class);
+        startActivity(intent);
+    }
+
+    private void goClientOrderHistoryActivity() {
+        Intent intent = new Intent(ClientDashboardActivity.this,
+                ClientOrderHistoryActivity.class);
+        startActivity(intent);
+    }
+
+    private void goUserProfileActivity() {
+        Intent intent = new Intent(ClientDashboardActivity.this,
+                UserProfileActivity.class);
+        startActivity(intent);
     }
 
 }

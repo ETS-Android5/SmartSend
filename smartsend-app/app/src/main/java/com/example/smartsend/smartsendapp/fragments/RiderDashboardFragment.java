@@ -1,7 +1,6 @@
 package com.example.smartsend.smartsendapp.fragments;
 
 import android.app.Fragment;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -19,8 +18,8 @@ import androidx.appcompat.widget.Toolbar;
 import com.example.smartsend.smartsendapp.R;
 import com.example.smartsend.smartsendapp.utilities.UserLocalStore;
 import com.example.smartsend.smartsendapp.utilities.ConnectivityDetector;
-import com.example.smartsend.smartsendapp.utilities.GCMController;
-import com.example.smartsend.smartsendapp.utilities.Rider;
+import com.example.smartsend.smartsendapp.utilities.gcm.GCMController;
+import com.example.smartsend.smartsendapp.utilities.app.Rider;
 import com.example.smartsend.smartsendapp.utilities.FirebaseManager;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.firebase.database.DatabaseReference;
@@ -40,7 +39,7 @@ public class RiderDashboardFragment extends Fragment {
     private String projectNumber;
     private String deviceRegIdForGCM = null;
     private Context ctx;
-    private ProgressDialog pDialog;
+    private CustomDialog pDialog;
     private ConnectivityDetector connectivityDetector;
     private UserLocalStore sessionManager;
     private Rider loggedInRider;
@@ -79,7 +78,7 @@ public class RiderDashboardFragment extends Fragment {
         btnBikeNumber = riderDashboardFragment.findViewById(R.id.btnBikeNumber);
         btnBikeNumber.setText(loggedInRider.getBikeNumber());
 
-        pDialog = new ProgressDialog(getActivity());
+        pDialog = new CustomDialog(getActivity());
         connectivityDetector = new ConnectivityDetector(getActivity());
 
         tbRiderStatus.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {

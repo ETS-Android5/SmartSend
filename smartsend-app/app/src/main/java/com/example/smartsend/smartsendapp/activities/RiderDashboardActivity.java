@@ -1,7 +1,6 @@
 package com.example.smartsend.smartsendapp.activities;
 
 import android.annotation.SuppressLint;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -30,12 +29,12 @@ import com.android.volley.toolbox.Volley;
 import com.example.smartsend.smartsendapp.R;
 import com.example.smartsend.smartsendapp.fragments.RiderAccountSettingsFragment;
 import com.example.smartsend.smartsendapp.fragments.RiderDashboardFragment;
-import com.example.smartsend.smartsendapp.utilities.SmartSendLocationListener;
-import com.example.smartsend.smartsendapp.utilities.SmartSendLocationManager;
+import com.example.smartsend.smartsendapp.fragments.CustomDialog;
+import com.example.smartsend.smartsendapp.utilities.location.SmartSendLocationManager;
 import com.example.smartsend.smartsendapp.utilities.UserLocalStore;
 import com.example.smartsend.smartsendapp.utilities.ConnectivityDetector;
-import com.example.smartsend.smartsendapp.utilities.GCMController;
-import com.example.smartsend.smartsendapp.utilities.Rider;
+import com.example.smartsend.smartsendapp.utilities.gcm.GCMController;
+import com.example.smartsend.smartsendapp.utilities.app.Rider;
 import com.example.smartsend.smartsendapp.utilities.FirebaseManager;
 import com.google.android.gms.gcm.GoogleCloudMessaging;
 import com.google.android.material.navigation.NavigationView;
@@ -57,13 +56,14 @@ public class RiderDashboardActivity extends AppCompatActivity implements Navigat
     private String projectNumber;
     private String deviceRegIdForGCM = null;
     private Context ctx = this;
-    private ProgressDialog pDialog;
+    private CustomDialog pDialog;
     private ConnectivityDetector connectivityDetector;
     private UserLocalStore sessionManager;
     private Rider loggedInRider;
     private NavigationView navigationView;
     private ImageView profilePicture;
     private TextView tvName;
+    private TextView tvEmail;
 
     @SuppressLint("StaticFieldLeak")
     @Override
@@ -72,41 +72,35 @@ public class RiderDashboardActivity extends AppCompatActivity implements Navigat
         setContentView(R.layout.activity_rider_dashboard);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        //toolbar = (Toolbar) findViewById(R.id.toolbar);
-        //setSupportActionBar(toolbar);
         sessionManager = UserLocalStore.getInstance(ctx);
         loggedInRider = sessionManager.getLoggedInRider();
         projectNumber = GCMController.getProjectNumber(this);
         serverUrl = FirebaseManager.getServerUrl(this);
-
-        // Progress dialog
-        pDialog = new ProgressDialog(RiderDashboardActivity.this);
+        pDialog = new CustomDialog(RiderDashboardActivity.this);
         connectivityDetector = new ConnectivityDetector(getBaseContext());
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.setDrawerListener(toggle);
         toggle.syncState();
 
-        navigationView = (NavigationView) findViewById(R.id.nav_view_rider_dashboard);
+        navigationView = findViewById(R.id.nav_view_rider_dashboard);
         navigationView.setNavigationItemSelectedListener(this);
-        //Set default item selected on nivigation
         navigationView.getMenu().performIdentifierAction(R.id.nav_rider_dashboard, 0);
 
-        //Set image and name to navigation drawer header
         View navHeader = getLayoutInflater().inflate(R.layout.nav_header_main, navigationView);
         profilePicture = (ImageView) navHeader.findViewById(R.id.ivprofilePicture);
         tvName = (TextView) navHeader.findViewById(R.id.tvName);
+        tvName.setText(loggedInRider.getName());
+        tvEmail = (TextView) navHeader.findViewById(R.id.tvEmail);
+        tvEmail.setText(loggedInRider.getEmail());
         try {
             Picasso.get().load(FirebaseManager.getInstance().getRiderProfilePicture(loggedInRider.getId())).into(profilePicture);
         } catch (IOException ignored) {
         }
-        tvName.setText(loggedInRider.getName());
 
-        //Show Current Location
         SmartSendLocationManager ssLocationManager = new SmartSendLocationManager(getApplicationContext(),60000, 10);
-        SmartSendLocationListener ssLocationListener = new SmartSendLocationListener(getApplicationContext());
 
         if (ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED)
@@ -161,28 +155,30 @@ public class RiderDashboardActivity extends AppCompatActivity implements Navigat
 
     }//End of onCreate
 
-    //When click on drawer item
-    //Navigation drawer
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_rider_dashboard) {
-            RiderDashboardFragment riderDashboardFragment =  new RiderDashboardFragment();
-            getFragmentManager().beginTransaction().replace(R.id.flMain, riderDashboardFragment).addToBackStack(null).commit();
-        } else if (id == R.id.nav_rider_account_settings) {
-            RiderAccountSettingsFragment accountSettingsFragment = new RiderAccountSettingsFragment();
-            getFragmentManager().beginTransaction().replace(R.id.flMain, accountSettingsFragment).addToBackStack(null).commit();
-        }
-        else if ( id == R.id.nav_rider_signout) {
-            FirebaseManager firebaseManager = FirebaseManager.getInstance();
+        switch(id) {
+            case R.id.nav_rider_dashboard: {
+                RiderDashboardFragment riderDashboardFragment =  new RiderDashboardFragment();
+                getFragmentManager().beginTransaction().replace(R.id.flMain, riderDashboardFragment).addToBackStack(null).commit();
+                break;
+            }
+            case R.id.nav_rider_account_settings: {
+                RiderAccountSettingsFragment accountSettingsFragment = new RiderAccountSettingsFragment();
+                getFragmentManager().beginTransaction().replace(R.id.flMain, accountSettingsFragment).addToBackStack(null).commit();
+                break;
+            }
+            case R.id.nav_rider_signout: {
+                FirebaseManager firebaseManager = FirebaseManager.getInstance();
 
-            firebaseManager.signOut(ctx);
-            Intent intent = new Intent(this,
-                    LoginActivity.class);
-            startActivity(intent);
-            finish();
+                firebaseManager.signOut(ctx);
+                Intent intent = new Intent(this,
+                        LoginActivity.class);
+                startActivity(intent);
+                finish();
+            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

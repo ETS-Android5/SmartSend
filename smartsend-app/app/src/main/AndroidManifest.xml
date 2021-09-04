@@ -1,13 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.smartsend.smartsendapp">
 
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the "MyLocation" functionality.
+    -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
-<!--    <uses-permission android:name="android.permission.WAKE_LOCK" />-->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- <uses-permission android:name="android.permission.WAKE_LOCK" /> -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <permission
@@ -19,11 +23,30 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        android:theme="@style/AppTheme">
+        tools:targetApi="m">
+
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".activities.ClientMapActivity"
+            android:label="@string/title_activity_rider_map"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".activities.ClientDashboardActivity"/>
         <activity
             android:name=".activities.WelcomeActivity"
             android:label="@string/app_name"
@@ -52,12 +75,29 @@
             android:label="@string/title_activity_place_order"
             android:theme="@style/AppTheme" />
         <activity
+            android:name=".activities.OrderDetailsAcceptedActivity"
+            android:label="@string/title_activity_order_details_accepted"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.ClientOrderHistoryActivity"
+            android:label="@string/title_client_order_history"
+            android:theme="@style/MyToolbarStyle"
+            android:parentActivityName=".activities.ClientDashboardActivity"/>
+
+        <activity
+            android:name=".activities.UserProfileActivity"
+            android:label="@string/title_user_profile"
+            android:theme="@style/AppTheme"
+            android:parentActivityName=".activities.ClientDashboardActivity"/>
+
+        <activity
             android:name=".activities.ForgotPasswordActivity"
             android:label="@string/title_activity_forgot_password"
+            android:parentActivityName=".activities.LoginActivity"
             android:theme="@style/AppTheme" />
 
         <receiver
-            android:name=".utilities.GCMReceiver"
+            android:name=".utilities.gcm.GCMReceiver"
             android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
 
@@ -70,7 +110,7 @@
             </intent-filter>
         </receiver>
 
-        <service android:name=".utilities.GCMMessageHandler" />
+        <service android:name=".utilities.gcm.GCMMessageHandler" />
 
         <activity
             android:name=".activities.OrderDetailsForRiderActivity"
@@ -83,7 +123,7 @@
         <activity
             android:name=".activities.OrderFailedActivity"
             android:label="@string/title_activity_order_failed"
-            android:theme="@style/AppTheme"></activity>
+            android:theme="@style/AppTheme" />
     </application>
 
 </manifest>
