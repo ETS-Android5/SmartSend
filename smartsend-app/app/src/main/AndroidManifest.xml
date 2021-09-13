@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.smartsend.smartsendapp">
-
+    package="com.example.smartsend.smartsendapp" >
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
          Google Maps Android API v2, but you must specify either coarse or fine
          location permissions for the "MyLocation" functionality.
     -->
+    <uses-permission android:name="android.permission.ACCESS_NOTIFICATION_POLICY" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.GET_ACCOUNTS" /> <!-- <uses-permission android:name="android.permission.WAKE_LOCK" /> -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <!-- <uses-permission android:name="android.permission.WAKE_LOCK" /> -->
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
 
     <permission
         android:name="com.example.smartsend.smartsendapp.permission.C2D_MESSAGE"
@@ -25,11 +28,11 @@
         android:allowBackup="true"
         android:icon="@drawable/logo"
         android:label="@string/app_name"
+        android:roundIcon="@drawable/logo"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m">
-
+        tools:targetApi="m" >
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -42,15 +45,25 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <service android:name=".services.PendingOrderNotifierService"
+            android:permission="string"/>
+
         <activity
             android:name=".activities.ClientMapActivity"
+            android:label="@string/title_activity_client_map"
+            android:parentActivityName=".activities.containers.ClientMenuContainerActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
+        <activity
+            android:name=".activities.RiderMapActivity"
             android:label="@string/title_activity_rider_map"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".activities.ClientDashboardActivity"/>
+            android:parentActivityName=".activities.containers.ClientMenuContainerActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
         <activity
             android:name=".activities.WelcomeActivity"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme.NoActionBar" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,9 +76,36 @@
             android:theme="@style/AppTheme.NoActionBar"
             android:windowSoftInputMode="stateHidden" />
         <activity
-            android:name=".activities.ClientDashboardActivity"
+            android:name=".activities.AddressPickerActivity"
+            android:label="@string/title_activity_address_picker"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".activities.ClientMapActivity"/>
+        <activity
+            android:name="com.example.smartsend.smartsendapp.utilities.location.LocationRequestActivity"
+            android:label="@string/title_activity_location_request"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.SearchCourierActivity"
+            android:label="@string/title_activity_search_courier"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".activities.RiderActiveOrdersActivity"
+            android:label="@string/title_activity_active_orders"
+            android:parentActivityName=".activities.containers.ClientMenuContainerActivity"
+            android:theme="@style/MyToolbarStyle"/>
+        <activity
+            android:name=".activities.containers.ClientMenuContainerActivity"
             android:label="@string/title_activity_client_dash_board"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.ContactUsActivity"
+            android:label="@string/title_activity_contact_us"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".activities.OrderSummaryActivity"
+            android:label="@string/title_activity_order_summary"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:parentActivityName=".activities.AddressPickerActivity"/>
         <activity
             android:name=".activities.RiderDashboardActivity"
             android:label="@string/title_activity_rider_dashboard"
@@ -81,36 +121,33 @@
         <activity
             android:name=".activities.ClientOrderHistoryActivity"
             android:label="@string/title_client_order_history"
-            android:theme="@style/MyToolbarStyle"
-            android:parentActivityName=".activities.ClientDashboardActivity"/>
-
+            android:parentActivityName=".activities.containers.ClientMenuContainerActivity"
+            android:theme="@style/MyToolbarStyle" />
         <activity
-            android:name=".activities.UserProfileActivity"
-            android:label="@string/title_user_profile"
-            android:theme="@style/AppTheme"
-            android:parentActivityName=".activities.ClientDashboardActivity"/>
-
+            android:name=".activities.RiderOrderHistoryActivity"
+            android:label="@string/title_client_rider_history"
+            android:parentActivityName=".activities.containers.RiderMenuContainerActivity"
+            android:theme="@style/MyToolbarStyle" />
+        <activity
+            android:name=".activities.RiderProfileActivity"
+            android:label="@string/title_rider_profile"
+            android:parentActivityName=".activities.containers.RiderMenuContainerActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.ActiveOrderMapActivity"
+            android:label="@string/title_active_order_map"
+            android:parentActivityName=".activities.RiderActiveOrdersActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".activities.ClientProfileActivity"
+            android:label="@string/title_client_profile"
+            android:parentActivityName=".activities.containers.ClientMenuContainerActivity"
+            android:theme="@style/AppTheme" />
         <activity
             android:name=".activities.ForgotPasswordActivity"
             android:label="@string/title_activity_forgot_password"
             android:parentActivityName=".activities.LoginActivity"
             android:theme="@style/AppTheme" />
-
-        <receiver
-            android:name=".utilities.gcm.GCMReceiver"
-            android:permission="com.google.android.c2dm.permission.SEND">
-            <intent-filter>
-
-                <!-- Receives the actual messages. -->
-                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
-                <!-- Receives the registration id. -->
-                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
-
-                <category android:name="com.example.smartsend.smartsendapp" />
-            </intent-filter>
-        </receiver>
-
-        <service android:name=".utilities.gcm.GCMMessageHandler" />
 
         <activity
             android:name=".activities.OrderDetailsForRiderActivity"
@@ -119,10 +156,6 @@
         <activity
             android:name=".activities.AcceptedOrderActivity"
             android:label="@string/title_activity_accepted_rider"
-            android:theme="@style/AppTheme" />
-        <activity
-            android:name=".activities.OrderFailedActivity"
-            android:label="@string/title_activity_order_failed"
             android:theme="@style/AppTheme" />
     </application>
 

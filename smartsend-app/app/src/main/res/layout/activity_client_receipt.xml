@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F3B130"
+    android:paddingTop="20dp">
+
+    <TextView
+        android:id="@+id/orderCompletedLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#fff"
+        android:fontFamily="@font/poppins"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:textSize="20sp"
+        android:text="ORDER COMPLETED" />
+
+    <ImageView
+        android:id="@+id/imageOrderCompleted"
+        android:layout_below="@id/orderCompletedLabel"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_delivery_success"
+        android:layout_marginTop="10dp"
+        android:layout_height="100dp"
+        android:layout_width="100dp" />
+
+    <TextView
+        android:id="@+id/payLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageOrderCompleted"
+        android:layout_marginTop="15dp"
+        android:textColor="#fff"
+        android:fontFamily="@font/poppins"
+        android:layout_centerHorizontal="true"
+        android:textSize="12sp"
+        android:text="PAY" />
+
+    <TextView
+        android:id="@+id/tvDeliveryPrice"
+        android:layout_width="250dp"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/payLabel"
+        android:textColor="#fff"
+        android:fontFamily="@font/poppins"
+        android:layout_centerHorizontal="true"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:text="$255.17"
+        android:gravity="center_horizontal" />
+
+    <TextView
+        android:id="@+id/paymentSummaryLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDeliveryPrice"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:background="#F1AA20"
+        android:padding="5dp"
+        android:paddingStart="15dp"
+        android:paddingLeft="15dp"
+        android:text="Payment Summary"
+        android:textColor="#fff"
+        android:textSize="15sp" />
+
+    <RelativeLayout
+        android:id="@+id/paymentDetails"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/paymentSummaryLabel"
+        android:padding="15dp">
+
+        <LinearLayout
+            android:id="@+id/paymentLabels"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Base fare"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Distance Fare(14.3km)"
+                android:layout_marginTop="10dp"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Time fare(30 min)"
+                android:layout_marginTop="10dp"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tax"
+                android:layout_marginTop="10dp"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/paymentPrices"
+            android:gravity="end"
+            android:orientation="vertical"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="$121.00"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:text="$121.00"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:text="$121.00"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:text="$121.00"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/paymentDivider"
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:layout_below="@id/paymentPrices"
+            android:layout_marginTop="10dp"
+            android:background="@color/ColorDivider"/>
+
+        <LinearLayout
+            android:id="@+id/subtotalLabels"
+            android:orientation="vertical"
+            android:layout_below="@id/paymentDivider"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sub Total"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Additional Cost"
+                android:layout_marginTop="10dp"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/subtotalPrices"
+            android:orientation="vertical"
+            android:layout_below="@id/paymentDivider"
+            android:layout_marginTop="10dp"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:gravity="end"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:text="$121.00"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="10dp"
+                android:text="$15.00"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <View
+            android:id="@+id/subtotalDivider"
+            android:layout_height="1dp"
+            android:layout_width="match_parent"
+            android:layout_below="@id/subtotalPrices"
+            android:layout_marginTop="10dp"
+            android:background="@color/ColorDivider"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/subtotalDivider"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="10dp"
+            android:text="Total"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
+        <TextView
+            android:id="@+id/tvTotalPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/subtotalDivider"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:text="$255.17"
+            android:textColor="#fff"
+            android:textSize="15sp" />
+
+        <Button
+            android:background="@drawable/button_shape_white"
+            android:textColor="#000"
+            android:text="DONE"
+            android:fontFamily="@font/poppins"
+            android:textStyle="normal"
+            android:layout_height="35dp"
+            android:layout_width="250dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"/>
+
+    </RelativeLayout>>
+</RelativeLayout>

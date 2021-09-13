@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/RiderFoundCard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#fff"
+    android:padding="20dp"
+    app:behavior_hideable="false"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+    app:behavior_peekHeight="0dp"
+    tools:context=".activities.SearchCourierActivity">
+
+    <ImageView
+        android:id="@+id/imageNoDriverFound"
+        android:layout_width="150dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/driver_found"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageNoDriverFound"
+        android:fontFamily="@font/poppins"
+        android:text="We Have A Match! :)"
+        android:id="@+id/noDriverFoundLabel"
+        android:layout_marginTop="10dp"
+        android:textStyle="bold"
+        android:textSize="20dp"
+        android:layout_centerHorizontal="true"/>
+
+    <TextView
+        android:id="@+id/noRiderFoundRational"
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/noDriverFoundLabel"
+        android:layout_marginTop="10dp"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:text="One of our couriers have seen your order, we will let you know when order is accepted."
+        android:textAlignment="center" />
+
+    <Button
+        android:background="@drawable/button_shape_black"
+        android:layout_below="@id/noRiderFoundRational"
+        android:text="UNDERSTOOD"
+        android:layout_marginTop="50dp"
+        android:layout_centerHorizontal="true"
+        android:fontFamily="@font/poppins"
+        android:textColor="#fff"
+        android:layout_height="35dp"
+        android:layout_width="125dp"
+        android:onClick="closeActivity"/>
+</RelativeLayout>

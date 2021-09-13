@@ -1,12 +1,18 @@
 package com.example.smartsend.smartsendapp.utilities.app;
 
+import java.io.Serializable;
+
 /**
  * Created by AGM TAZIM on 12/29/2015.
  */
-public class Rider {
+public class Rider implements Serializable {
 
     //Declaration
-    private String id = null, status = null, email = null, password = null, name = null, bikeNumber = null, contactNumber = null, profilePicture = null, createdDate = null;
+    private String id = null, status = null,
+            email = null, password = null,
+            first_name = null, last_name = null, vehicle_number = null,
+            birth_date = null, contact_number = null, profile_picture = null,
+            created_date = null;
 
     //Constructor
     public Rider(){
@@ -16,6 +22,22 @@ public class Rider {
     public Rider(String email, String password){
         this.email = email;
         this.password = password;
+    }
+
+    public String getLast_name() {
+        return last_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
+    public String getBirth_date() {
+        return birth_date;
+    }
+
+    public void setBirth_date(String birth_date) {
+        this.birth_date = birth_date;
     }
 
     //Set id
@@ -39,7 +61,7 @@ public class Rider {
     }
 
     //Set password
-    public void setPasword(String password){
+    public void setPassword(String password){
         this.password = password;
     }
 
@@ -49,53 +71,53 @@ public class Rider {
     }
 
     //Set name
-    public void setName(String name){
-        this.name = name;
+    public void setFirst_name(String first_name){
+        this.first_name = first_name;
     }
 
     //get name
-    public String getName(){
-        return this.name;
+    public String getFirst_name(){
+        return this.first_name;
     }
 
     //Set biken umber
-    public void setBikeNumber(String bikeNumber){
-        this.bikeNumber = bikeNumber;
+    public void setVehicle_number(String vehicle_number){
+        this.vehicle_number = vehicle_number;
     }
 
     //get bike number
-    public String getBikeNumber(){
-        return this.bikeNumber;
+    public String getVehicle_number(){
+        return this.vehicle_number;
     }
 
     //Set contact umber
-    public void setContactNumber(String contactNumber){
-        this.contactNumber = contactNumber;
+    public void setContact_number(String contact_number){
+        this.contact_number = contact_number;
     }
 
     //get contact number
-    public String getContactNumber(){
-        return this.contactNumber;
+    public String getContact_number(){
+        return this.contact_number;
     }
 
     //Set profile picture
-    public void setProfilePicture(String profilePicture){
-        this.profilePicture = profilePicture;
+    public void setProfile_picture(String profile_picture){
+        this.profile_picture = profile_picture;
     }
 
     //get profile picture
-    public String getProfilePicture(){
-        return this.profilePicture;
+    public String getProfile_picture(){
+        return this.profile_picture;
     }
 
     //Set created date
-    public void setCreatedDate(String createdDate){
-        this.createdDate = createdDate;
+    public void setCreated_date(String created_date){
+        this.created_date = created_date;
     }
 
     //get created Date
-    public String getCreatedDate(){
-        return this.createdDate;
+    public String getCreated_date(){
+        return this.created_date;
     }
 
     //Set status

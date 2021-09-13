@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent">
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activities.ClientMapActivity">
+
+    </androidx.fragment.app.FragmentContainerView>
+
+    <Button
+        android:id="@+id/btnMenu"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/ic_menu"
+        android:onClick="openMenu" />
+
+    <View
+        android:id="@+id/cardDivider"
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        android:layout_below="@id/btnMenu"
+        android:layout_margin="20dp"/>
+
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/cardDivider"
+        android:layout_alignParentBottom="true">
+
+        <include layout="@layout/layout_pending_order_details"/>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_alignParentBottom="true"
+        android:background="@android:color/transparent"
+        android:layout_below="@id/cardDivider">
+
+        <RelativeLayout
+            android:id="@+id/pickUpContactCard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            app:behavior_hideable="false"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
+            app:behavior_peekHeight="70dp">
+
+            <View
+                android:id="@+id/cardDrag"
+                android:background="#5c5c5c"
+                android:layout_gravity="center"
+                android:layout_height="3dp"
+                android:layout_width="74dp"
+                android:layout_centerHorizontal="true"/>
+
+            <RelativeLayout android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_below="@+id/cardDrag"
+                android:background="@drawable/bg_card"
+                android:layout_marginTop="5dp"
+                android:padding="10dp">
+
+                <ImageButton
+                    android:id="@+id/btnRefreshPendingOrders"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@android:color/transparent"
+                    android:onClick="scanOrders"
+                    android:src="@drawable/ic_refresh" />
+
+
+                <include layout="@layout/layout_pending_orders_fragment"/>
+
+                <LinearLayout
+                    android:id="@+id/noPendingOrders"
+                    android:orientation="vertical"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:layout_centerInParent="true">
+
+                    <ImageView
+                        android:id="@+id/newOrderImage"
+                        android:src="@drawable/no_orders"
+                        android:layout_gravity="center"
+                        android:layout_height="150dp"
+                        android:layout_width="150dp" />
+
+                    <TextView
+                        android:fontFamily="@font/poppins"
+                        android:layout_height="wrap_content"
+                        android:layout_width="wrap_content"
+                        android:text="no pending orders"
+                        android:textAllCaps="true"
+                        android:layout_gravity="center"
+                        android:textSize="12sp"
+                        android:layout_marginTop="8dp"/>
+                </LinearLayout>
+            </RelativeLayout>
+        </RelativeLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+</RelativeLayout>

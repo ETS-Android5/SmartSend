@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    android:paddingBottom="75dp"
+    android:paddingLeft="15dp"
+    android:background="#f0f2f7"
+    tools:context=".activities.containers.ClientMenuContainerActivity"
+    android:paddingStart="15dp"
+    android:paddingTop="15dp"
+    android:paddingRight="15dp">
+
+    <TextView
+        android:id="@+id/detailsTitle"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:textSize="17sp"
+        android:textColor="#000"
+        android:layout_marginTop="2dp"
+        android:text="1 New Order Received"/>
+
+    <ImageView
+        android:id="@+id/detailsLogo"
+        android:src="@drawable/ic_new_delivery"
+        android:layout_height="100dp"
+        android:layout_width="100dp"
+        android:layout_below="@id/detailsTitle"
+        android:layout_centerHorizontal="true"
+        android:translationZ="90dp"
+        android:layout_marginTop="50dp"/>
+
+    <RelativeLayout
+        android:layout_marginTop="-60dp"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:background="@drawable/bg_top_line_background"
+        android:layout_below="@id/detailsLogo"
+        android:paddingTop="75dp">
+
+        <ImageView
+            android:id="@+id/pickUpLogo"
+            android:layout_marginLeft="35dp"
+            android:layout_height="35dp"
+            android:layout_width="40dp"
+            android:src="@drawable/ic_pin_black"/>
+
+        <TextView
+            android:id="@+id/pickUpTimestamp"
+            android:layout_toRightOf="@id/pickUpLogo"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:layout_width="wrap_content"
+            android:text="12:43 PM - Pick up"
+            android:textColor="#000"
+            android:layout_toEndOf="@id/pickUpLogo" />
+
+        <TextView
+            android:id="@+id/pickUpAddress"
+            android:layout_width="199dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pickUpTimestamp"
+            android:layout_toEndOf="@id/pickUpLogo"
+            android:layout_toRightOf="@id/pickUpLogo"
+            android:fontFamily="@font/poppins"
+            android:text="Rotschild Blvd, Tel Aviv-Yafo, Israel"
+            android:textSize="12sp" />
+
+        <ImageView
+            android:id="@+id/dropOffLogo"
+            android:layout_marginLeft="35dp"
+            android:layout_below="@id/pickUpLogo"
+            android:layout_marginTop="60dp"
+            android:layout_height="35dp"
+            android:layout_width="40dp"
+            android:src="@drawable/ic_flag_black"/>
+
+        <TextView
+            android:id="@+id/dropOffTimestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/pickUpAddress"
+            android:layout_marginStart="0dp"
+            android:layout_marginLeft="0dp"
+            android:layout_marginTop="30dp"
+            android:fontFamily="@font/poppins"
+            android:layout_toEndOf="@id/dropOffLogo"
+            android:layout_toRightOf="@id/dropOffLogo"
+            android:text="12:43 PM - Drop off"
+            android:textColor="#000" />
+
+        <TextView
+            android:id="@+id/dropOffAddress"
+            android:layout_width="217dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dropOffTimestamp"
+            android:layout_toEndOf="@id/pickUpLogo"
+            android:layout_toRightOf="@id/pickUpLogo"
+            android:fontFamily="@font/poppins"
+            android:text="Rabenu Yeruham St 2, Tel Aviv-Yafo, Israel"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:id="@+id/orderBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/dropOffAddress"
+            android:layout_alignParentBottom="true"
+            android:background="#fff"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:text="Decline"
+                android:textColor="#ff0000" />
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_weight="1"
+                android:background="#000"
+                android:text="Accept"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+    </RelativeLayout>
+</RelativeLayout>

@@ -14,7 +14,7 @@
 
         <ImageView
             android:id="@+id/pickUpAddressImage"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:layout_width="15dp"
             android:layout_height="15dp"
             android:layout_gravity="center"
@@ -34,20 +34,20 @@
 
         <TextView
             android:id="@+id/pickUpAddress"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
             android:layout_below="@id/orderNumber"
-            android:layout_toRightOf="@id/pickUpAddressImage"
-            android:layout_marginLeft="10dp"
             android:layout_marginStart="10dp"
-            android:textSize="13sp"
+            android:layout_marginLeft="10dp"
+            android:layout_toEndOf="@id/pickUpAddressImage"
+            android:layout_toRightOf="@id/pickUpAddressImage"
             android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
-            android:layout_toEndOf="@id/pickUpAddressImage" />
+            android:textSize="13sp" />
 
         <TextView
             android:id="@+id/pickUpTimestamp"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_below="@id/pickUpAddress"
             android:textSize="9sp"
             android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
@@ -61,15 +61,15 @@
             android:id="@+id/dropOffAddressImage"
             android:layout_width="15dp"
             android:layout_height="15dp"
-            android:layout_below="@id/pickUpAddressImage"
+            android:layout_below="@id/pickUpTimestamp"
             android:layout_gravity="center"
-            android:layout_marginTop="25dp"
+            android:layout_marginTop="15dp"
             android:src="@drawable/ic_flag_black" />
 
         <TextView
             android:id="@+id/dropOffAddress"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_toRightOf="@id/dropOffAddressImage"
             android:layout_marginTop="10dp"
             android:layout_below="@id/pickUpTimestamp"
@@ -82,7 +82,7 @@
         <TextView
             android:id="@+id/dropOffTimestamp"
             android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_below="@id/dropOffAddress"
             android:textSize="9sp"
             android:text="aaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"

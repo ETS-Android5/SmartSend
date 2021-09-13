@@ -6,9 +6,6 @@ import android.content.DialogInterface;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-/**
- * Created by AGM TAZIM on 12/31/2015.
- */
 public class ConnectivityDetector {
     Context ctx;
 
@@ -20,8 +17,8 @@ public class ConnectivityDetector {
     //Check internet status
     public boolean checkConnectivityStatus(){
         ConnectivityManager connectivity = (ConnectivityManager) ctx.getSystemService(Context.CONNECTIVITY_SERVICE);
-        //boolean wifi=connectivity.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();
-        //boolean internet=connectivity.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();
+        boolean wifi = connectivity.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();
+        boolean internet = connectivity.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();
         NetworkInfo internetInfo = connectivity.getActiveNetworkInfo();
 
         if ( internetInfo != null) {

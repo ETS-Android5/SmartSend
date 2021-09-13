@@ -41,7 +41,7 @@
     <string name="logo">Logo</string>
     <string name="pickup">PICKUP</string>
     <string name="delivery">DELIVERY</string>
-    <string name="your_package_is_being_delivered_nto_your_location">Order submitted successfully, we will deliver it shortly.</string>
+    <string name="your_package_is_being_delivered_nto_your_location">Order is submitted, we will deliver it shortly.</string>
     <string name="track_order">TRACK ORDER</string>
     <string name="proccessing">Processing</string>
     <string name="back"><u>Back</u></string>
@@ -49,11 +49,36 @@
     <string name="place_order">PLACE ORDER</string>
     <string name="lets_go">Lets Go</string>
     <string name="initial_place_order_headline">Get Started With Order Process</string>
-    <string name="title_activity_rider_map">ClientMapActivity</string>
+    <string name="title_activity_client_map">ClientMapActivity</string>
     <string name="arrow_down">ARROW_DOWN</string>
-    <string name="back_to_dashboard">Back to dashboard</string>
+    <string name="back_to_dashboard">Back</string>
     <string name="backarrow">BackArrow</string>
-    <string name="title_user_profile">UserProfileActivity</string>
+    <string name="title_rider_profile">RiderProfileActivity</string>
+    <string name="title_activity_client_menu">ClientMenuActivity</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
 
-
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="share">Share</string>
+    <string name="contact_us">Contact Us</string>
+    <string name="app_settings">Settings</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="menu_title_scan_orders">Scan Orders</string>
+    <string name="menu_title_view_pending_orders">View Active Orders</string>
+    <string name="title_activity_rider_map">RiderMapActivity</string>
+    <string name="need_location_permission_message">You need to enable location permissions first</string>
+    <string name="title_activity_address_picker">AddressPickerActivity</string>
+    <string name="PLACES_API_KEY">AIzaSyBUiecg0U9MpA9SNXI-UoPSUpvZV8tXYTg</string>
+    <string name="title_activity_order_summary">OrderSummaryActivity</string>
+    <string name="title_activity_contact_us">ContactUsActivity</string>
+    <string name="title_activity_search_courier">SearchCourierActivity</string>
+    <string name="title_activity_location_request">LocationRequestActivity</string>
+    <string name="title_activity_no_rider_found">NoRiderFoundActivity</string>
+    <string name="title_activity_active_orders">RiderActiveOrdersActivity</string>
+    <string name="title_client_profile">ClientProfileActivity</string>
+    <string name="title_active_order_map">ActiveOrderMapActivity</string>
+    <string name="title_client_rider_history">RiderOrderHistoryActivity</string>
 </resources>

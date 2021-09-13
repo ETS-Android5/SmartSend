@@ -1,8 +1,13 @@
 package com.example.smartsend.smartsendapp.utilities.app.order;
 
-public class ContactInfo {
+import java.io.Serializable;
+
+public class ContactInfo implements Serializable {
     private String name;
     private String phoneNumber;
+
+    public ContactInfo() {
+    }
 
     public ContactInfo(String name, String phoneNumber) {
         this.name = name;

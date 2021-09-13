@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/address_picker_card"
+    android:padding="10dp">
+
+    <ImageButton
+        android:id="@+id/backButtonArrow"
+        android:src="@drawable/ic_arrow_back_black"
+        android:background="@android:color/transparent"
+        android:layout_height="30dp"
+        android:layout_width="30dp"
+        android:onClick="closeActivity"/>
+
+    <ImageView
+        android:id="@+id/pickUpImage"
+        android:layout_toEndOf="@id/backButtonArrow"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/ic_pin_black"
+        />
+
+    <EditText
+        android:id="@+id/tiPickUpAddress"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_toEndOf="@id/pickUpImage"
+        android:gravity="top"
+        android:hint="Pick up address"
+        android:imeOptions="actionDone"
+        android:textSize="12sp" />
+
+    <ImageView
+        android:id="@+id/dropOffImage"
+        android:layout_below="@id/pickUpImage"
+        android:layout_toEndOf="@id/backButtonArrow"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="15dp"
+        android:src="@drawable/ic_flag_black"
+        />
+
+    <EditText
+        android:id="@+id/tiDropOfAddress"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@id/tiPickUpAddress"
+        android:layout_toEndOf="@id/dropOffImage"
+        android:gravity="top"
+        android:hint="Drop off address"
+        android:imeOptions="actionDone"
+        android:textSize="12sp" />
+
+<!--    <TextView-->
+<!--        android:id="@+id/tvCurrentLocation"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_toRightOf="@+id/addressImage"-->
+<!--        android:layout_below="@id/tiDropOfAddress"-->
+<!--        android:textColor="#ababab"-->
+<!--        android:textStyle="italic"-->
+<!--        android:text="Use Current Location"-->
+<!--        android:textSize="10sp"-->
+<!--        android:maxLines="1"-->
+<!--        android:layout_centerInParent="true"-->
+<!--        android:textAppearance="@style/TextAppearance.AppCompat.Small"-->
+<!--        android:gravity="start"-->
+<!--        android:layout_toEndOf="@+id/addressImage"-->
+<!--        android:onClick="useCurrentLocation"/>-->
+
+    <Button
+        android:id="@+id/btnContinue"
+        android:layout_width="115dp"
+        android:layout_height="15dp"
+        android:layout_below="@id/tiDropOfAddress"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="#000"
+        android:text="SET ORDER ADDRESS"
+        android:textColor="#fff"
+        android:textSize="10sp"
+        android:onClick="goToOrderSummaryActivity"/>
+
+    <TextView
+        android:id="@+id/suggestedPlacesLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btnContinue"
+        android:layout_marginStart="30dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:fontFamily="@font/poppins"
+        android:text="SUGGESTED PLACES"
+        android:textColor="#979797" />
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/searchedPlaces"
+        android:layout_below="@id/suggestedPlacesLabel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <!--    <LinearLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"-->
+<!--        android:orientation="vertical">-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="25dp"-->
+<!--                android:layout_height="25dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:src="@drawable/ic_pin_black" />-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Pick up address..">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/tiPickUpAddress"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textSize="12sp" />-->
+
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </LinearLayout>-->
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:orientation="horizontal">-->
+
+<!--            <ImageView-->
+<!--                android:layout_width="25dp"-->
+<!--                android:layout_height="25dp"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:layout_marginTop="5dp"-->
+<!--                android:src="@drawable/ic_flag_black" />-->
+
+<!--            <com.google.android.material.textfield.TextInputLayout-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:hint="Deliver to address..">-->
+
+<!--                <com.google.android.material.textfield.TextInputEditText-->
+<!--                    android:id="@+id/tiDeliverToAddress"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:textSize="12sp" />-->
+<!--            </com.google.android.material.textfield.TextInputLayout>-->
+
+<!--        </LinearLayout>-->
+
+<!--    </LinearLayout>-->
+
+</RelativeLayout>

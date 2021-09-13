@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:title="Orders">
+        <menu>
+            <item
+                android:id="@+id/nav_scan_orders"
+                android:icon="@drawable/ic_scan"
+                android:title="@string/menu_title_scan_orders" />
+
+            <item
+                android:id="@+id/nav_active_orders"
+                android:icon="@drawable/ic_history"
+                android:title="@string/menu_title_view_pending_orders" />
+
+            <item
+                android:id="@+id/nav_rider_delivery_history"
+                android:icon="@drawable/ic_order_history"
+                android:title="@string/menu_title_order_history" />
+        </menu>
+    </item>
+
+    <item android:title="Account">
+        <menu>
+            <item
+                android:id="@+id/nav_my_account"
+                android:icon="@drawable/ic_account_settings"
+                android:title="@string/menu_title_my_account"/>
+
+<!--            <item-->
+<!--                android:id="@+id/nav_app_settings"-->
+<!--                android:icon="@drawable/ic_settings"-->
+<!--                android:title="@string/app_settings"/>-->
+
+            <item
+                android:id="@+id/nav_client_signout"
+                android:icon="@drawable/ic_singout"
+                android:title="@string/menu_title_signout" />
+        </menu>
+    </item>
+
+    <item android:title="Misc">
+        <menu>
+            <item
+                android:id="@+id/nav_share"
+                android:icon="@drawable/ic_share"
+                android:title="@string/share"/>
+
+            <item
+                android:id="@+id/nav_contact_us"
+                android:icon="@drawable/ic_contact"
+                android:title="@string/contact_us" />
+        </menu>
+    </item>
+</menu>

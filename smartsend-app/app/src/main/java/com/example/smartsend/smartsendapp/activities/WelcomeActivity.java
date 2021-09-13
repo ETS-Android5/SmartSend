@@ -15,11 +15,9 @@ import com.example.smartsend.smartsendapp.utilities.SplashPagerAdapter;
 
 public class WelcomeActivity extends AppCompatActivity {
 
-    //Decalre variable and object
     ViewPager welcomeViewPager;
     SplashPagerAdapter welcomeViewPagerAdapter;
     Context ctx;
-    //TextView tvSkipPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +31,6 @@ public class WelcomeActivity extends AppCompatActivity {
         welcomeViewPagerAdapter = new SplashPagerAdapter(this);
         welcomeViewPager.setAdapter(welcomeViewPagerAdapter);
         ctx = this;
-
-
         ViewPager.OnPageChangeListener listenerWelcomeViewPager = new ViewPager.OnPageChangeListener() {
 
             @Override
@@ -70,5 +66,4 @@ public class WelcomeActivity extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
-
 }

@@ -1,19 +1,27 @@
 package com.example.smartsend.smartsendapp.utilities.app;
 
+import com.example.smartsend.smartsendapp.R;
+
 /**
  * Created by AGM TAZIM on 12/31/2015.
  */
 public class Client {
-    private String id = null, email = null, password = null, companyName = null, companyPostalCode = null, companyUnitNumber = null, location = null, contactNumber=null, billingAddress = null, contactPersonName = null, contactPersonNumber = null, contactPersonEmail=null, createdDate =null,clientType = null;
+    private String id = null, email = null, password = null, company_name = null,
+            location = null, contact_number = null, billing_address = null,
+            contact_person_name = null, contact_person_number = null, contact_person_email = null,
+            created_date =null, profilePicture;
 
     //Consrtuctor
     public Client(){
-
+        profilePicture = String.valueOf(R.drawable.logo);
     }
 
-    public Client(String email, String password){
-        this.email = email;
-        this.password = password;
+    public String getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(String profilePicture) {
+        this.profilePicture = profilePicture;
     }
 
     //Set id
@@ -44,28 +52,12 @@ public class Client {
         this.email = email;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public String getCompany_name() {
+        return company_name;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
-    }
-
-    public String getCompanyPostalCode() {
-        return companyPostalCode;
-    }
-
-    public void setCompanyPostalCode(String companyPostalCode) {
-        this.companyPostalCode = companyPostalCode;
-    }
-
-    public String getCompanyUnitNumber() {
-        return companyUnitNumber;
-    }
-
-    public void setCompanyUnitNumber(String companyUnitNumber) {
-        this.companyUnitNumber = companyUnitNumber;
+    public void setCompany_name(String company_name) {
+        this.company_name = company_name;
     }
 
     public String getLocation() {
@@ -76,61 +68,52 @@ public class Client {
         this.location = location;
     }
 
-    public String getContactNumber() {
-        return contactNumber;
+    public String getContact_number() {
+        return contact_number;
     }
 
-    public void setContactNumber(String contactNumber) {
-        this.contactNumber = contactNumber;
+    public void setContact_number(String contact_number) {
+        this.contact_number = contact_number;
     }
 
-    public String getBillingAddress() {
-        return billingAddress;
+    public String getBilling_address() {
+        return billing_address;
     }
 
-    public void setBillingAddress(String billingAddress) {
-        this.billingAddress = billingAddress;
+    public void setBilling_address(String billing_address) {
+        this.billing_address = billing_address;
     }
 
-    public String getContactPersonName() {
-        return contactPersonName;
+    public String getContact_person_name() {
+        return contact_person_name;
     }
 
-    public void setContactPersonName(String contactPersonName) {
-        this.contactPersonName = contactPersonName;
+    public void setContact_person_name(String contact_person_name) {
+        this.contact_person_name = contact_person_name;
     }
 
-    public String getContactPersonNumber() {
-        return contactPersonNumber;
+    public String getContact_person_number() {
+        return contact_person_number;
     }
 
-    public void setContactPersonNumber(String contactPersonNumber) {
-        this.contactPersonNumber = contactPersonNumber;
+    public void setContact_person_number(String contact_person_number) {
+        this.contact_person_number = contact_person_number;
     }
 
-    public String getContactPersonEmail() {
-        return contactPersonEmail;
+    public String getContact_person_email() {
+        return contact_person_email;
     }
 
-    public void setContactPersonEmail(String contactPersonEmail) {
-        this.contactPersonEmail = contactPersonEmail;
+    public void setContact_person_email(String contact_person_email) {
+        this.contact_person_email = contact_person_email;
     }
 
-    public String getClientType() {
-        return clientType;
+    public String getCreated_date() {
+        return created_date;
     }
 
-    public void setClientType(String clientType) {
-        this.clientType = clientType;
-    }
-
-
-    public String getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(String createdDate) {
-        this.createdDate = createdDate;
+    public void setCreated_date(String created_date) {
+        this.created_date = created_date;
     }
 
 }//End of Client Class

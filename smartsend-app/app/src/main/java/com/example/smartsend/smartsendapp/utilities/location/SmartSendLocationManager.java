@@ -1,6 +1,7 @@
 package com.example.smartsend.smartsendapp.utilities.location;
 
 import android.content.Context;
+import android.location.Location;
 import android.location.LocationManager;
 
 /**
@@ -15,6 +16,7 @@ public class SmartSendLocationManager {
     Context ctx;
 
     public SmartSendLocationManager(Context ctx, int minTimeForUpdateLocation, int minDistanceForUpdateLocation) {
+
         this.minDistanceForUpdateLocation = minDistanceForUpdateLocation;
         this.minTimeForUpdateLocation = minTimeForUpdateLocation;
         this.ctx = ctx;
@@ -29,10 +31,19 @@ public class SmartSendLocationManager {
         boolean isNetworkProviderEnable = locationManager.isProviderEnabled(LocationManager.NETWORK_PROVIDER);
 
         try {
+            Location lastKnownLocation = null;
+
             if (isGPSProviderEnable) {
+                lastKnownLocation = this.locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
                 this.locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, minTimeForUpdateLocation, minDistanceForUpdateLocation, locationListener);
             }else if(isNetworkProviderEnable){
+                lastKnownLocation = this.locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
                 this.locationManager.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, minTimeForUpdateLocation, minDistanceForUpdateLocation, locationListener);
+            }
+
+            if (lastKnownLocation != null) {
+                locationListener.setLat(lastKnownLocation.getLatitude());
+                locationListener.setLng(lastKnownLocation.getLongitude());
             }
         } catch(SecurityException ignored) {
         }

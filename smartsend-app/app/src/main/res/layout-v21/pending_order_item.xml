@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="75dp"
+    android:clickable="true"
+    android:focusable="true">
+
+
+    <ImageView
+        android:id="@+id/orderImage"
+        android:layout_centerVertical="true"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginRight="15dp"
+        android:src="@drawable/package_orange"
+        android:layout_marginStart="15dp" />
+
+    <TextView
+        android:id="@+id/tvOrderNumber"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_toRightOf="@+id/orderImage"
+        android:textSize="10sp"
+        android:maxLines="1"
+        android:text="Order #123123"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:gravity="start"
+        android:layout_toEndOf="@+id/orderImage" />
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvOrderNumber"
+        android:layout_toRightOf="@+id/orderImage"
+        android:textSize="12sp"
+        android:maxLines="1"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:gravity="start"
+        android:layout_toEndOf="@+id/orderImage" />
+
+
+    <TextView
+        android:id="@+id/tvTimestamp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvAddress"
+        android:layout_toRightOf="@+id/orderImage"
+        android:textSize="10sp"
+        android:maxLines="1"
+        android:text="aaaaaaaa"
+        android:textColor="@color/ColorDarkerDivider"
+        android:textAlignment="viewStart"
+        android:textAppearance="@style/TextAppearance.AppCompat.Small"
+        android:gravity="start"
+        android:layout_toEndOf="@+id/orderImage" />
+
+    <ImageButton
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_additional_arrow"
+        android:layout_height="30dp"
+        android:layout_width="30dp"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"/>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/ColorDivider" />
+
+</RelativeLayout>

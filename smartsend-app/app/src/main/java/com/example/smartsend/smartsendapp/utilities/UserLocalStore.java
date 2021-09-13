@@ -40,39 +40,37 @@ public class UserLocalStore {
         riderSpEditor.commit();
     }
 
-    //Store rider data in sharedpreference
+    //Store client  data in sharedpreference
+    public void storeClientData(Client client){
+        SharedPreferences.Editor clientSpEditor = userDB.edit();
+        clientSpEditor.putString("id", client.getId());
+        clientSpEditor.putString("companyName", client.getCompany_name());
+        clientSpEditor.putString("email", client.getEmail());
+        clientSpEditor.putString("password", client.getPassword());
+        clientSpEditor.putString("location", client.getLocation());
+        clientSpEditor.putString("contactNumber", client.getContact_number());
+        clientSpEditor.putString("billingAddress", client.getBilling_address());
+        clientSpEditor.putString("contactPersonName", client.getContact_person_name());
+        clientSpEditor.putString("contactPersonNumber", client.getContact_person_number());
+        clientSpEditor.putString("contactPersonEmail", client.getContact_person_email());
+        clientSpEditor.putString("createdDate", client.getCreated_date());
+        clientSpEditor.commit();
+    }
+
     public void storeRiderData(Rider rider){
         SharedPreferences.Editor riderSpEditor = userDB.edit();
         riderSpEditor.putString("id", rider.getId());
         riderSpEditor.putString("status", rider.getStatus());
         riderSpEditor.putString("email", rider.getEmail());
         riderSpEditor.putString("password", rider.getPassword());
-        riderSpEditor.putString("name", rider.getName());
-        riderSpEditor.putString("bikeNumber", rider.getBikeNumber());
-        riderSpEditor.putString("contactNumber", rider.getContactNumber());
-        riderSpEditor.putString("createdDate", rider.getCreatedDate());
-        riderSpEditor.putString("profilePicture", rider.getProfilePicture());
+        riderSpEditor.putString("birthDate", rider.getBirth_date());
+        riderSpEditor.putString("firstName", rider.getFirst_name());
+        riderSpEditor.putString("lastName", rider.getLast_name());
+        riderSpEditor.putString("bikeNumber", rider.getVehicle_number());
+        riderSpEditor.putString("contactNumber", rider.getContact_number());
+        riderSpEditor.putString("createdDate", rider.getCreated_date());
+        riderSpEditor.putString("profilePicture", rider.getProfile_picture());
         riderSpEditor.commit();
-    }
-
-    //Store client  data in sharedpreference
-    public void storeClientData(Client client){
-        SharedPreferences.Editor clientSpEditor = userDB.edit();
-        clientSpEditor.putString("id", client.getId());
-        clientSpEditor.putString("companyName", client.getCompanyName());
-        clientSpEditor.putString("email", client.getEmail());
-        clientSpEditor.putString("password", client.getPassword());
-        clientSpEditor.putString("companyPostalCode", client.getCompanyPostalCode());
-        clientSpEditor.putString("companyUnitNumber", client.getCompanyUnitNumber());
-        clientSpEditor.putString("location", client.getLocation());
-        clientSpEditor.putString("contactNumber", client.getContactNumber());
-        clientSpEditor.putString("billingAddress", client.getBillingAddress());
-        clientSpEditor.putString("contactPersonName", client.getContactPersonName());
-        clientSpEditor.putString("contactPersonNumber", client.getContactPersonNumber());
-        clientSpEditor.putString("contactPersonEmail", client.getContactPersonEmail());
-        clientSpEditor.putString("createdDate", client.getCreatedDate());
-        clientSpEditor.putString("clientType", client.getClientType());
-        clientSpEditor.commit();
     }
 
     //Get rider data
@@ -81,7 +79,9 @@ public class UserLocalStore {
         String password = userDB.getString("password", "");
         String id = userDB.getString("id", "");
         String status = userDB.getString("status", "");
-        String name = userDB.getString("name", "");
+        String firstName = userDB.getString("firstName", "");
+        String lastName = userDB.getString("lastName", "");
+        String birthDate = userDB.getString("birthDate", "");
         String bikeNumber = userDB.getString("bikeNumber", "");
         String contactNumber = userDB.getString("contactNumber", "");
         String profilePicture = userDB.getString("profilePicture", "");
@@ -89,12 +89,16 @@ public class UserLocalStore {
 
         Rider rider = new Rider(email, password);
         rider.setId(id);
-        rider.setName(name);
-        rider.setBikeNumber(bikeNumber);
-        rider.setContactNumber(contactNumber);
-        rider.setProfilePicture(profilePicture);
+        rider.setVehicle_number(bikeNumber);
+        rider.setBirth_date(birthDate);
+        rider.setFirst_name(firstName);
+        rider.setLast_name(lastName);
+        rider.setCreated_date(createdDate);
+        rider.setVehicle_number(bikeNumber);
+        rider.setContact_number(contactNumber);
+        rider.setProfile_picture(profilePicture);
         rider.setStatus(status);
-        rider.setBikeNumber(bikeNumber);
+        rider.setVehicle_number(bikeNumber);
 
         return rider;
     }
@@ -122,17 +126,14 @@ public class UserLocalStore {
         client.setId(id);
         client.setEmail(email);
         client.setPassword(password);
-        client.setCompanyName(companyName);
-        client.setCompanyPostalCode(companyPostalCode);
-        client.setCompanyUnitNumber(companyUnitNumber);
+        client.setCompany_name(companyName);
         client.setLocation(location);
-        client.setBillingAddress(billingAddress);
-        client.setContactNumber(contactNumber);
-        client.setContactPersonName(contactPersonName);
-        client.setContactPersonEmail(contactPersonEmail);
-        client.setContactPersonNumber(contactPersonNumber);
-        client.setCreatedDate(createdDate);
-        client.setClientType(clientType);
+        client.setBilling_address(billingAddress);
+        client.setContact_number(contactNumber);
+        client.setContact_person_name(contactPersonName);
+        client.setContact_person_email(contactPersonEmail);
+        client.setContact_person_number(contactPersonNumber);
+        client.setCreated_date(createdDate);
 
         return client;
     }

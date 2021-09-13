@@ -1,6 +1,7 @@
 package com.example.smartsend.smartsendapp.activities;
 
 import android.app.NotificationManager;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.View;
@@ -19,6 +20,10 @@ public class OrderDetailsAcceptedActivity extends AppCompatActivity {
     }
 
     public void closeActivity(View view) {
+        Intent intent = new Intent(this,
+                ClientMapActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
         finish();
     }
 

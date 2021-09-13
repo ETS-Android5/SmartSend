@@ -1,10 +1,15 @@
 package com.example.smartsend.smartsendapp.utilities.app.order;
 
-public class OrderAddressDetails {
+import java.io.Serializable;
+
+public class OrderAddressDetails implements Serializable {
     private String address;
     private String entrance;
     private int apartmentNumber;
     private int floor;
+
+    public OrderAddressDetails() {
+    }
 
     public String getAddress() {
         return address;

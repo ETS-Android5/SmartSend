@@ -19,12 +19,14 @@
             app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"
             app:behavior_peekHeight="20dp">
 
-            <ImageButton
-                android:id="@+id/btnChangeCardView"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
+            <View
+                android:background="#5c5c5c"
+                android:layout_width="75dp"
+                android:layout_height="3dp"
+                android:layout_marginTop="5dp"
                 android:layout_gravity="center"
                 android:contentDescription="@string/arrow_down"
+                android:alpha="0.75"
                 android:src="@drawable/ic_arrow_down_black" />
 
             <include layout="@layout/order_details_layout" />

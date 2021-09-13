@@ -50,7 +50,7 @@
             android:layout_width="224dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:background="@drawable/button_shape"
+            android:background="@drawable/button_shape_black"
             android:onClick="goToTrackOrderActivity"
             android:text="@string/track_order"
             android:textColor="#FFFFFF"

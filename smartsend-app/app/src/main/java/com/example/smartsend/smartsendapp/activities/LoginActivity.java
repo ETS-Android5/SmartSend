@@ -25,8 +25,8 @@ import com.example.smartsend.smartsendapp.utilities.app.Client;
 import com.example.smartsend.smartsendapp.utilities.ConnectivityDetector;
 import com.example.smartsend.smartsendapp.fragments.CustomDialog;
 import com.example.smartsend.smartsendapp.utilities.FirebaseManager;
-import com.example.smartsend.smartsendapp.utilities.app.Rider;
 import com.example.smartsend.smartsendapp.utilities.UserLocalStore;
+import com.example.smartsend.smartsendapp.utilities.app.Rider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
@@ -85,20 +85,16 @@ public class LoginActivity extends AppCompatActivity {
         // Progress dialog
         pDialog = new CustomDialog(LoginActivity.this);
 
-
 //        sessionManager.clearData();
         mAuthListener = firebaseAuth -> {
-            FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+            currentUser = firebaseAuth.getCurrentUser();
 
             if (currentUser != null) {
+                firebaseManager.setCurrentUser(currentUser);
                 if(sessionManager.loggedInUser().equals("rider")) {
-                    Intent goRiderProfileActivity = new Intent(LoginActivity.this, RiderDashboardActivity.class);
-                    startActivity(goRiderProfileActivity);
-                    finish();
+                    goRiderDashboardActivity();
                 } else if(sessionManager.loggedInUser().equals("client")) {
-                    Intent goClientProfileActivity = new Intent(LoginActivity.this, ClientDashboardActivity.class);
-                    startActivity(goClientProfileActivity);
-                    finish();
+                   goClientDashboardActivity();
                 }
             }
         };
@@ -213,14 +209,18 @@ public class LoginActivity extends AppCompatActivity {
                             HashMap<String, String> riderData = ((HashMap<String, String>) refTask.getResult().getValue());
 
                             try {
+                                if (riderData == null) throw new Exception();
+
                                 loggedInRider.setId(riderData.get("id"));
                                 loggedInRider.setEmail(riderData.get("email"));
-                                loggedInRider.setCreatedDate(riderData.get("created_date"));
-                                loggedInRider.setPasword(riderData.get("password"));
-                                loggedInRider.setName(riderData.get("first_name") + " " + riderData.get("last_name"));
-                                loggedInRider.setBikeNumber(riderData.get("vehicle_number"));
-                                loggedInRider.setContactNumber(riderData.get("contact_number"));
-                                loggedInRider.setProfilePicture(riderData.get("profile_picture"));
+                                loggedInRider.setCreated_date(riderData.get("created_date"));
+                                loggedInRider.setBirth_date(riderData.get("birth_date"));
+                                loggedInRider.setPassword(riderData.get("password"));
+                                loggedInRider.setLast_name(riderData.get("last_name"));
+                                loggedInRider.setFirst_name(riderData.get("first_name"));
+                                loggedInRider.setVehicle_number(riderData.get("vehicle_number"));
+                                loggedInRider.setContact_number(riderData.get("contact_number"));
+                                loggedInRider.setProfile_picture(riderData.get("profile_picture"));
                                 loggedInRider.setStatus(riderData.get("status"));
 
                                 sessionManager.storeRiderData(loggedInRider);
@@ -232,6 +232,7 @@ public class LoginActivity extends AppCompatActivity {
                             } catch (Exception e){
                                 Toast.makeText(getApplicationContext(),
                                         "Error trying log in. Please try again.", Toast.LENGTH_LONG).show();
+                                hideDialog();
                             }
                         }
                     });
@@ -281,17 +282,14 @@ public class LoginActivity extends AppCompatActivity {
                                 loggedInClient.setId(riderData.get("id"));
                                 loggedInClient.setEmail(riderData.get("email"));
                                 loggedInClient.setPassword(riderData.get("password"));
-                                loggedInClient.setCompanyName(riderData.get("company_name"));
-                                loggedInClient.setCompanyPostalCode(riderData.get("company_postal_code"));
-                                loggedInClient.setCompanyUnitNumber(riderData.get("company_unit_number"));
+                                loggedInClient.setCompany_name(riderData.get("company_name"));
                                 loggedInClient.setLocation(riderData.get("location"));
-                                loggedInClient.setBillingAddress(riderData.get("billing_address"));
-                                loggedInClient.setContactNumber(riderData.get("contact_number"));
-                                loggedInClient.setContactPersonName(riderData.get("contact_person_name"));
-                                loggedInClient.setContactPersonEmail(riderData.get("contact_person_email"));
-                                loggedInClient.setContactPersonNumber(riderData.get("contact_person_number"));
-                                loggedInClient.setCreatedDate(riderData.get("created_date"));
-                                loggedInClient.setClientType(riderData.get("client_type"));
+                                loggedInClient.setBilling_address(riderData.get("billing_address"));
+                                loggedInClient.setContact_number(riderData.get("contact_number"));
+                                loggedInClient.setContact_person_name(riderData.get("contact_person_name"));
+                                loggedInClient.setContact_person_email(riderData.get("contact_person_email"));
+                                loggedInClient.setContact_person_number(riderData.get("contact_person_number"));
+                                loggedInClient.setCreated_date(riderData.get("created_date"));
 
                                 sessionManager.storeClientData(loggedInClient);
                                 sessionManager.setClientLoggedIn(true);
@@ -342,14 +340,16 @@ public class LoginActivity extends AppCompatActivity {
 
     public void goRiderDashboardActivity(){
         Intent intent = new Intent(LoginActivity.this,
-                RiderDashboardActivity.class);
+                RiderMapActivity.class);
+        intent.putExtra("riderID", currentUser.getUid());
         startActivity(intent);
         finish();
     }
 
     public void goClientDashboardActivity(){
         Intent intent = new Intent(LoginActivity.this,
-                ClientDashboardActivity.class);
+                ClientMapActivity.class);
+        intent.putExtra("clientID", currentUser.getUid());
         startActivity(intent);
         finish();
     }
