@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartsend.smartsendapp.R;
 import com.example.smartsend.smartsendapp.utilities.FirebaseManager;
-import com.example.smartsend.smartsendapp.utilities.app.ClientHistoryItem;
+import com.example.smartsend.smartsendapp.utilities.app.OrderItem;
 import com.example.smartsend.smartsendapp.adapters.HistoryAdapter;
 import com.example.smartsend.smartsendapp.utilities.app.order.Order;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -56,7 +56,7 @@ public class ClientOrderHistoryActivity extends AppCompatActivity {
     }
 
     private void getClientOrderHistory() {
-        ArrayList<ClientHistoryItem> clientHistoryItems = new ArrayList<>();
+        ArrayList<OrderItem> orderItems = new ArrayList<>();
         DatabaseReference activeOrdersRef = firebaseDatabase
                 .getReference("clients")
                 .child(clientID)
@@ -66,11 +66,11 @@ public class ClientOrderHistoryActivity extends AppCompatActivity {
             if (task.isSuccessful()) {
                 for (DataSnapshot orderSnapshot : task.getResult().getChildren()) {
                     Order order = orderSnapshot.getValue(Order.class);
-                    ClientHistoryItem activeOrder = new ClientHistoryItem(order);
+                    OrderItem activeOrder = new OrderItem(order);
 
-                    clientHistoryItems.add(activeOrder);
+                    orderItems.add(activeOrder);
                 }
-                initializeRecyclerView(clientHistoryItems);
+                initializeRecyclerView(orderItems);
             }
             else {
                 Toast.makeText(this, "Error loading active orders, please try again.", Toast.LENGTH_SHORT);
@@ -78,27 +78,37 @@ public class ClientOrderHistoryActivity extends AppCompatActivity {
         });
     }
 
-    private void initializeRecyclerView(ArrayList<ClientHistoryItem> clientHistoryItems) {
+    private void initializeRecyclerView(ArrayList<OrderItem> orderItems) {
         recyclerView = findViewById(R.id.clientHistoryRecycler);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
-        adapter = new HistoryAdapter(clientHistoryItems);
+        adapter = new HistoryAdapter(orderItems);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListener(position -> {
-                ClientHistoryItem historyItem = clientHistoryItems.get(position);
+                OrderItem historyItem = orderItems.get(position);
 
                 displayHistoryItem(historyItem);
                 orderHistoryBehavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
         });
     }
 
-    private void displayHistoryItem(ClientHistoryItem historyItem) {
+    private void displayHistoryItem(OrderItem historyItem) {
         Order historyOrder = historyItem.getOrder();
         TextView tvOrderID = findViewById(R.id.tvOrderID);
+        TextView tvPickUpAddress = findViewById(R.id.tvPickUpAddress);
+        TextView tvDropOffAddress = findViewById(R.id.tvDropOffAddress);
+        TextView tvOrderStatus = findViewById(R.id.tvOrderStatus);
+        TextView tvPickUpTimestamp = findViewById(R.id.tvPickUpTimestamp);
+        TextView tvDeliverTimestamp = findViewById(R.id.tvDeliverTimestamp);
 
         tvOrderID.setText(historyOrder.getOrderNumber());
+        tvPickUpAddress.setText(historyOrder.getPickUpAddress().getAddress());
+        tvDropOffAddress.setText(historyOrder.getDropOffAddress().getAddress());
+        tvOrderStatus.setText(historyOrder.getOrderStatus().getStatus());
+        tvPickUpTimestamp.setText(historyOrder.getPickUpTimestamp() != null ? historyOrder.getPickUpTimestamp() : "Order has not been picked up yet");
+        tvDeliverTimestamp.setText(historyOrder.getDropOffTimestamp() != null ? historyOrder.getDropOffTimestamp() : "Order has not been dropped off yet");
     }
 
 

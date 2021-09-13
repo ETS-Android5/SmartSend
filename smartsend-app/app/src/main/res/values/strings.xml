@@ -81,4 +81,5 @@
     <string name="title_client_profile">ClientProfileActivity</string>
     <string name="title_active_order_map">ActiveOrderMapActivity</string>
     <string name="title_client_rider_history">RiderOrderHistoryActivity</string>
+    <string name="title_activity_rider_receipt">RiderReceiptActivity</string>
 </resources>

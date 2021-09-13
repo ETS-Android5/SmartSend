@@ -3,7 +3,6 @@ package com.example.smartsend.smartsendapp.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -15,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.smartsend.smartsendapp.R;
 import com.example.smartsend.smartsendapp.adapters.HistoryAdapter;
 import com.example.smartsend.smartsendapp.utilities.FirebaseManager;
-import com.example.smartsend.smartsendapp.utilities.app.ClientHistoryItem;
+import com.example.smartsend.smartsendapp.utilities.app.OrderItem;
 import com.example.smartsend.smartsendapp.utilities.app.order.Order;
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.firebase.database.DataSnapshot;
@@ -63,7 +62,7 @@ public class RiderActiveOrdersActivity extends AppCompatActivity {
     }
 
     private void displayRiderActiveOrders() {
-        ArrayList<ClientHistoryItem> activeOrders = new ArrayList<>();
+        ArrayList<OrderItem> activeOrders = new ArrayList<>();
         DatabaseReference activeOrdersRef = firebaseDatabase
                 .getReference("riders")
                 .child(riderID)
@@ -73,7 +72,7 @@ public class RiderActiveOrdersActivity extends AppCompatActivity {
             if (task.isSuccessful()) {
                 for (DataSnapshot orderSnapshot : task.getResult().getChildren()) {
                     Order order = orderSnapshot.getValue(Order.class);
-                    ClientHistoryItem activeOrder = new ClientHistoryItem(order);
+                    OrderItem activeOrder = new OrderItem(order);
 
                     activeOrders.add(activeOrder);
                 }
@@ -85,16 +84,16 @@ public class RiderActiveOrdersActivity extends AppCompatActivity {
         });
     }
 
-    private void initializeRecyclerView(ArrayList<ClientHistoryItem> clientHistoryItems) {
+    private void initializeRecyclerView(ArrayList<OrderItem> orderItems) {
         recyclerView = findViewById(R.id.clientHistoryRecycler);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(this);
-        adapter = new HistoryAdapter(clientHistoryItems);
+        adapter = new HistoryAdapter(orderItems);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);
 
         adapter.setOnItemClickListener(position -> {
-                ClientHistoryItem historyItem = clientHistoryItems.get(position);
+                OrderItem historyItem = orderItems.get(position);
 
                 displayHistoryItem(historyItem);
                 orderHistoryBehavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
@@ -102,11 +101,21 @@ public class RiderActiveOrdersActivity extends AppCompatActivity {
         });
     }
 
-    private void displayHistoryItem(ClientHistoryItem activeOrderItem) {
-        Order activeOrder = activeOrderItem.getOrder();
+    private void displayHistoryItem(OrderItem activeOrderItem) {
+        Order historyOrder = activeOrderItem.getOrder();
         TextView tvOrderID = findViewById(R.id.tvOrderID);
+        TextView tvPickUpAddress = findViewById(R.id.tvPickUpAddress);
+        TextView tvDropOffAddress = findViewById(R.id.tvDropOffAddress);
+        TextView tvOrderStatus = findViewById(R.id.tvOrderStatus);
+        TextView tvPickUpTimestamp = findViewById(R.id.tvPickUpTimestamp);
+        TextView tvDeliverTimestamp = findViewById(R.id.tvDeliverTimestamp);
 
-        tvOrderID.setText(activeOrder.getOrderNumber());
+        tvOrderID.setText(historyOrder.getOrderNumber());
+        tvPickUpAddress.setText(historyOrder.getPickUpAddress().getAddress());
+        tvDropOffAddress.setText(historyOrder.getDropOffAddress().getAddress());
+        tvOrderStatus.setText(historyOrder.getOrderStatus().getStatus());
+        tvPickUpTimestamp.setText(historyOrder.getPickUpTimestamp() != null ? historyOrder.getPickUpTimestamp() : "Order has not been picked up yet");
+        tvDeliverTimestamp.setText(historyOrder.getDropOffTimestamp() != null ? historyOrder.getDropOffTimestamp() : "Order has not been dropped off yet");
     }
 
 

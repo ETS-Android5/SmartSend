@@ -20,7 +20,9 @@ import com.example.smartsend.smartsendapp.utilities.location.LatLng;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.MapStyleOptions;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -40,11 +42,16 @@ public class ActiveOrderMapActivity extends AppCompatActivity implements OnMapRe
     private LatLng addressLatLng;
     private FirebaseDatabase firebaseDatabase;
     private String riderID;
+    private SupportMapFragment mapFragment;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_active_order_map);
+
+        mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
         Bundle extra = getIntent().getExtras();
 
         firebaseDatabase = FirebaseManager.getInstance().getFirebaseDatabase();
@@ -80,13 +87,16 @@ public class ActiveOrderMapActivity extends AppCompatActivity implements OnMapRe
     }
 
     private void showReceipt() {
+        Intent intent = new Intent(this, RiderReceiptActivity.class);
 
+        startActivity(intent);
+        finish();
     }
 
     private void showDropOffDetails() {
         tvContactName.setText(order.getDropOffContactInfo().getName());
         tvAddress.setText(order.getDropOffAddress().getAddress());
-        tvPrice.setText("$123.45");
+        tvPrice.setText("255.17");
         addressLatLng = order.getDropOffLatLng();
         phoneNumber = order.getDropOffContactInfo().getPhoneNumber();
     }
@@ -94,7 +104,7 @@ public class ActiveOrderMapActivity extends AppCompatActivity implements OnMapRe
     private void showPickUpDetails() {
         tvContactName.setText(order.getPickUpContactInfo().getName());
         tvAddress.setText(order.getPickUpAddress().getAddress());
-        tvPrice.setText("$123.45");
+        tvPrice.setText("$255.17");
         addressLatLng = order.getPickUpLatLng();
         phoneNumber = order.getPickUpContactInfo().getPhoneNumber();
     }
@@ -116,7 +126,7 @@ public class ActiveOrderMapActivity extends AppCompatActivity implements OnMapRe
         }
         else {
             Intent callIntent = new Intent(Intent.ACTION_CALL);
-            callIntent.setData(Uri.parse("tel:" + phoneNumber));//change the number
+            callIntent.setData(Uri.parse("tel:" + phoneNumber));
             startActivity(callIntent);
         }
     }
@@ -206,6 +216,7 @@ public class ActiveOrderMapActivity extends AppCompatActivity implements OnMapRe
                 .child(order.getOrderNumber())
                 .child("orderStatus");
 
+
         order.setOrderStatus(orderStatus);
         orderRef.setValue(orderStatus);
         activeOrderRef.setValue(orderStatus);
@@ -214,6 +225,7 @@ public class ActiveOrderMapActivity extends AppCompatActivity implements OnMapRe
 
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
+        mMap = googleMap;
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(ActiveOrderMapActivity.this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION,  Manifest.permission.ACCESS_COARSE_LOCATION}, PackageManager.PERMISSION_GRANTED);
@@ -226,7 +238,9 @@ public class ActiveOrderMapActivity extends AppCompatActivity implements OnMapRe
             MapStyleOptions style = MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style);
             mMap.setMapStyle(style);
 
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(new com.google.android.gms.maps.model.LatLng(addressLatLng.getLatitude(), addressLatLng.getLongitude())));
+            com.google.android.gms.maps.model.LatLng latLng = new com.google.android.gms.maps.model.LatLng(addressLatLng.getLatitude(), addressLatLng.getLongitude());
+            mMap.addMarker(new MarkerOptions().position(latLng));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         }
     }

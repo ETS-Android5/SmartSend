@@ -129,8 +129,9 @@ const FormSignup = ({ submitForm }) => {
         </div>
         <div className='form-inputs'>
           <label className='form-label'>Contact Number <mark>*</mark></label>
-          <PhoneInput
+          <input
             className='form-input'
+            type='tel'
             placeholder="Enter phone number"
             name='contact_number'
             country='IL'

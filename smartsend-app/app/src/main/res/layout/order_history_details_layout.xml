@@ -45,6 +45,7 @@
             android:textColor="#949494"/>
 
         <TextView
+            android:id="@+id/tvPickUpAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/pickUpAddressLabel"
@@ -63,6 +64,7 @@
             android:textColor="#949494"/>
 
         <TextView
+            android:id="@+id/tvDropOffAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/dropOffAddressLabel"
@@ -81,6 +83,7 @@
             android:textColor="#949494"/>
 
         <TextView
+            android:id="@+id/tvOrderStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/orderStatusLabel"
@@ -113,6 +116,43 @@
             android:layout_marginTop="5dp"
             android:textSize="12sp"
             android:text="Order ID"
+            android:textColor="#000"/>
+
+        <TextView
+            android:id="@+id/orderTimestampLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/orderStatusLabel"
+            android:layout_marginTop="30dp"
+            android:text="Order at"
+            android:textColor="#949494"/>
+
+        <TextView
+            android:id="@+id/tvPickUpTimestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/orderTimestampLabel"
+            android:layout_marginTop="5dp"
+            android:textSize="12sp"
+            android:text="Ordered at"
+            android:textColor="#000"/>
+        <TextView
+            android:id="@+id/deliverTimestampLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvPickUpTimestamp"
+            android:layout_marginTop="10dp"
+            android:text="Delivered at"
+            android:textColor="#949494"/>
+
+        <TextView
+            android:id="@+id/tvDeliverTimestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/deliverTimestampLabel"
+            android:layout_marginTop="5dp"
+            android:textSize="12sp"
+            android:text="Delivered at"
             android:textColor="#000"/>
     </RelativeLayout>
 

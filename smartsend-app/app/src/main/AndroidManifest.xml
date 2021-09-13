@@ -115,6 +115,10 @@
             android:label="@string/title_activity_place_order"
             android:theme="@style/AppTheme" />
         <activity
+            android:name=".activities.RiderReceiptActivity"
+            android:label="@string/title_activity_rider_receipt"
+            android:theme="@style/AppTheme" />
+        <activity
             android:name=".activities.OrderDetailsAcceptedActivity"
             android:label="@string/title_activity_order_details_accepted"
             android:theme="@style/AppTheme" />

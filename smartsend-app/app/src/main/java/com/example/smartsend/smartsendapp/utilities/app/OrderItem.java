@@ -2,10 +2,10 @@ package com.example.smartsend.smartsendapp.utilities.app;
 
 import com.example.smartsend.smartsendapp.utilities.app.order.Order;
 
-public class ClientHistoryItem {
+public class OrderItem {
     private Order order;
 
-    public ClientHistoryItem(Order order) {
+    public OrderItem(Order order) {
         this.order = order;
     }
 

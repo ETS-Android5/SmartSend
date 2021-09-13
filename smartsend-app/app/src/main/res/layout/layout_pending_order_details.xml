@@ -64,6 +64,137 @@
             android:layout_alignParentEnd="true"
             android:onClick="zoomOrderMark"/>
 
+        <RelativeLayout
+            android:layout_below="@id/orderIDLabel"
+            android:layout_above="@id/btnTakeOrder"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_card"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="15dp">
+
+
+            <TextView
+                android:id="@+id/pickUpAddressLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/backButtonArrow"
+                android:layout_marginTop="30dp"
+                android:text="From"
+                android:textColor="#949494"/>
+
+            <TextView
+                android:id="@+id/tvPickUpAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pickUpAddressLabel"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text="From"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/dropOffAddressLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/pickUpAddressLabel"
+                android:layout_marginTop="30dp"
+                android:text="To"
+                android:textColor="#949494"/>
+
+            <TextView
+                android:id="@+id/tvDropOffAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dropOffAddressLabel"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text="To"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/orderStatusLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/dropOffAddressLabel"
+                android:layout_marginTop="30dp"
+                android:text="Order Status"
+                android:textColor="#949494"/>
+
+            <TextView
+                android:id="@+id/tvOrderStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/orderStatusLabel"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text="Order status"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/orderID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@+id/orderStatusLabel"
+                android:layout_below="@id/dropOffAddressLabel"
+                android:layout_marginLeft="150dp"
+                android:layout_marginTop="30dp"
+                android:text="Order ID"
+                android:textColor="#949494"
+                android:layout_marginStart="150dp"
+                android:layout_toEndOf="@+id/orderStatusLabel" />
+
+            <TextView
+                android:id="@+id/tvOrderID"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/orderID"
+                android:layout_toRightOf="@+id/orderStatusLabel"
+                android:layout_marginLeft="150dp"
+                android:layout_marginStart="150dp"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text="Order ID"
+                android:textColor="#000"/>
+
+            <TextView
+                android:id="@+id/orderTimestampLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/orderStatusLabel"
+                android:layout_marginTop="30dp"
+                android:text="Order at"
+                android:textColor="#949494"/>
+
+            <TextView
+                android:id="@+id/tvPickUpTimestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/orderTimestampLabel"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text="Ordered at"
+                android:textColor="#000"/>
+            <TextView
+                android:id="@+id/deliverTimestampLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/tvPickUpTimestamp"
+                android:layout_marginTop="10dp"
+                android:text="Delivered at"
+                android:textColor="#949494"/>
+
+            <TextView
+                android:id="@+id/tvDeliverTimestamp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/deliverTimestampLabel"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:text="Delivered at"
+                android:textColor="#000"/>
+        </RelativeLayout>
+
         <LinearLayout
             android:id="@+id/btnsOrder"
             android:orientation="horizontal"

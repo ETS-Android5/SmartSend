@@ -9,13 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartsend.smartsendapp.R;
-import com.example.smartsend.smartsendapp.utilities.app.ClientHistoryItem;
+import com.example.smartsend.smartsendapp.utilities.app.OrderItem;
 import com.example.smartsend.smartsendapp.utilities.app.order.Order;
 
 import java.util.ArrayList;
 
 public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryViewHolder> {
-    private ArrayList<ClientHistoryItem> historyItems;
+    private ArrayList<OrderItem> historyItems;
     private OnItemClickListener listener;
 
     public interface OnItemClickListener {
@@ -50,7 +50,7 @@ public class HistoryAdapter extends RecyclerView.Adapter<HistoryAdapter.HistoryV
         }
     }
 
-    public HistoryAdapter(ArrayList<ClientHistoryItem> historyItems) {
+    public HistoryAdapter(ArrayList<OrderItem> historyItems) {
         this.historyItems = historyItems;
     }
 

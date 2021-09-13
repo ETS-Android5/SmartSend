@@ -232,6 +232,19 @@ public class RiderMapActivity extends RiderMenuContainerActivity implements OnMa
         pendingOrderDetailsCardBehavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
         TextView orderIDLabel = findViewById(R.id.orderIDLabel);
         Button btnTakeOrder = findViewById(R.id.btnTakeOrder);
+        TextView tvOrderID = findViewById(R.id.tvOrderID);
+        TextView tvPickUpAddress = findViewById(R.id.tvPickUpAddress);
+        TextView tvDropOffAddress = findViewById(R.id.tvDropOffAddress);
+        TextView tvOrderStatus = findViewById(R.id.tvOrderStatus);
+        TextView tvPickUpTimestamp = findViewById(R.id.tvPickUpTimestamp);
+        TextView tvDeliverTimestamp = findViewById(R.id.tvDeliverTimestamp);
+
+        tvOrderID.setText(pendingOrder.getOrderNumber());
+        tvPickUpAddress.setText(pendingOrder.getPickUpAddress().getAddress());
+        tvDropOffAddress.setText(pendingOrder.getDropOffAddress().getAddress());
+        tvOrderStatus.setText(pendingOrder.getOrderStatus().getStatus());
+        tvPickUpTimestamp.setText(pendingOrder.getPickUpTimestamp() != null ? pendingOrder.getPickUpTimestamp() : "Order has not been picked up yet");
+        tvDeliverTimestamp.setText(pendingOrder.getDropOffTimestamp() != null ? pendingOrder.getDropOffTimestamp() : "Order has not been dropped off yet");
 
         btnTakeOrder.setVisibility(View.VISIBLE);
         btnTakeOrder.setOnClickListener(view -> {

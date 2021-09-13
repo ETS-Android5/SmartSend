@@ -139,8 +139,8 @@ public class OrderSummaryActivity extends AppCompatActivity implements OnMapRead
         btnSmallDelivery = findViewById(R.id.btnSmallDelivery);
         btnMediumDelivery = findViewById(R.id.btnMediumDelivery);
         btnLargeDelivery = findViewById(R.id.btnLargeDelivery);
-        tvPickUpAddress = findViewById(R.id.tvPickUpAddress);
-        tvDropOffAddress = findViewById(R.id.tvDropOffAddress);
+        tvPickUpAddress = findViewById(R.id.tvSelectedPickUpAddress);
+        tvDropOffAddress = findViewById(R.id.tvSelectedDropOffAddress);
         tvAdditionalDetails = findViewById(R.id.tvAdditionalDetails);
         AdditionalDetailsCard = findViewById(R.id.AdditionalDetailsCard);
         OrderCard = findViewById(R.id.orderCard);
