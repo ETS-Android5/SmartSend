@@ -22,9 +22,10 @@
         />
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/cardLimit"
-        android:layout_width="match_parent">
+        android:layout_below="@id/cardLimit">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -35,97 +36,100 @@
 
             <ImageButton
                 android:id="@+id/btnArrowBack"
-                android:layout_height="30dp"
                 android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="15dp"
-                android:src="@drawable/ic_arrow_back_black"
                 android:background="@android:color/transparent"
-                android:onClick="closeActivity"/>
+                android:onClick="closeActivity"
+                android:src="@drawable/ic_arrow_back_black" />
 
             <Button
                 android:id="@+id/btnCompleteTask"
-                android:layout_height="30dp"
-                android:text="COMPLETE TASK"
-                android:layout_marginTop="15dp"
-                android:fontFamily="@font/poppins"
-                android:layout_marginRight="30dp"
-                android:layout_alignParentRight="true"
-                android:textColor="#fff"
                 android:layout_width="150dp"
-                android:background="#0c81f2"
+                android:layout_height="30dp"
                 android:layout_alignParentEnd="true"
-                android:onClick="updateOrderStatus"/>
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="15dp"
+                android:layout_marginRight="30dp"
+                android:background="#0c81f2"
+                android:fontFamily="@font/poppins"
+                android:onClick="updateOrderStatus"
+                android:text="COMPLETE TASK"
+                android:textColor="#fff" />
 
-            <RelativeLayout android:layout_height="match_parent"
-                android:layout_below="@id/btnArrowBack"
+            <RelativeLayout
                 android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_below="@id/btnArrowBack"
                 android:background="@drawable/bg_card"
                 android:padding="15dp">
 
                 <TextView
                     android:id="@+id/statusInfoLabel"
-                    android:layout_marginTop="25dp"
-                    android:text="Status Info"
-                    android:fontFamily="@font/poppins"
-                    android:layout_marginLeft="10dp"
-                    android:textColor="#0c81f2"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_width="wrap_content" />
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="25dp"
+                    android:fontFamily="@font/poppins"
+                    android:text="Status Info"
+                    android:textColor="#0c81f2" />
 
                 <RelativeLayout
                     android:id="@+id/contactInfoTitle"
-                    android:layout_below="@id/statusInfoLabel"
-                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/statusInfoLabel"
                     android:layout_marginTop="15dp"
                     android:background="@color/lightBlue"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp">
 
                     <TextView
-                        android:text="Contact Info"
-                        android:fontFamily="@font/poppins"
-                        android:layout_alignParentLeft="true"
-                        android:textColor="#000"
-                        android:textSize="11dp"
-                        android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:layout_alignParentStart="true" />
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/poppins"
+                        android:text="Contact Info"
+                        android:textColor="#000"
+                        android:textSize="11dp" />
 
                     <ImageButton
-                        android:text="Status Info"
-                        android:fontFamily="@font/poppins"
-                        android:layout_alignParentRight="true"
-                        android:textColor="#000"
-                        android:textSize="11dp"
-                        android:background="@android:color/transparent"
-                        android:src="@drawable/ic_arrow_down_black"
-                        android:layout_height="15dp"
                         android:layout_width="15dp"
-                        android:layout_centerVertical="true"/>
+                        android:layout_height="15dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/poppins"
+                        android:src="@drawable/ic_arrow_down_black"
+                        android:text="Status Info"
+                        android:textColor="#000"
+                        android:textSize="11dp" />
                 </RelativeLayout>
 
                 <LinearLayout
                     android:id="@+id/contactInfoValues"
-                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/contactInfoTitle"
-                    android:paddingRight="5dp"
+                    android:layout_alignParentRight="true"
                     android:gravity="center"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:paddingRight="5dp">
 
-                    <ImageView android:layout_height="20dp"
-                        android:layout_marginTop="10dp"
+                    <ImageView
                         android:layout_width="20dp"
-                        android:src="@drawable/ic_phone"
-                        android:onClick="callContact"/>
+                        android:layout_height="20dp"
+                        android:layout_marginTop="10dp"
+                        android:onClick="callContact"
+                        android:src="@drawable/ic_phone" />
 
-                    <ImageView android:layout_height="25dp"
-                        android:layout_marginTop="15dp"
+                    <ImageView
                         android:layout_width="25dp"
-                        android:src="@drawable/ic_navigate"
-                        android:onClick="naviagteToAddress"/>
+                        android:layout_height="25dp"
+                        android:layout_marginTop="15dp"
+                        android:onClick="naviagteToAddress"
+                        android:src="@drawable/ic_navigate" />
 
                 </LinearLayout>
 
@@ -134,6 +138,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/contactInfoTitle"
+                    android:layout_alignParentLeft="true"
+                    android:layout_toLeftOf="@+id/contactInfoValues"
                     android:orientation="vertical">
 
                     <TextView
@@ -141,10 +147,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:textSize="11dp"
                         android:drawableLeft="@drawable/ic_contact_black"
                         android:fontFamily="@font/poppins"
-                        android:text="Meidan" />
+                        android:text="Meidan"
+                        android:textSize="11dp" />
 
                     <TextView
                         android:id="@+id/tvAddress"
@@ -152,85 +158,87 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="15dp"
                         android:drawableLeft="@drawable/ic_place"
-                        android:textSize="11dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Hertsel 7 Yehud" />
+                        android:text="Hertsel 7 Yehud"
+                        android:textSize="11dp" />
 
                 </LinearLayout>
 
                 <RelativeLayout
                     android:id="@+id/signatureTitle"
-                    android:layout_below="@id/contactInfoValues"
-                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/contactInfoValues"
                     android:layout_marginTop="15dp"
                     android:background="@color/lightBlue"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp">
 
                     <TextView
-                        android:text="Signature"
-                        android:fontFamily="@font/poppins"
-                        android:layout_alignParentLeft="true"
-                        android:textColor="#000"
-                        android:textSize="11dp"
-                        android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:layout_alignParentStart="true" />
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/poppins"
+                        android:text="Signature(s)"
+                        android:textColor="#000"
+                        android:textSize="11dp" />
 
                     <ImageButton
-                        android:text="Status Info"
-                        android:fontFamily="@font/poppins"
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
                         android:layout_alignParentRight="true"
-                        android:textColor="#000"
-                        android:textSize="10dp"
+                        android:layout_centerVertical="true"
                         android:background="@android:color/transparent"
+                        android:fontFamily="@font/poppins"
+                        android:onClick="openSignaturePad"
                         android:src="@drawable/ic_plus_black"
-                        android:layout_height="15dp"
-                        android:layout_width="15dp"
-                        android:layout_centerVertical="true"/>
+                        android:text="Status Info"
+                        android:textColor="#000"
+                        android:textSize="10dp" />
 
                 </RelativeLayout>
 
-                <LinearLayout
+                <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/signatures"
                     android:layout_width="match_parent"
                     android:layout_height="75dp"
                     android:layout_below="@id/signatureTitle"
-                    android:orientation="horizontal">
+                    android:scrollbarAlwaysDrawHorizontalTrack="true">
 
-                </LinearLayout>
+                </androidx.recyclerview.widget.RecyclerView>
+
                 <RelativeLayout
                     android:id="@+id/paymentsTitle"
-                    android:layout_below="@+id/signatures"
-                    android:layout_height="wrap_content"
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/signatures"
                     android:layout_marginTop="15dp"
                     android:background="@color/lightBlue"
                     android:paddingLeft="10dp"
                     android:paddingRight="10dp">
 
                     <TextView
-                        android:text="Payments"
-                        android:fontFamily="@font/poppins"
-                        android:layout_alignParentLeft="true"
-                        android:textColor="#000"
-                        android:textSize="11dp"
-                        android:layout_height="wrap_content"
                         android:layout_width="wrap_content"
-                        android:layout_alignParentStart="true" />
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:fontFamily="@font/poppins"
+                        android:text="Payments"
+                        android:textColor="#000"
+                        android:textSize="11dp" />
 
                     <ImageButton
-                        android:text="Status Info"
-                        android:fontFamily="@font/poppins"
-                        android:layout_alignParentRight="true"
-                        android:textColor="#000"
-                        android:textSize="10dp"
-                        android:background="@android:color/transparent"
-                        android:src="@drawable/ic_arrow_down_black"
-                        android:layout_height="15dp"
                         android:layout_width="15dp"
-                        android:layout_centerVertical="true"/>
+                        android:layout_height="15dp"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/poppins"
+                        android:src="@drawable/ic_arrow_down_black"
+                        android:text="Status Info"
+                        android:textColor="#000"
+                        android:textSize="10dp" />
 
                 </RelativeLayout>
 
@@ -245,33 +253,33 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:textSize="11dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Your commission" />
+                        android:text="Your commission"
+                        android:textSize="11dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:textSize="11dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Payment Method" />
+                        android:text="Payment Method"
+                        android:textSize="11dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:textSize="11dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Payment Status" />
+                        android:text="Payment Status"
+                        android:textSize="11dp" />
 
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_alignParentRight="true"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@id/paymentsTitle"
+                    android:layout_alignParentRight="true"
                     android:gravity="end"
                     android:orientation="vertical">
 
@@ -280,29 +288,42 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
-                        android:textSize="11dp"
                         android:fontFamily="@font/poppins"
-                        android:text="$255.17" />
+                        android:text="$255.17"
+                        android:textSize="11dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:textSize="11dp"
                         android:fontFamily="@font/poppins"
-                        android:text="Cash" />
+                        android:text="Cash"
+                        android:textSize="11dp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:textSize="11dp"
+                        android:fontFamily="@font/poppins"
+                        android:text="PENDING"
                         android:textColor="@color/colorPrimaryGreen"
-                        android:fontFamily="@font/poppins"
-                        android:text="PENDING" />
+                        android:textSize="11dp" />
 
                 </LinearLayout>
             </RelativeLayout>
         </RelativeLayout>
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/signaturePad"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="0dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior"></RelativeLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </RelativeLayout>

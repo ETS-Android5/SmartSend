@@ -1,6 +1,7 @@
 package com.example.smartsend.smartsendapp.activities;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -19,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -27,8 +29,10 @@ import com.arsy.maps_library.MapRadar;
 import com.example.smartsend.smartsendapp.R;
 import com.example.smartsend.smartsendapp.activities.containers.RiderMenuContainerActivity;
 import com.example.smartsend.smartsendapp.adapters.PendingOrdersAdapter;
+import com.example.smartsend.smartsendapp.fragments.OrderDetailsFragment;
 import com.example.smartsend.smartsendapp.services.PendingOrderNotifierService;
 import com.example.smartsend.smartsendapp.utilities.FirebaseManager;
+import com.example.smartsend.smartsendapp.utilities.UserLocalStore;
 import com.example.smartsend.smartsendapp.utilities.app.order.Order;
 import com.example.smartsend.smartsendapp.utilities.app.order.ClientPendingOrderItem;
 import com.example.smartsend.smartsendapp.utilities.location.SmartSendLocationManager;
@@ -64,21 +68,39 @@ public class RiderMapActivity extends RiderMenuContainerActivity implements OnMa
     private MapRadar mapRadar;
 
     private SmartSendLocationManager locationManager;
-    private Switch swStatus;
+    private SwitchCompat swStatus;
     private Handler mHandler = new Handler();
     private Runnable scanOrdersTask;
-    BottomSheetBehavior<RelativeLayout> pendingOrdersCardBehavior, pendingOrderDetailsCardBehavior;
+    private BottomSheetBehavior<RelativeLayout> pendingOrdersCardBehavior, pendingOrderDetailsCardBehavior;
     private LinearLayout noPendingOrders;
     private RecyclerView rvPendingOrders;
-
     private PendingOrdersAdapter adapter;
     private FirebaseManager firebaseManager;
     private FirebaseDatabase firebaseDatabase;
     private String riderID;
-    DatabaseReference pendingOrdersRef;
+    private DatabaseReference pendingOrdersRef;
 
     private LatLng currentLocation;
     private PendingOrdersReceiver receiver;
+    private Order pendingOrder;
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (mMap != null) {
+            LatLng riderLatLng = new LatLng(locationManager.getLat(), locationManager.getLng());
+
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(riderLatLng));
+            mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+            initializeStatusButton();
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopOrderScan();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -87,24 +109,24 @@ public class RiderMapActivity extends RiderMenuContainerActivity implements OnMa
         View contentView = inflater.inflate(R.layout.activity_rider_map, null, false);
         drawer.addView(contentView, 0);
 
-        Intent intent = new Intent(this, PendingOrderNotifierService.class);
-        startService(intent);
-        receiver = new PendingOrdersReceiver();
-        registerReceiver(receiver, new IntentFilter("GET_PENDING_ORDER"));
-        mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
-        Places.initialize(getApplicationContext(), "AIzaSyBUiecg0U9MpA9SNXI-UoPSUpvZV8tXYTg");
+        riderID = UserLocalStore.getInstance(this).getLoggedInRider().getId();
+        if (riderID != null)
+        {
+            Intent intent = new Intent(this, PendingOrderNotifierService.class);
+            startService(intent);
+            receiver = new PendingOrdersReceiver();
+            registerReceiver(receiver, new IntentFilter("GET_PENDING_ORDER"));
+            mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                    .findFragmentById(R.id.map);
+            mapFragment.getMapAsync(this);
+            Places.initialize(getApplicationContext(), "AIzaSyBUiecg0U9MpA9SNXI-UoPSUpvZV8tXYTg");
 
-        firebaseManager = FirebaseManager.getInstance();
-        firebaseDatabase = firebaseManager.getFirebaseDatabase();
-        pendingOrdersRef = firebaseDatabase.getReference("pending_orders");
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            riderID = extras.getString("riderID");
+            firebaseManager = FirebaseManager.getInstance();
+            firebaseDatabase = firebaseManager.getFirebaseDatabase();
+            pendingOrdersRef = firebaseDatabase.getReference("pending_orders");
+
+            initializeActivityComponents();
         }
-
-        initializeActivityComponents();
     }
 
     private void initializeActivityComponents() {
@@ -119,7 +141,7 @@ public class RiderMapActivity extends RiderMenuContainerActivity implements OnMa
     }
 
     private void initializePendingOrderCardBehavior() {
-        RelativeLayout rl = findViewById(R.id.pendingOrdersDetailsCard);
+        RelativeLayout rl = findViewById(R.id.pending_order_view);
         pendingOrderDetailsCardBehavior = BottomSheetBehavior.from(rl);
         pendingOrderDetailsCardBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
     }
@@ -159,16 +181,12 @@ public class RiderMapActivity extends RiderMenuContainerActivity implements OnMa
     private void addToAvailableRiders() {
         GeoFire geoFire = new GeoFire(firebaseDatabase.getReference().child("available_riders"));
 
-        geoFire.setLocation(riderID, new GeoLocation(currentLocation.latitude, currentLocation.longitude), new GeoFire.CompletionListener(){
-            @Override
-            public void onComplete(String key, DatabaseError error) {
-                Toast.makeText(getApplicationContext(), key, Toast.LENGTH_SHORT).show();
-            }
-        });
+        geoFire.setLocation(riderID, new GeoLocation(currentLocation.latitude, currentLocation.longitude),
+                (key, error) -> {});
     }
 
     private void stopOrderScan() {
-        if (mapRadar.isAnimationRunning()) {
+        if (mapRadar != null && mapRadar.isAnimationRunning()) {
             mapRadar.stopRadarAnimation();
         }
         mHandler.removeCallbacks(scanOrdersTask);
@@ -226,33 +244,20 @@ public class RiderMapActivity extends RiderMenuContainerActivity implements OnMa
         Marker orderMarker = clientPendingOrderItem.getMarker();
         Order pendingOrder = clientPendingOrderItem.getOrder();
 
+        this.pendingOrder = pendingOrder;
         zoomToOrderMarker(orderMarker);
         pendingOrdersCardBehavior.setHideable(true);
         pendingOrdersCardBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         pendingOrderDetailsCardBehavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
-        TextView orderIDLabel = findViewById(R.id.orderIDLabel);
-        Button btnTakeOrder = findViewById(R.id.btnTakeOrder);
-        TextView tvOrderID = findViewById(R.id.tvOrderID);
-        TextView tvPickUpAddress = findViewById(R.id.tvPickUpAddress);
-        TextView tvDropOffAddress = findViewById(R.id.tvDropOffAddress);
-        TextView tvOrderStatus = findViewById(R.id.tvOrderStatus);
-        TextView tvPickUpTimestamp = findViewById(R.id.tvPickUpTimestamp);
-        TextView tvDeliverTimestamp = findViewById(R.id.tvDeliverTimestamp);
 
-        tvOrderID.setText(pendingOrder.getOrderNumber());
-        tvPickUpAddress.setText(pendingOrder.getPickUpAddress().getAddress());
-        tvDropOffAddress.setText(pendingOrder.getDropOffAddress().getAddress());
-        tvOrderStatus.setText(pendingOrder.getOrderStatus().getStatus());
-        tvPickUpTimestamp.setText(pendingOrder.getPickUpTimestamp() != null ? pendingOrder.getPickUpTimestamp() : "Order has not been picked up yet");
-        tvDeliverTimestamp.setText(pendingOrder.getDropOffTimestamp() != null ? pendingOrder.getDropOffTimestamp() : "Order has not been dropped off yet");
+        OrderDetailsFragment orderDetailsFragment = new OrderDetailsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("order", pendingOrder);
+        bundle.putBoolean("client", false);
+        bundle.putBoolean("activeOrder", false);
+        orderDetailsFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.pending_order_view, orderDetailsFragment).addToBackStack(null).commit();
 
-        btnTakeOrder.setVisibility(View.VISIBLE);
-        btnTakeOrder.setOnClickListener(view -> {
-            String orderNumber = pendingOrder.getOrderNumber();
-
-            removeFromPendingOrders(orderNumber);
-            acceptOrder(pendingOrder);
-        });
         pendingOrderDetailsCardBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
@@ -268,8 +273,13 @@ public class RiderMapActivity extends RiderMenuContainerActivity implements OnMa
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
             }
         });
-        orderIDLabel.setText("Order #" + pendingOrder.getOrderNumber());
-        Log.d(TAG, "EXPANDED");
+    }
+
+    public void TakeOrder(View view) {
+        String orderNumber = pendingOrder.getOrderNumber();
+
+        removeFromPendingOrders(orderNumber);
+        acceptOrder(pendingOrder);
     }
 
     private void removeFromPendingOrders(String orderNumber) {
@@ -422,18 +432,24 @@ public class RiderMapActivity extends RiderMenuContainerActivity implements OnMa
         }
         else {
             mMap.setMyLocationEnabled(true);
-            mMap.getUiSettings().setMyLocationButtonEnabled(true);
-            mMap.getUiSettings().setZoomControlsEnabled(true);
-            mMap.setPadding(0, 0, 0, 200);
-            MapStyleOptions style = MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style);
-            mMap.setMapStyle(style);
-
-            currentLocation = new LatLng(locationManager.getLat(), locationManager.getLng());
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+            initMap();
         }
     }
 
+    private void initMap() {
+        mMap.getUiSettings().setMyLocationButtonEnabled(true);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.setPadding(0, 0, 0, 200);
+        MapStyleOptions style = MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style);
+        mMap.setMapStyle(style);
+
+        currentLocation = new LatLng(locationManager.getLat(), locationManager.getLng());
+        Log.d(TAG, "Lat = " + currentLocation.latitude + " Lng = " + currentLocation.longitude);
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
+    }
+
+    @SuppressLint("MissingPermission")
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         if (requestCode == REQUEST_LOCATION_PERMISSION) {
@@ -445,6 +461,7 @@ public class RiderMapActivity extends RiderMenuContainerActivity implements OnMa
             }
             else {
                 mMap.setMyLocationEnabled(true);
+                initMap();
             }
         } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);

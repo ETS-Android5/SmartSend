@@ -4,15 +4,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartsend.smartsendapp.R;
 import com.example.smartsend.smartsendapp.adapters.HistoryAdapter;
+import com.example.smartsend.smartsendapp.fragments.OrderDetailsFragment;
 import com.example.smartsend.smartsendapp.utilities.FirebaseManager;
 import com.example.smartsend.smartsendapp.utilities.app.OrderItem;
 import com.example.smartsend.smartsendapp.utilities.app.order.Order;
@@ -37,7 +38,7 @@ public class RiderActiveOrdersActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_client_order_history);
+        setContentView(R.layout.activity_order_history);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Active Orders");
@@ -45,7 +46,7 @@ public class RiderActiveOrdersActivity extends AppCompatActivity {
         firebaseManager = FirebaseManager.getInstance();
         firebaseDatabase = firebaseManager.getFirebaseDatabase();
 
-        orderHistoryCard = findViewById(R.id.OrderHistoryCard);
+        orderHistoryCard = findViewById(R.id.active_order_view);
         orderHistoryBehavior = BottomSheetBehavior.from(orderHistoryCard);
         orderHistoryBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
 
@@ -95,27 +96,21 @@ public class RiderActiveOrdersActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(position -> {
                 OrderItem historyItem = orderItems.get(position);
 
-                displayHistoryItem(historyItem);
-                orderHistoryBehavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
                 selectedOrder = historyItem.getOrder();
+                displayHistoryItem(selectedOrder);
+                orderHistoryBehavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
         });
     }
 
-    private void displayHistoryItem(OrderItem activeOrderItem) {
-        Order historyOrder = activeOrderItem.getOrder();
-        TextView tvOrderID = findViewById(R.id.tvOrderID);
-        TextView tvPickUpAddress = findViewById(R.id.tvPickUpAddress);
-        TextView tvDropOffAddress = findViewById(R.id.tvDropOffAddress);
-        TextView tvOrderStatus = findViewById(R.id.tvOrderStatus);
-        TextView tvPickUpTimestamp = findViewById(R.id.tvPickUpTimestamp);
-        TextView tvDeliverTimestamp = findViewById(R.id.tvDeliverTimestamp);
+    private void displayHistoryItem(Order activeOrder) {
+        OrderDetailsFragment orderDetailsFragment = new OrderDetailsFragment();
+        Bundle bundle = new Bundle();
 
-        tvOrderID.setText(historyOrder.getOrderNumber());
-        tvPickUpAddress.setText(historyOrder.getPickUpAddress().getAddress());
-        tvDropOffAddress.setText(historyOrder.getDropOffAddress().getAddress());
-        tvOrderStatus.setText(historyOrder.getOrderStatus().getStatus());
-        tvPickUpTimestamp.setText(historyOrder.getPickUpTimestamp() != null ? historyOrder.getPickUpTimestamp() : "Order has not been picked up yet");
-        tvDeliverTimestamp.setText(historyOrder.getDropOffTimestamp() != null ? historyOrder.getDropOffTimestamp() : "Order has not been dropped off yet");
+        bundle.putSerializable("order", activeOrder);
+        bundle.putBoolean("client", false);
+        bundle.putBoolean("activeOrder", true);
+        orderDetailsFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.active_order_view, orderDetailsFragment).addToBackStack(null).commit();
     }
 
 

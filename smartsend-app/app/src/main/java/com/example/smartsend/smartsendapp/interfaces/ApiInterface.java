@@ -1,4 +1,4 @@
-package com.example.smartsend.smartsendapp.activities;
+package com.example.smartsend.smartsendapp.interfaces;
 
 import com.example.smartsend.smartsendapp.utilities.autocomplete.MainPojo;
 

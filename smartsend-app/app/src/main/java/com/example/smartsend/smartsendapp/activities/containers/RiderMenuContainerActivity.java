@@ -85,7 +85,6 @@ public class RiderMenuContainerActivity extends AppCompatActivity implements Nav
 
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
         int id = item.getItemId();
 
         switch (id) {
@@ -98,17 +97,17 @@ public class RiderMenuContainerActivity extends AppCompatActivity implements Nav
             }
             case R.id.nav_active_orders: {
                 goRiderActiveOrdersActivity();
-                finish();
+//                finish();
                 break;
             }
             case R.id.nav_rider_delivery_history: {
                 goRiderOrderHistoryActivity();
-                finish();
+//                finish();
                 break;
             }
             case R.id.nav_my_account: {
                 goRiderProfileActivity();
-                finish();
+//                finish();
                 break;
             }
             case R.id.nav_client_signout: {

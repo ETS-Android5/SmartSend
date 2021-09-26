@@ -2,16 +2,12 @@ package com.example.smartsend.smartsendapp.utilities.app;
 
 import com.example.smartsend.smartsendapp.R;
 
-/**
- * Created by AGM TAZIM on 12/31/2015.
- */
 public class Client {
     private String id = null, email = null, password = null, company_name = null,
             location = null, contact_number = null, billing_address = null,
             contact_person_name = null, contact_person_number = null, contact_person_email = null,
             created_date =null, profilePicture;
 
-    //Consrtuctor
     public Client(){
         profilePicture = String.valueOf(R.drawable.logo);
     }
@@ -24,22 +20,18 @@ public class Client {
         this.profilePicture = profilePicture;
     }
 
-    //Set id
     public void setId(String id) {
         this.id = id;
     }
 
-    //Get id
     public String getId() {
         return id;
     }
 
-    //Set password
     public void setPassword(String password) {
         this.password = password;
     }
 
-    //Get password
     public String getPassword() {
         return password;
     }

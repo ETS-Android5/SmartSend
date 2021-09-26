@@ -22,11 +22,9 @@ import static com.example.smartsend.smartsendapp.utilities.AppController.TAG;
  */
 
 public class FirebaseManager {
-    private String serverUrl;
     private FirebaseAuth mAuth;
     private FirebaseUser currentUser;
     private FirebaseDatabase firebaseDatabase;
-    private DatabaseReference firebaseDatabaseRef;
     private FirebaseStorage firebaseStorage;
     private static FirebaseManager managerInstance;
     private static final Object managerContextLock = new Object();
@@ -35,7 +33,6 @@ public class FirebaseManager {
         firebaseStorage = FirebaseStorage.getInstance();
         mAuth = FirebaseAuth.getInstance();
         firebaseDatabase = FirebaseDatabase.getInstance();
-        firebaseDatabaseRef = firebaseDatabase.getReference();
     }
 
     public static FirebaseManager getInstance() {
@@ -68,14 +65,6 @@ public class FirebaseManager {
         mAuth.signOut();
     }
 
-    public DatabaseReference getFirebaseDatabaseRef() {
-        return firebaseDatabaseRef;
-    }
-
-    public void setFirebaseDatabaseRef(DatabaseReference firebaseDatabaseRef) {
-        this.firebaseDatabaseRef = firebaseDatabaseRef;
-    }
-
     public FirebaseAuth getAuth() {
         return mAuth;
     }
@@ -88,16 +77,12 @@ public class FirebaseManager {
         return firebaseDatabase;
     }
 
+    public FirebaseStorage getFirebaseStorage() {
+        return firebaseStorage;
+    }
+
     public void setCurrentUser(FirebaseUser currentUser) {
         this.currentUser = currentUser;
-    }
-
-    public String getServerUrl() {
-        return this.serverUrl;
-    }
-
-    public static String getServerUrl(Context context) {
-        return context.getString(R.string.server_url);
     }
 
     public void resetPassword(Context ctx, String userEmail) {

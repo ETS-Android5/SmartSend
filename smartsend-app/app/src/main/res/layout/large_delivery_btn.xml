@@ -1,23 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical" android:layout_width="120dp"
-    android:layout_height="90dp"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     android:clickable="true"
     android:focusable="true"
+    android:layout_weight="1"
+    android:layout_gravity="center"
     android:layout_centerHorizontal="true"
     android:padding="5dp"
-    android:id="@+id/btnLargeDelivery"
-    android:background="@drawable/bg_delivery_btn"
-    android:layout_gravity="center"
-    android:layout_marginRight="5dp"
-    android:layout_marginEnd="5dp">
+    android:layout_marginLeft="5dp"
+    android:layout_marginStart="5dp"
+    android:id="@+id/btnLargeDelivery">
 
-    <ImageView
+    <TextView
+        android:id="@+id/tvTruckTime"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fontFamily="@font/poppins"
+        android:gravity="center_horizontal"
+        android:text="1 min"
+        android:textAlignment="center"
+        android:textSize="8sp" />
+
+    <RelativeLayout
         android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:background="@drawable/bg_delivery_btn"
         android:layout_gravity="center"
-        android:src="@mipmap/ic_large_package" />
+        android:layout_height="50dp">
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="50dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_truck" />
+    </RelativeLayout>
 
     <TextView
         android:id="@+id/textView3"
@@ -25,18 +42,17 @@
         android:layout_height="wrap_content"
         android:fontFamily="@font/poppins"
         android:layout_gravity="center_horizontal"
-        android:text="Large Delivery"
+        android:text="Truck"
         android:textAlignment="center"
-        android:textSize="10sp"
-        android:textStyle="bold" />
+        android:textSize="12sp" />
 
     <TextView
-        android:id="@+id/textView4"
+        android:id="@+id/tvTruckFare"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fontFamily="@font/poppins"
         android:gravity="center_horizontal"
-        android:text="Up To 15 kg"
+        android:text="0$"
         android:textAlignment="center"
         android:textSize="8sp" />
 

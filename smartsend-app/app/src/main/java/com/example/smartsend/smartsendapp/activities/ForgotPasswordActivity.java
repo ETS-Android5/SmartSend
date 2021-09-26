@@ -64,7 +64,7 @@ public class ForgotPasswordActivity extends AppCompatActivity {
                     Toast.makeText(ForgotPasswordActivity.this, ex.getMessage(), Toast.LENGTH_SHORT).show();
                 }
 
-            } //End of else
+            }
         });
 
         btnBackArrow.setOnClickListener(v -> finish());

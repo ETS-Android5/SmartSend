@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/pendingOrdersDetailsCard"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:paddingTop="15dp"
+    app:behavior_hideable="true"
+    app:behavior_peekHeight="70dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <View
+        android:id="@+id/cardDrag"
+        android:background="#5c5c5c"
+        android:layout_gravity="center"
+        android:layout_height="3dp"
+        android:layout_width="74dp"
+        android:layout_centerHorizontal="true"/>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/cardDrag"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/bg_card">
+
+        <TextView
+            android:id="@+id/orderIDLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:fontFamily="@font/poppins"
+            android:text="Order #21213"
+            android:textColor="#979797" />
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/transparent"
+            android:onClick="zoomOrderMark"
+            android:src="@drawable/ic_place"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="20dp"
+            android:background="@android:color/transparent"
+            android:onClick="closePendingOrderDetails"
+            android:src="@drawable/ic_exit_black" />
+
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@id/btnTakeOrder"
+            android:layout_below="@id/orderIDLabel">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_card"
+                android:padding="15dp">
+
+
+                <TextView
+                    android:id="@+id/pickUpAddressLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="From"
+                    android:textColor="#949494" />
+
+                <TextView
+                    android:id="@+id/tvPickUpAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pickUpAddressLabel"
+                    android:layout_marginTop="5dp"
+                    android:text="From"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/dropOffAddressLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pickUpAddressLabel"
+                    android:layout_marginTop="30dp"
+                    android:text="To"
+                    android:textColor="#949494" />
+
+                <TextView
+                    android:id="@+id/tvDropOffAddress"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dropOffAddressLabel"
+                    android:layout_marginTop="5dp"
+                    android:text="To"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/orderStatusLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dropOffAddressLabel"
+                    android:layout_marginTop="30dp"
+                    android:text="Order Status"
+                    android:textColor="#949494" />
+
+                <TextView
+                    android:id="@+id/tvOrderStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/orderStatusLabel"
+                    android:layout_marginTop="5dp"
+                    android:text="Order status"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/orderID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dropOffAddressLabel"
+                    android:layout_marginStart="150dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_marginTop="30dp"
+                    android:layout_toEndOf="@+id/orderStatusLabel"
+                    android:layout_toRightOf="@+id/orderStatusLabel"
+                    android:text="Order ID"
+                    android:textColor="#949494" />
+
+                <TextView
+                    android:id="@+id/tvOrderID"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/orderID"
+                    android:layout_marginStart="150dp"
+                    android:layout_marginLeft="150dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_toRightOf="@+id/orderStatusLabel"
+                    android:text="Order ID"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/pickUpTimestampLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/orderStatusLabel"
+                    android:layout_marginTop="30dp"
+                    android:text="Picked Up at"
+                    android:textColor="#949494" />
+
+                <TextView
+                    android:id="@+id/tvPickUpTimestamp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/pickUpTimestampLabel"
+                    android:layout_marginTop="5dp"
+                    android:text="Ordered at"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/deliverTimestampLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvPickUpTimestamp"
+                    android:layout_marginTop="10dp"
+                    android:text="Delivered at"
+                    android:textColor="#949494" />
+
+                <TextView
+                    android:id="@+id/tvDeliverTimestamp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/deliverTimestampLabel"
+                    android:layout_marginTop="5dp"
+                    android:text="Delivered at"
+                    android:textColor="#000"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/pickUpContactDetailsTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tvDeliverTimestamp"
+                    android:layout_marginTop="20dp"
+                    android:background="#fcfcfc"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center_horizontal"
+                    android:text="Pick Up Contact Details"
+                    android:textAlignment="center"
+                    android:textColor="#000" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pickUpContactDetailsTitle"
+                    android:layout_alignParentLeft="true"
+                    android:orientation="vertical"
+                    android:paddingTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contact Name" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Phone Number" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/pickUpContactValues"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pickUpContactDetailsTitle"
+                    android:layout_alignParentRight="true"
+                    android:gravity="end"
+                    android:orientation="vertical"
+                    android:paddingTop="5dp">
+
+                    <TextView
+                        android:id="@+id/tvPickUpContactName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Avi Levi" />
+
+                    <TextView
+                        android:id="@+id/tvPickUpContactNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="123-123-123" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/dropOffContactDetailsTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/pickUpContactValues"
+                    android:layout_marginTop="30dp"
+                    android:background="#fcfcfc"
+                    android:fontFamily="@font/poppins"
+                    android:gravity="center_horizontal"
+                    android:text="Drop Off Contact Details"
+                    android:textAlignment="center"
+                    android:textColor="#000" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dropOffContactDetailsTitle"
+                    android:layout_alignParentLeft="true"
+                    android:orientation="vertical"
+                    android:paddingTop="5dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Contact Name" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="Phone Number" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/dropOffContactDetailsTitle"
+                    android:layout_alignParentRight="true"
+                    android:gravity="end"
+                    android:orientation="vertical"
+                    android:paddingTop="5dp">
+
+                    <TextView
+                        android:id="@+id/tvDropOffContactName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Avi Levi" />
+
+                    <TextView
+                        android:id="@+id/tvDropOffContactNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="123-123-123" />
+                </LinearLayout>
+            </RelativeLayout>
+        </ScrollView>
+
+
+        <LinearLayout
+            android:id="@+id/btnsOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="horizontal">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:onClick="cancelOrder"
+                android:layout_weight="1"
+                android:text="CANCEL ORDER"
+                android:textColor="@color/quantum_googred"
+                tools:context=".activities.ClientMapActivity" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:text="EDIT ORDER"
+                android:textColor="@color/colorPrimaryGreen"
+                tools:context=".activities.ClientMapActivity" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnTakeOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            android:text="TAKE ORDER"
+            android:onClick="TakeOrder"
+            android:textColor="#fff" />
+
+
+        <Button
+            android:id="@+id/btnGoToOrder"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorPrimary"
+            android:text="GO TO ORDER"
+            android:textColor="#fff"/>
+    </RelativeLayout>
+
+</RelativeLayout>

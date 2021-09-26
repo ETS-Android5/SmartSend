@@ -2,7 +2,6 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 31
-    buildToolsVersion '3.0.0'
 
     defaultConfig {
         applicationId "com.example.smartsend.smartsendapp"
@@ -55,6 +54,8 @@ dependencies {
     implementation 'com.github.medyo:android-about-page:1.2.6'
     implementation 'pub.devrel:easypermissions:3.0.0'
     implementation 'pub.devrel:easypermissions:3.0.0'
+
+    implementation 'com.kyanogen.signatureview:signature-view:1.2'
 
     implementation 'org.jetbrains:annotations-java5:15.0'
     implementation 'com.sothree.slidinguppanel:library:3.2.1'

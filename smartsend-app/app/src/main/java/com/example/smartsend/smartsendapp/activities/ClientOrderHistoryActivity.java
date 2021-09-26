@@ -2,15 +2,18 @@ package com.example.smartsend.smartsendapp.activities;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartsend.smartsendapp.R;
+import com.example.smartsend.smartsendapp.fragments.OrderDetailsFragment;
 import com.example.smartsend.smartsendapp.utilities.FirebaseManager;
 import com.example.smartsend.smartsendapp.utilities.app.OrderItem;
 import com.example.smartsend.smartsendapp.adapters.HistoryAdapter;
@@ -34,7 +37,7 @@ public class ClientOrderHistoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_client_order_history);
+        setContentView(R.layout.activity_order_history);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Orders");
@@ -42,7 +45,7 @@ public class ClientOrderHistoryActivity extends AppCompatActivity {
 
         getClientID();
         getClientOrderHistory();
-        orderHistoryCard = findViewById(R.id.OrderHistoryCard);
+        orderHistoryCard = findViewById(R.id.active_order_view);
         orderHistoryBehavior = BottomSheetBehavior.from(orderHistoryCard);
         orderHistoryBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
@@ -95,20 +98,13 @@ public class ClientOrderHistoryActivity extends AppCompatActivity {
     }
 
     private void displayHistoryItem(OrderItem historyItem) {
-        Order historyOrder = historyItem.getOrder();
-        TextView tvOrderID = findViewById(R.id.tvOrderID);
-        TextView tvPickUpAddress = findViewById(R.id.tvPickUpAddress);
-        TextView tvDropOffAddress = findViewById(R.id.tvDropOffAddress);
-        TextView tvOrderStatus = findViewById(R.id.tvOrderStatus);
-        TextView tvPickUpTimestamp = findViewById(R.id.tvPickUpTimestamp);
-        TextView tvDeliverTimestamp = findViewById(R.id.tvDeliverTimestamp);
-
-        tvOrderID.setText(historyOrder.getOrderNumber());
-        tvPickUpAddress.setText(historyOrder.getPickUpAddress().getAddress());
-        tvDropOffAddress.setText(historyOrder.getDropOffAddress().getAddress());
-        tvOrderStatus.setText(historyOrder.getOrderStatus().getStatus());
-        tvPickUpTimestamp.setText(historyOrder.getPickUpTimestamp() != null ? historyOrder.getPickUpTimestamp() : "Order has not been picked up yet");
-        tvDeliverTimestamp.setText(historyOrder.getDropOffTimestamp() != null ? historyOrder.getDropOffTimestamp() : "Order has not been dropped off yet");
+        OrderDetailsFragment orderDetailsFragment = new OrderDetailsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("order", historyItem.getOrder());
+        bundle.putBoolean("client", true);
+        bundle.putBoolean("activeOrder", false);
+        orderDetailsFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.active_order_view, orderDetailsFragment).addToBackStack(null).commit();
     }
 
 
@@ -121,9 +117,28 @@ public class ClientOrderHistoryActivity extends AppCompatActivity {
     }
 
     public void cancelOrder(View view) {
-
+        showCancelDialog();
     }
 
-    public void editOrder(View view) {
+    private void showCancelDialog() {
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setCancelable(false)
+                .setTitle("CANCEL ORDER")
+                .setMessage("Are you sure you want to cancel this order?")
+                .setPositiveButton("Yes",null)
+                .setNegativeButton("No",null)
+                .create();
+
+        alertDialog.setOnShowListener(dialogInterface -> {
+            Button yesButton = (alertDialog).getButton(android.app.AlertDialog.BUTTON_POSITIVE);
+            Button noButton = (alertDialog).getButton(android.app.AlertDialog.BUTTON_NEGATIVE);
+            yesButton.setOnClickListener(view1 -> {
+                alertDialog.dismiss();
+            });
+
+            noButton.setOnClickListener(view1 -> alertDialog.dismiss());
+        });
+
+        alertDialog.show();
     }
 }

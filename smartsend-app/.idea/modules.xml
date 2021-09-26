@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="smartsend-app/app" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/libs/libs.iml" filepath="$PROJECT_DIR$/.idea/modules/app/libs/libs.iml" group="smartsend-app/app/libs" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/smartsend-app.iml" filepath="$PROJECT_DIR$/.idea/smartsend-app.iml" group="smartsend-app" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/libs/volley/volley.iml" filepath="$PROJECT_DIR$/.idea/modules/app/libs/volley/volley.iml" group="smartsend-app/app/libs/volley" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/smartsend-app.iml" filepath="$PROJECT_DIR$/.idea/smartsend-app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/smartsend-app.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/smartsend-app.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/libs/smartsend-app.app.libs.iml" filepath="$PROJECT_DIR$/.idea/modules/app/libs/smartsend-app.app.libs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/libs/volley/smartsend-app.app.libs.volley.iml" filepath="$PROJECT_DIR$/.idea/modules/app/libs/volley/smartsend-app.app.libs.volley.iml" />
     </modules>
   </component>
 </project>

@@ -42,16 +42,15 @@
     <TextView
         android:id="@+id/tvDeliveryPrice"
         android:layout_width="250dp"
-        android:textAlignment="center"
         android:layout_height="wrap_content"
         android:layout_below="@id/payLabel"
-        android:textColor="#fff"
-        android:fontFamily="@font/poppins"
         android:layout_centerHorizontal="true"
-        android:textStyle="bold"
+        android:fontFamily="@font/poppins"
+        android:gravity="center_horizontal"
+        android:textAlignment="center"
+        android:textColor="#fff"
         android:textSize="30sp"
-        android:text="$255.17"
-        android:gravity="center_horizontal" />
+        android:textStyle="bold" />
 
     <ScrollView
         android:layout_width="match_parent"
@@ -91,37 +90,6 @@
                     android:layout_alignParentLeft="true"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Base fare"
-                        android:textColor="#fff"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Distance Fare(14.3km)"
-                        android:textColor="#fff"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Time fare(30 min)"
-                        android:textColor="#fff"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:text="Tax"
-                        android:textColor="#fff"
-                        android:textSize="15sp" />
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -133,44 +101,6 @@
                     android:gravity="end"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:text="$121.00"
-                        android:textColor="#fff"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginTop="10dp"
-                        android:text="$34.03"
-                        android:textColor="#fff"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginTop="10dp"
-                        android:text="$41.00"
-                        android:textColor="#fff"
-                        android:textSize="15sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginTop="10dp"
-                        android:text="$34.14"
-                        android:textColor="#fff"
-                        android:textSize="15sp" />
                 </LinearLayout>
 
                 <View
@@ -220,11 +150,11 @@
                     android:orientation="vertical">
 
                     <TextView
+                        android:id="@+id/tvSubTotal"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:text="$240.17"
                         android:textColor="#fff"
                         android:textSize="15sp" />
 
@@ -234,7 +164,7 @@
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
                         android:layout_marginTop="10dp"
-                        android:text="$15.00"
+                        android:text="$5.00"
                         android:textColor="#fff"
                         android:textSize="15sp" />
                 </LinearLayout>
@@ -266,7 +196,6 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentRight="true"
                     android:layout_marginTop="10dp"
-                    android:text="$255.17"
                     android:textColor="#fff"
                     android:textSize="15sp" />
 

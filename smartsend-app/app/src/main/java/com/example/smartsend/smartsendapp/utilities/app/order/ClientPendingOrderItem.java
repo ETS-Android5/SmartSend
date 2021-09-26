@@ -6,9 +6,6 @@ public class ClientPendingOrderItem {
     private Order order;
     private Marker marker;
 
-    public ClientPendingOrderItem() {
-    }
-
     public Marker getMarker() {
         return marker;
     }

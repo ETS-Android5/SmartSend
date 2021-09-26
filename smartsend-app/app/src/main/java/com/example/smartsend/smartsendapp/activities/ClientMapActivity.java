@@ -17,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -24,7 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.smartsend.smartsendapp.R;
 import com.example.smartsend.smartsendapp.activities.containers.ClientMenuContainerActivity;
 import com.example.smartsend.smartsendapp.adapters.ClientPendingOrdersAdapter;
-import com.example.smartsend.smartsendapp.utilities.AppController;
+import com.example.smartsend.smartsendapp.fragments.OrderDetailsFragment;
 import com.example.smartsend.smartsendapp.utilities.FirebaseManager;
 import com.example.smartsend.smartsendapp.utilities.app.order.ClientPendingOrderItem;
 import com.example.smartsend.smartsendapp.utilities.app.order.Order;
@@ -58,6 +59,7 @@ public class ClientMapActivity extends ClientMenuContainerActivity implements On
     private LinearLayout noPendingOrders;
     private RecyclerView rvPendingOrders;
 
+    private Order pendingOrder;
     private Handler mHandler = new Handler();
     private Runnable scanOrdersTask;
     private SmartSendLocationManager locationManager;
@@ -135,27 +137,25 @@ public class ClientMapActivity extends ClientMenuContainerActivity implements On
         Marker orderMarker = clientPendingOrderItem.getMarker();
         Order pendingOrder = clientPendingOrderItem.getOrder();
 
+        this.pendingOrder = pendingOrder;
         zoomToOrderMarker(orderMarker);
         pendingOrdersCardBehavior.setHideable(true);
         pendingOrdersCardBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+
+        showPendingOrderFragment();
+    }
+
+    private void showPendingOrderFragment() {
+        OrderDetailsFragment orderDetailsFragment = new OrderDetailsFragment();
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("order", pendingOrder);
+        bundle.putBoolean("client", true);
+        orderDetailsFragment.setArguments(bundle);
+        getSupportFragmentManager().beginTransaction().replace(R.id.pending_order_view, orderDetailsFragment).addToBackStack(null).commit();
+
+        RelativeLayout rl = findViewById(R.id.pending_order_view);
+        pendingOrderDetailsCardBehavior = BottomSheetBehavior.from(rl);
         pendingOrderDetailsCardBehavior.setState(BottomSheetBehavior.STATE_HALF_EXPANDED);
-        TextView orderIDLabel = findViewById(R.id.orderIDLabel);
-        Button btnTakeOrder = findViewById(R.id.btnTakeOrder);
-        TextView tvOrderID = findViewById(R.id.tvOrderID);
-        TextView tvPickUpAddress = findViewById(R.id.tvPickUpAddress);
-        TextView tvDropOffAddress = findViewById(R.id.tvDropOffAddress);
-        TextView tvOrderStatus = findViewById(R.id.tvOrderStatus);
-        TextView tvPickUpTimestamp = findViewById(R.id.tvPickUpTimestamp);
-        TextView tvDeliverTimestamp = findViewById(R.id.tvDeliverTimestamp);
-
-        tvOrderID.setText(pendingOrder.getOrderNumber());
-        tvPickUpAddress.setText(pendingOrder.getPickUpAddress().getAddress());
-        tvDropOffAddress.setText(pendingOrder.getDropOffAddress().getAddress());
-        tvOrderStatus.setText(pendingOrder.getOrderStatus().getStatus());
-        tvPickUpTimestamp.setText(pendingOrder.getPickUpTimestamp() != null ? pendingOrder.getPickUpTimestamp() : "Order has not been picked up yet");
-        tvDeliverTimestamp.setText(pendingOrder.getDropOffTimestamp() != null ? pendingOrder.getDropOffTimestamp() : "Order has not been dropped off yet");
-
-        btnTakeOrder.setVisibility(View.INVISIBLE);
         pendingOrderDetailsCardBehavior.setBottomSheetCallback(new BottomSheetBehavior.BottomSheetCallback() {
             @Override
             public void onStateChanged(@NonNull View bottomSheet, int newState) {
@@ -171,8 +171,6 @@ public class ClientMapActivity extends ClientMenuContainerActivity implements On
             public void onSlide(@NonNull View bottomSheet, float slideOffset) {
             }
         });
-        orderIDLabel.setText("Order #" + pendingOrder.getOrderNumber());
-        Log.d(TAG, "EXPANDED");
     }
 
     private void zoomToOrderMarker(Marker orderMarker) {
@@ -183,10 +181,6 @@ public class ClientMapActivity extends ClientMenuContainerActivity implements On
     private void initializeActivityComponents() {
         initializeLocationManager();
         initializeCardBehavior();
-
-        RelativeLayout rl = findViewById(R.id.pendingOrdersDetailsCard);
-        pendingOrderDetailsCardBehavior = BottomSheetBehavior.from(rl);
-        pendingOrderDetailsCardBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
     }
 
     private void initializeCardBehavior() {
@@ -201,37 +195,18 @@ public class ClientMapActivity extends ClientMenuContainerActivity implements On
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED &&
                 ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            //AppController.requestPremissions(this);
             ActivityCompat.requestPermissions(ClientMapActivity.this, new String[] { Manifest.permission.ACCESS_FINE_LOCATION,  Manifest.permission.ACCESS_COARSE_LOCATION}, PackageManager.PERMISSION_GRANTED);
         }
         else {
             mMap.setMyLocationEnabled(true);
-            mMap.getUiSettings().setMyLocationButtonEnabled(true);
-            mMap.getUiSettings().setZoomControlsEnabled(true);
-            mMap.setPadding(0, 0, 0, 200);
-            MapStyleOptions style = MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style);
-            mMap.setMapStyle(style);
-
-            currentLocation = new LatLng(locationManager.getLat(), locationManager.getLng());
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
-            mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
         }
+        initMap();
     }
 
     @SuppressLint("MissingPermission")
@@ -245,10 +220,23 @@ public class ClientMapActivity extends ClientMenuContainerActivity implements On
             }
             else {
                 mMap.setMyLocationEnabled(true);
+                initMap();
             }
         } else {
             super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+    }
+
+    private void initMap() {
+        mMap.getUiSettings().setMyLocationButtonEnabled(true);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.setPadding(0, 0, 0, 200);
+        MapStyleOptions style = MapStyleOptions.loadRawResourceStyle(this, R.raw.map_style);
+        mMap.setMapStyle(style);
+
+        currentLocation = new LatLng(locationManager.getLat(), locationManager.getLng());
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(currentLocation));
+        mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
     }
 
     public void goToAddressPickerActivity(View view) {
@@ -271,4 +259,48 @@ public class ClientMapActivity extends ClientMenuContainerActivity implements On
         mMap.moveCamera(CameraUpdateFactory.newLatLng(marker.getPosition()));
         mMap.animateCamera(CameraUpdateFactory.zoomTo(15));
     }
+
+
+    public void cancelOrder(View view) {
+        showCancelDialog();
+    }
+
+    private void showCancelDialog() {
+        AlertDialog alertDialog = new AlertDialog.Builder(this)
+                .setCancelable(false)
+                .setTitle("CANCEL ORDER")
+                .setMessage("Are you sure you want to cancel this order?")
+                .setPositiveButton("Yes",null)
+                .setNegativeButton("No",null)
+                .create();
+
+        alertDialog.setOnShowListener(dialogInterface -> {
+            Button yesButton = (alertDialog).getButton(android.app.AlertDialog.BUTTON_POSITIVE);
+            Button noButton = (alertDialog).getButton(android.app.AlertDialog.BUTTON_NEGATIVE);
+            yesButton.setOnClickListener(view1 -> {
+                alertDialog.dismiss();
+                pendingOrderDetailsCardBehavior.setState(BottomSheetBehavior.STATE_HIDDEN);
+                deleteOrder(pendingOrder);
+            });
+
+            noButton.setOnClickListener(view1 -> alertDialog.dismiss());
+        });
+
+        alertDialog.show();
+    }
+
+    private void deleteOrder(Order pendingOrder) {
+        DatabaseReference pendingOrdersRef = firebaseDatabase
+                .getReference("pending_orders")
+                .child(pendingOrder.getOrderNumber());
+        DatabaseReference orderRef = firebaseDatabase
+                .getReference("clients")
+                .child(clientID)
+                .child("pending_orders")
+                .child(pendingOrder.getOrderNumber());
+
+        orderRef.removeValue();
+        pendingOrdersRef.removeValue();
+    }
+
 }

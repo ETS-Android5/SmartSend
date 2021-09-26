@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.smartsend.smartsendapp.R;
+import com.example.smartsend.smartsendapp.interfaces.ApiInterface;
 import com.example.smartsend.smartsendapp.utilities.autocomplete.Listclass;
 import com.example.smartsend.smartsendapp.utilities.autocomplete.MainPojo;
 import com.example.smartsend.smartsendapp.adapters.PlaceListAdapter;
@@ -27,17 +28,11 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AddressPickerActivity extends AppCompatActivity{
 
-    private PlaceListAdapter mAdapter;
     private RecyclerView mRecyclerView;
     private EditText tiPickUpAddress, tiDropOffAddress;
     private SmartSendLocationManager locationManager;
-
     private ApiInterface apiInterface;
-    /**
-     * Called when the activity is starting
-     *
-     * @param savedInstanceState The Bundle that contains the data supplied in onSaveInstanceState
-     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,7 +98,7 @@ public class AddressPickerActivity extends AppCompatActivity{
 
     private void getData(String text) {
         if (!text.equals("Current Location")) {
-            apiInterface.getPlace(text, getString(R.string.PLACES_API_KEY)).enqueue(new Callback<MainPojo>() {
+            apiInterface.getPlace(text, "AIzaSyBUiecg0U9MpA9SNXI-UoPSUpvZV8tXYTg").enqueue(new Callback<MainPojo>() {
                 @Override
                 public void onResponse(Call<MainPojo> call, Response<MainPojo> response) {
                     if (response.isSuccessful()) {

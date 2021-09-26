@@ -71,7 +71,6 @@
     <string name="title_activity_rider_map">RiderMapActivity</string>
     <string name="need_location_permission_message">You need to enable location permissions first</string>
     <string name="title_activity_address_picker">AddressPickerActivity</string>
-    <string name="PLACES_API_KEY">AIzaSyBUiecg0U9MpA9SNXI-UoPSUpvZV8tXYTg</string>
     <string name="title_activity_order_summary">OrderSummaryActivity</string>
     <string name="title_activity_contact_us">ContactUsActivity</string>
     <string name="title_activity_search_courier">SearchCourierActivity</string>

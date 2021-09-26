@@ -38,7 +38,14 @@
         android:layout_below="@id/cardDivider"
         android:layout_alignParentBottom="true">
 
-        <include layout="@layout/layout_pending_order_details"/>
+        <RelativeLayout
+            android:id="@+id/pending_order_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="70dp"
+            app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+        </RelativeLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -82,7 +89,7 @@
                     android:src="@drawable/ic_refresh" />
 
 
-                <include layout="@layout/layout_pending_orders_fragment"/>
+                <include layout="@layout/layout_pending_orders_fragment" />
 
                 <LinearLayout
                     android:id="@+id/noPendingOrders"

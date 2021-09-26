@@ -34,15 +34,13 @@
         android:layout_height="wrap_content"
         android:text="rideremail@email.com" />
 
-    <Switch
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/statusSwitch"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="10dp"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"/>
 
 </RelativeLayout>
 

@@ -10,8 +10,6 @@ import androidx.viewpager.widget.ViewPager;
 
 import com.example.smartsend.smartsendapp.R;
 import com.example.smartsend.smartsendapp.utilities.SplashPagerAdapter;
-//import android.support.v4.view.ViewPager;
-//import android.support.v7.app.AppCompatActivity;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -25,8 +23,7 @@ public class WelcomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_welcome);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-        //Initialize variable
-       // tvSkipPager = (TextView) findViewById(R.id.vewPagerSkip);
+
         welcomeViewPager =(ViewPager) findViewById(R.id.welcome_view_pager);
         welcomeViewPagerAdapter = new SplashPagerAdapter(this);
         welcomeViewPager.setAdapter(welcomeViewPagerAdapter);
@@ -42,7 +39,6 @@ public class WelcomeActivity extends AppCompatActivity {
 
             }
 
-            boolean callHappened;
             @Override
             public void onPageScrolled(int pageScrolledOn, float positionOffset, int positionOffsetPixels) {
                 // TODO Auto-generated method stub
@@ -56,8 +52,6 @@ public class WelcomeActivity extends AppCompatActivity {
             }
         };
         welcomeViewPager.setOnPageChangeListener(listenerWelcomeViewPager);
-
-        //Set Click listener skip button
     }
 
     public void goLoginActivity(){

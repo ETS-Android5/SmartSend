@@ -1,6 +1,7 @@
 package com.example.smartsend.smartsendapp.activities;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
@@ -11,6 +12,7 @@ import android.location.Geocoder;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -130,7 +132,7 @@ public class OrderSummaryActivity extends AppCompatActivity implements OnMapRead
                 dropOffLatLng = new LatLng(dropOffAddr.getLatitude(), dropOffAddr.getLongitude());
                 findRoutes(pickUpLatLng, dropOffLatLng);
             } catch (IOException e) {
-                e.printStackTrace();
+                Toast.makeText(OrderSummaryActivity.this, "Failed to locate address, please try again.", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -162,6 +164,11 @@ public class OrderSummaryActivity extends AppCompatActivity implements OnMapRead
         initializeOrderLaterBtn();
         initializeLocationManager();
         initializeDeliveryBtn();
+        calculateOrderTime();
+    }
+
+    private void calculateOrderTime() {
+
     }
 
     private void initializeOrderLaterBtn() {
@@ -327,10 +334,32 @@ public class OrderSummaryActivity extends AppCompatActivity implements OnMapRead
                 pickUpContactInfo, dropOffContactInfo,
                 pickUpAddressInfo, dropOffAddressInfo, courierNote);
 
-        addOrderToClient(order);
-        addOrderToPendingOrdersList(order);
-        // validate order
-        goToSearchCourierActivity();
+        showOrderPrice();
+    }
+
+    private void showOrderPrice() {
+        androidx.appcompat.app.AlertDialog alertDialog = new androidx.appcompat.app.AlertDialog.Builder(this)
+                .setCancelable(false)
+                .setTitle("CONFIRM ORDER?")
+                .setMessage("Order total price: " + order.getCurrentPrice() + "$")
+                .setPositiveButton("Yes",null)
+                .setNegativeButton("No",null)
+                .create();
+
+        alertDialog.setOnShowListener(dialogInterface -> {
+            Button yesButton = (alertDialog).getButton(android.app.AlertDialog.BUTTON_POSITIVE);
+            Button noButton = (alertDialog).getButton(android.app.AlertDialog.BUTTON_NEGATIVE);
+            yesButton.setOnClickListener(view1 -> {
+                alertDialog.dismiss();
+                addOrderToClient(order);
+                addOrderToPendingOrdersList(order);
+                goToSearchCourierActivity();
+            });
+
+            noButton.setOnClickListener(view1 -> alertDialog.dismiss());
+        });
+
+        alertDialog.show();
     }
 
     private void addOrderToPendingOrdersList(Order order) {
@@ -358,13 +387,6 @@ public class OrderSummaryActivity extends AppCompatActivity implements OnMapRead
         finish();
     }
 
-    private void goToAcceptedOrderActivity() {
-        Intent intent = new Intent(this,
-                OrderDetailsAcceptedActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
     @Override
     public void onRoutingFailure(RouteException e) {
         findRoutes(pickUpLatLng, dropOffLatLng);
@@ -387,7 +409,7 @@ public class OrderSummaryActivity extends AppCompatActivity implements OnMapRead
                     .withListener(this)
                     .alternativeRoutes(true)
                     .waypoints(Start, End)
-                    .key("AIzaSyBUiecg0U9MpA9SNXI-UoPSUpvZV8tXYTg")  //also define your api key here.
+                    .key("AIzaSyBUiecg0U9MpA9SNXI-UoPSUpvZV8tXYTg")
                     .build();
             routing.execute();
         }
@@ -406,7 +428,6 @@ public class OrderSummaryActivity extends AppCompatActivity implements OnMapRead
         com.google.android.gms.maps.model.LatLng polylineEndLatLng=null;
 
         polylines = new ArrayList<>();
-        //add route(s) to the map using polyline
         for (int i = 0; i < route.size(); i++) {
 
             if(i == shortestRouteIndex)
@@ -428,7 +449,6 @@ public class OrderSummaryActivity extends AppCompatActivity implements OnMapRead
         startMarker.position(polylineStartLatLng);
         mMap.addMarker(startMarker);
 
-        //Add Marker on route ending position
         MarkerOptions endMarker = new MarkerOptions();
         endMarker.position(polylineEndLatLng);
         endMarker.snippet("and snippet");
