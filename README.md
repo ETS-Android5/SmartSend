@@ -25,11 +25,12 @@
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
 
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/erezhasson/SmartSend">
-    <img src="" alt="Logo" width="80" height="80">
+    <img src="https://user-images.githubusercontent.com/69516798/148689292-6278d9b8-b000-4266-b842-5c62baedecc3.png" alt="SmartSend Logo">
   </a>
 
   <h3 align="center">Ritzpa Stock Exchange</h3>
@@ -81,7 +82,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![Product Name Screen Shot][product-screenshot]
+![SmartSend Video][product-video]
 
 ### General Background
 Rizpa Stock Exchange (shortly SmartSend) name is a reference to old stock market's stock exchanging method where traders used to stand in room (called "Trading Floor" - Rizpa in Hebrew translated to floor) and announce which stock is being traded and who is selling it. In the modern age where technology involves at a frequent rate, the stock markets transferred  it's exchanging systems into electronic ones, and this academic project tries to partially clone some of them.
@@ -287,6 +288,10 @@ Use this space to list resources you find helpful and would like to give credit 
 [license-url]: https://github.com/erezhasson/SmartSend/blob/main/LICENSE
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?edge_flat=false&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/erezhasson
-[product-screenshot]: https://user-images.githubusercontent.com/69516798/148563962-ec12f890-a85b-489d-8688-b714f9303d65.png
+[product-video]: https://user-images.githubusercontent.com/69516798/148689316-66bae96c-8ee8-4245-9afd-6dd25fd5f793.mp4
+
+
+
+
 
 
