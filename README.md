@@ -32,16 +32,15 @@
   <a href="https://github.com/erezhasson/SmartSend">
     <img src="https://user-images.githubusercontent.com/69516798/148689292-6278d9b8-b000-4266-b842-5c62baedecc3.png" alt="SmartSend Logo">
   </a>
-
-  <h3 align="center">Ritzpa Stock Exchange</h3>
-
+<br />
+<br />
   <p align="center">
-    Web Application For Stock Exchanging :dollar: :chart_with_upwards_trend:
+    Innovative Community-Based Delivery System :bulb: :package:
     <br />
-    <a href="https://github.com/erezhasson/SmartSend"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/erezhasson/SmartSend/tree/main/Documents"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://youtu.be/4ylUOvWFy60">View Demo</a>
+    <a href="https://youtu.be/nUbuW7McLG4">View Demo Video</a>
     ·
     <a href="https://github.com/erezhasson/SmartSend/issues">Report Bug</a>
     ·
@@ -58,7 +57,9 @@
     <li>
       <a href="#about-the-project">About The Project</a>
       <ul>
-        <li><a href="#built-with">Built With</a></li>
+        <li><a href="#web-application">Web Application</a></li>
+        <li><a href="#mobile-application">Mobile Application</a></li>
+        <li><a href="#backend">Backend</a></li>
       </ul>
     </li>
     <li>
@@ -82,39 +83,85 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-![SmartSend Video](https://user-images.githubusercontent.com/69516798/148689509-29cb8ba3-a2bd-403d-a3be-5d7abeee3627.mp4)
-
-
+https://user-images.githubusercontent.com/69516798/148689509-29cb8ba3-a2bd-403d-a3be-5d7abeee3627.mp4    
+<h5 align="center">SmartSend Pitch Deck</h5>
 
 ### General Background
-Rizpa Stock Exchange (shortly SmartSend) name is a reference to old stock market's stock exchanging method where traders used to stand in room (called "Trading Floor" - Rizpa in Hebrew translated to floor) and announce which stock is being traded and who is selling it. In the modern age where technology involves at a frequent rate, the stock markets transferred  it's exchanging systems into electronic ones, and this academic project tries to partially clone some of them.
 
-### Project's Structure
-SmartSend developed in 3 parts:
+SmartSend is a B2B platfrom which prodvides innovative packages distribution solutions while relying on it's community - each individual is able to take an active role in SmartSend's system.  
+With SmartSend's services we build a connection between retailers that want to deliver goods and producs, couriers who want to earn through delivering those products and costumers that want to free up time and effort to focus on whats more important in life.
+SmartSend is an academic project (part of my degree's seminar) which was developed on course of ten months, presented in project's fair and scored a final grade of 95.  
+&nbsp;
 
-1.  Developed a console application where users could "talk" with our system by series of menus and available operations.
-2.  Developed a desktop application (via JavaFX architecture) which included a graphic UI on JavaFX components. Each interaction with user were based on different buttons and controllers.
-3.  Developed a web application (**this part is mainly covered in this readme, other parts won't be supported here**) which allowed users to dynamically register to system and suggested various operations - issue new stock/buy & sell stocks/deposit cash to system and more.
+<!-- SmartSend Website -->
+### Web Application
+  
+<div align="center">
+  <a href="https://github.com/erezhasson/SmartSend">
+    <img src="https://user-images.githubusercontent.com/69516798/148692537-daa2d70a-22a2-440b-8601-91b07f8c4006.png" alt="SmartSend Website">
+  </a>
+</div>
+<br/>
+  
+SmartSend's website is used mainly as information & registeration platform for users. On website you can find information about comapny's vision and purpose, how to become a SmartSend's business partner and registeration form for new couriers.  
 
-### On a Personal Note
-This project was one of the first time I experienced working in client/server structure, developing a web application and implementing HTTP requests & responses. 
-The project summarized  all the subjects that were taught about java & web development. Working on a project from 0 was challenging yet very awarding especially when parts started to connect and form a complete system.
+#### Built With
 
-### Built With
+* <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" height="22">
+* <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" height="22">
+* <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" height="22">
+* <img src="https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E" height="22">
+&nbsp;
+  
+### Mobile Application
 
-* [Java](https://www.java.com/en/)
-* [JavaFX](https://openjfx.io/)
-* [Apache Tomcat](https://tomcat.apache.org/)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
-* HTML
-* CSS
-* JavaScript
-* XML & JSON
+<div align="center">
+  <a href="https://github.com/erezhasson/SmartSend">
+    <img src="https://user-images.githubusercontent.com/69516798/148692567-3eaf3490-ca71-4cd0-8202-97a9874eaa74.png" alt="SmartSend App">
+  </a>
+</div>
+
+SmartSend's app (currently available only on Android OS) serves as the ground coordinator between couriers and costumers who need their packages to be delivered.
+The app suggests different services to users depand on their role in the system:
+
+#### Couriers
+The app suggests the following services:
+1. Scan for nearby deliveries.
+2. Update/View current active deliveries status.
+3. View past deliveries details.
+
+#### Costumers
+The app suggests the following services:
+1. Issue new delivery.
+2. Update/View current active deliveries status.
+3. View past deliveries details.
+
+
+#### Built With
+
+* <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" height="22">
+* <img src="https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white" height="22">
+* <img src="https://img.shields.io/badge/Android_Studio-3DDC84?style=for-the-badge&logo=android-studio&logoColor=white" height="22">
+* <img src="https://img.shields.io/badge/json-5E5C5C?style=for-the-badge&logo=json&logoColor=white" height="22">
+&nbsp;
+
+### Backend
+
+<div align="center">
+  <a href="https://github.com/erezhasson/SmartSend">
+    <img src="https://user-images.githubusercontent.com/69516798/148698351-3e4b5efc-ee21-4771-86cf-aa4e91d11489.png" alt="SmartSend Cloud" height="100">
+  </a>
+</div>
+
+On the backend of our systems we gave a strong empahsis on cloud hosting and automatic data handling. With GCP & Firebase we were able to storage large-scale data, while given the option to modify and analyze it with ease. Moreover, Firebase services allowed us to authenticate users, dynamiclly save & delete new data and store logic functions on it's cloud. 
+
+#### Built With
+
+* <img src="https://img.shields.io/badge/Google_Cloud-4285F4?style=for-the-badge&logo=google-cloud&logoColor=white" height="22">
+* <img src="https://img.shields.io/badge/firebase-ffca28?style=for-the-badge&logo=firebase&logoColor=black" height="22">
+&nbsp;
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
-
 
 <!-- GETTING STARTED -->
 ## Getting Started
