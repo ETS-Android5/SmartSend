@@ -168,7 +168,7 @@ On the backend of our systems we gave a strong empahsis on cloud hosting and aut
 
 ### Prerequisites
 
-Nothing but a stable internet connection and understanding <a href="#protocol">systems operation protocol</a></li> :)
+<!-- Nothing but a stable internet connection and understanding <a href="#protocol">systems operation protocol</a></li> :)
 * URL
   ```sh
   https://example.com
@@ -206,7 +206,7 @@ SmartSend system supports the following command types (case sensitive) -
  **AMOUNT:** How many stocks in total to sell/buy.  
  **SELLING/BUYING:** Indicates if the command is either selling or buying (case sensitive).  
  **PRICE:** Applies only to LMT type commands. Indicates the price of each stock in command.  
- 
+  -->
  
 <!-- ### Installation
 
@@ -233,35 +233,25 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-### Screenshots
+<!-- ### Screenshots
 (Explanations available only in Hebrew)  
-  
-![image](https://user-images.githubusercontent.com/69516798/148556573-c570a299-497a-4d2e-a5d1-3830c1cc4e5d.png) 
-![image](https://user-images.githubusercontent.com/69516798/148556697-020e19f9-472b-4198-9a5b-8ff8bd95e5c5.png)  
-![image](https://user-images.githubusercontent.com/69516798/148556825-cb576782-8c2b-4497-895d-3791d0dcd3c8.png)  
-![image](https://user-images.githubusercontent.com/69516798/148556840-b2899de9-a0cd-4dac-8bde-ca01e23fad2e.png)  
-![image](https://user-images.githubusercontent.com/69516798/148556859-30c9d756-c44d-4a6b-98e2-10d01f50e4b8.png)  
-![image](https://user-images.githubusercontent.com/69516798/148556875-a9ce4be3-8b6d-4593-86b3-03f90dd7c320.png)  
-![image](https://user-images.githubusercontent.com/69516798/148556889-3c0683e2-6625-4302-8b41-a8b55f00807a.png)
-![image](https://user-images.githubusercontent.com/69516798/148556895-f4b25a3d-a2b0-4fc1-98e1-fb31239ea393.png)
 
 _For more examples, please refer to the [Demo](https://youtu.be/4ylUOvWFy60)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
-
+ -->
 
 
 <!-- ROADMAP -->
 ## Roadmap
-
+<!-- 
 - [x] Finished part 1
 - [x] Finished part 2
-- [x] Finished part 3
 - [x] Add a demo
-- [x] Finish working on README
+- [ ] Finish working on README
 
 See the [open issues](https://github.com/erezhasson/SmartSend/issues) for a full list of proposed features (and known issues).
-
+ -->
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -269,7 +259,7 @@ See the [open issues](https://github.com/erezhasson/SmartSend/issues) for a full
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+<!-- Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
@@ -282,7 +272,7 @@ Don't forget to give the project a star! Thanks again!
 
 **NOTE:** This project is an academic project which already submitted, although contributions is always appreciated I won't be able to resubmit this project. 
 Feel free to send me general thoughts or suggestions for future projects.
-
+ -->
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
