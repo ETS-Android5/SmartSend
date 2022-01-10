@@ -168,63 +168,25 @@ On the backend of our systems we gave a strong empahsis on cloud hosting and aut
 
 ### Prerequisites
 
-<!-- Nothing but a stable internet connection and understanding <a href="#protocol">systems operation protocol</a></li> :)
-* URL
-  ```sh
-  https://example.com
-  ```
+* Smartphone device running Android OS
+* Computer with internet access
+
+### Installation
+1. Download [SmartSend's app APK](https://www.dropbox.com/s/mfhg1r0k1hj1yfc/SmartSend.apk?dl=0) to your device
+2. Create a user in [SmartSend's website](https://smartsend-website.herokuapp.com/) or use the following accounts:
   
-<div id="protocol"></div>   
-  
-### System Operations Protocol
-In order to issue a new command in system, command structure must be in the following order:  
-<p align="center"><b>[TYPE] [SYMBOL] [AMOUNT] [SELLING/BUYING] [PRICE]</b></p><br/>
-
-
-
-**TYPE:**  
-  
-SmartSend system supports the following command types (case sensitive) -
-* LMT - Defines limit to stock's price (to/from price) in the command.
- 
-  > LMT GIT 100 BUYING/SELLING 100 - will buy/sell 100 stocks of GIT, each in price up to/from 100$.
-
-* MKT - Operate this command ASAP (buy/sell in the available  price).
- 
-  > MKT GIT 100 BUYING/SELLING - will buy/sell 100 stocks of GIT, each in available price in market.
-
-* FOK - Similar to LMT, but the operation must be fully operated or else will be discarded.
- 
-  > FOK GIT 100 BUYING/SELLING 100 - will buy/sell 100 stocks of GIT, each in price up to/from 100$.  
-  > If not all stocks bought/sold, the operation will be discarded.
-
-* IOC - Similar to LMT, but if operation not fully operated it's remaining are discarded.
-  > FOK GIT 100 BUYING/SELLING 100 - will buy/sell 100 stocks of GIT, each in price up to/from 100$.  
-  > If not all stocks bought/sold, the remaining of the operation will be discarded.
- 
- **SYMBOL:** The symbol of the stock (case sensitive).  
- **AMOUNT:** How many stocks in total to sell/buy.  
- **SELLING/BUYING:** Indicates if the command is either selling or buying (case sensitive).  
- **PRICE:** Applies only to LMT type commands. Indicates the price of each stock in command.  
-  -->
- 
-<!-- ### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
-   ```sh
-   git clone https://github.com/your_username_/Project-Name.git
+   Client:
    ```
-3. Install NPM packages
-   ```sh
-   npm install
-   ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ``` -->
+   abc@mta.ac.il  
+   123456
+   ```  
+   Rider:
+    ```
+   rider@gmail.com  
+   123123
+   ```  
+3. Login to system, happy exploring :smiley:
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -233,25 +195,37 @@ _Below is an example of how you can instruct your audience on installing and set
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-<!-- ### Screenshots
-(Explanations available only in Hebrew)  
+#### Delivery Price Calculation  
 
-_For more examples, please refer to the [Demo](https://youtu.be/4ylUOvWFy60)_
+Calculating delivery's price based on different parameters - distance from pickup point to destination, package size and delivery time.
+Price is available to client on delivery setting screen and displayed to courier throughout the delivery. 
+
+#### Courier Matching Algorithm
+
+SmartSend's system collects every courier location while using the app. When a new delivery request is recieved, the system searchs nearby couriers while increasing search's radius every iteration.
+
+#### Real-time Delivery List
+
+Displaying to riders pending list of nearby deliveries to be picked up which updates in real-time. After commiting to delivery, it added to rider's active deliveries and removed from pending list.
+
+#### Dropoff Authentication
+
+When courier is at drop off point, the system recongnizes the location and displays an authentaction screen via client's autograph. After inserting autograph, the delivery completes and a reciept is printed both to courier and client.
+
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
- -->
-
 
 <!-- ROADMAP -->
 ## Roadmap
-<!-- 
-- [x] Finished part 1
-- [x] Finished part 2
+
+- [x] Finished working on website
+- [x] Finished working on app
 - [x] Add a demo
 - [ ] Finish working on README
 
 See the [open issues](https://github.com/erezhasson/SmartSend/issues) for a full list of proposed features (and known issues).
- -->
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -259,7 +233,7 @@ See the [open issues](https://github.com/erezhasson/SmartSend/issues) for a full
 <!-- CONTRIBUTING -->
 ## Contributing
 
-<!-- Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
@@ -272,7 +246,7 @@ Don't forget to give the project a star! Thanks again!
 
 **NOTE:** This project is an academic project which already submitted, although contributions is always appreciated I won't be able to resubmit this project. 
 Feel free to send me general thoughts or suggestions for future projects.
- -->
+
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
