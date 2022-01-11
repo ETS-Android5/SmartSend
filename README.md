@@ -177,8 +177,8 @@ On the backend of our systems we gave a strong empahsis on cloud hosting and aut
   
    Client:
    ```
-   abc@mta.ac.il  
-   123456
+   client@gmail.com
+   123123
    ```  
    Rider:
     ```
@@ -195,23 +195,30 @@ On the backend of our systems we gave a strong empahsis on cloud hosting and aut
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-#### Delivery Price Calculation  
+<div align="center">
+  
+![ezgif-3-303b4e49db](https://user-images.githubusercontent.com/69516798/149037880-343c44da-cc7e-4ba7-9076-8564c9aad0f1.gif)
 
+#### Delivery Price Calculation  
 Calculating delivery's price based on different parameters - distance from pickup point to destination, package size and delivery time.
 Price is available to client on delivery setting screen and displayed to courier throughout the delivery. 
 
-#### Courier Matching Algorithm
+![ezgif-3-90c1a7efc5](https://user-images.githubusercontent.com/69516798/149031844-20419b7c-bf48-4b53-ad5e-9894bd70b7cb.gif)
 
+#### Courier Matching Algorithm
 SmartSend's system collects every courier location while using the app. When a new delivery request is recieved, the system searchs nearby couriers while increasing search's radius every iteration.
+  
+![ezgif-3-16c0c2d892](https://user-images.githubusercontent.com/69516798/149033000-0475fb47-fe93-41b1-8629-6f5c8ac5468b.gif)
 
 #### Real-time Delivery List
-
 Displaying to riders pending list of nearby deliveries to be picked up which updates in real-time. After commiting to delivery, it added to rider's active deliveries and removed from pending list.
+  
+![ezgif-3-6b34a008f7](https://user-images.githubusercontent.com/69516798/149034878-53fa1fd1-e3f0-4f1e-8c18-c30a2a67ac65.gif)
 
 #### Dropoff Authentication
-
 When courier is at drop off point, the system recongnizes the location and displays an authentaction screen via client's autograph. After inserting autograph, the delivery completes and a reciept is printed both to courier and client.
-
+  
+</div>
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -273,8 +280,6 @@ Project Link: [https://github.com/erezhasson/SmartSend](https://github.com/erezh
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favourites to kick things off!
 
 * [Choose an Open Source License](https://choosealicense.com)
 * [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
