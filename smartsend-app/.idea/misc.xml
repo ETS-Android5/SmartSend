@@ -7,21 +7,22 @@
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/drawable/bg_delivery_btn.xml" value="0.37864583333333335" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/drawable/style_toogle_selector.xml" value="0.2557291666666667" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout-v21/activity_address_picker.xml" value="0.21822916666666667" />
-        <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout-v21/activity_order_details_for_rider.xml" value="0.21822916666666667" />
+        <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout-v21/activity_order_details_for_rider.xml" value="0.25" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout-v21/pending_order_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_about_us.xml" value="0.21822916666666667" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_accepted_rider.xml" value="0.21822916666666667" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_active_order_map.xml" value="0.2635416666666667" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_client_map.xml" value="0.2421875" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_client_menu_container.xml" value="0.21822916666666667" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_client_order_history.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_client_profile.xml" value="0.21822916666666667" />
-        <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_client_receipt.xml" value="0.21822916666666667" />
+        <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_client_receipt.xml" value="0.33" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_forgot_password.xml" value="0.21822916666666667" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_login.xml" value="0.21822916666666667" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_order_details_accepted.xml" value="0.21822916666666667" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_order_failed.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_order_history.xml" value="0.2557291666666667" />
-        <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_order_summary.xml" value="0.21822916666666667" />
+        <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_order_summary.xml" value="0.44151738672286617" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_rider_map.xml" value="0.21927083333333333" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_rider_menu_container.xml" value="0.21822916666666667" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/activity_rider_profile.xml" value="0.33" />
@@ -48,7 +49,7 @@
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/medium_delivery_btn.xml" value="0.3625" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/nav_client_header_main.xml" value="0.21822916666666667" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/nav_rider_header_main.xml" value="0.36666666666666664" />
-        <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/order_card_layout.xml" value="0.3625" />
+        <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/order_card_layout.xml" value="0.25" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/order_details_layout.xml" value="0.3625" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/order_history_details_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/hasso/Desktop/Projects/Git/SmartSend/smartsend-app/app/src/main/res/layout/package_tracking_layout.xml" value="0.21822916666666667" />
